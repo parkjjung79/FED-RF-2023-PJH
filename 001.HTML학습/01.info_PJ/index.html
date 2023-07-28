@@ -43,8 +43,20 @@
               border: 4px double darkcyan;
               /* 패딩 */
               padding: 20px;
-              /* 마진 */
+              /* 마진 : 마영오! 씨를 무대 중앙으로 모시겠습니다!*/
+              margin: 0 auto;
+              /* 양쪽마진을 auto로 쓰면 등분할되어 블록박스가 중앙위치함 */
+              /* 
+               [ 마진/패딩공통 개수별 정의 ]
+               margin: 4방향;(1개)
+               margin: 위아래 양쪽;(2개)
+               margin: 위 양쪽 아래;(3개)
+               margin: 위 오른 아래 왼;(4개-시계방향)
+              */
 
+               /* 텍스트중앙 */
+               text-align: center;
+              
             }
 
 
@@ -59,6 +71,12 @@
             #top {
                 background-color: lightblue;
             }
+
+            /* 2.메인영역 */
+            #cont{
+                margin: 20px auto;
+            }
+            
         </style>
     </head>
     <body>
@@ -87,8 +105,9 @@
             </nav>
         </header>
         <!-- 2. 메인영역 : 컨텐츠 -->
-        <main id="cont" class="bx"></main>
+        <main id="cont" class="bx">
         <img class="cimg" src="./images/mainimg.jpg" alt="메인이미지" />
+        </main>
         <!-- 3. 하단영역 : 회사정보 -->
         <footer id="info" class="bx">
             <address>
@@ -131,6 +150,8 @@
         -> 슬래쉬(/)부터 씀
 
         -> 주의 : 절대상대경로는 서버 루트가 폴더가 같이 않으면 경로가 망가짐. 또는 로컬에서 직접 웹페이지를 열어도 망가짐. ->어려움 이해잘안됨
+
+        http://local host-> "127.0.0.1" 포트번호 -> :5500/001.HTML%ED%95%99%EC%8A%B5/01.info_PJ/index.html
         -->
     </body>
 </html>
