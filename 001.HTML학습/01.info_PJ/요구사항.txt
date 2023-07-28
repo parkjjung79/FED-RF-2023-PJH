@@ -23,16 +23,21 @@ https://tombap8.github.io/GITA-FSD-JD22/02.HTML%ED%95%99%EC%8A%B5/01.Info_PJ/ind
 [ 공통뉴스 IT/과학 주소 ]
 https://n.news.naver.com/mnews/hotissue/article/031/0000760697?type=series&cid=1087779
 
+
 [ 기타 뉴스 선정 ]
 
 정치페이지
 https://n.news.naver.com/mnews/article/025/0003296931?sid=100
+https://n.news.naver.com/mnews/article/001/0014098605?sid=100
 
 경제페이지
 https://n.news.naver.com/mnews/article/009/0005165135?sid=101
+https://n.news.naver.com/mnews/article/374/0000345372?sid=101
 
 사회페이지
 https://n.news.naver.com/mnews/article/047/0002400790?sid=102
+https://n.news.naver.com/mnews/article/009/0005165222
 
 TV/연예페이지
 https://entertain.naver.com/ranking/read?oid=144&aid=0000903070
+https://entertain.naver.com/movie/now/read?oid=117&aid=0003755490
