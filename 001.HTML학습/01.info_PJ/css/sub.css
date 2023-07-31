@@ -1,0 +1,6 @@
+@charset "utf-8"
+/* 서브페이지용 CSS - sub.css */
+
+
+/* 공통외부css 합치기 */
+@import url(./common.css);
