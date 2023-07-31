@@ -8,7 +8,24 @@
         <!-- CSS인터널방식 코딩영역 -->
         <style>
             /* CSS영역내 주석문 */
-            
+
+            /* 웹폰트 CDN(Content Delevery Network) */
+            @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=East+Sea+Dokdo&family=Gowun+Dodum&family=Gugi&family=Noto+Sans+KR:wght@300;400&display=swap");
+
+            /* 
+                웹폰트 font-family 이름
+                font-family: 'Dongle', sans-serif;
+                font-family: 'East Sea Dokdo', cursive;
+                font-family: 'Gowun Dodum', sans-serif;
+                font-family: 'Gugi', cursive;
+                font-family: 'Noto Sans KR', sans-serif;
+             */
+
+            /* 
+                @import url(주소)
+                - 외부 CSS를 불러올때 사용하는 형식
+                - 외부 CSS 파일을 하나로 합칠때 많이 사용함
+             */
             /* 
               [ 모든 요소 공통 디자인 요소 : 박스모델 ]
               1. 크기 : width 가로, height 세로
@@ -36,17 +53,18 @@
              */
 
             /* 레이아웃 박스 공통 디자인 */
-            .bx{
-              /* 크기 w800 -> 가로크기*/
-              width: 800px; 
-              /* 외곽선 db -> 두께 종류 색상 */
-              border: 4px double darkcyan;
-              /* 패딩 */
-              padding: 20px;
-              /* 마진 : 마영오! 씨를 무대 중앙으로 모시겠습니다!*/
-              margin: 0 auto;
-              /* 양쪽마진을 auto로 쓰면 등분할되어 블록박스가 중앙위치함 */
-              /* 
+
+            .bx {
+                /* 크기 w800 -> 가로크기*/
+                width: 800px;
+                /* 외곽선 db -> 두께 종류 색상 */
+                border: 4px double darkcyan;
+                /* 패딩 */
+                padding: 30px;
+                /* 마진 : 마영오! 씨를 무대 중앙으로 모시겠습니다!*/
+                margin: 0 auto;
+                /* 양쪽마진을 auto로 쓰면 등분할되어 블록박스가 중앙위치함 */
+                /* 
                [ 마진/패딩공통 개수별 정의 ]
                margin: 4방향;(1개)
                margin: 위아래 양쪽;(2개)
@@ -54,29 +72,106 @@
                margin: 위 오른 아래 왼;(4개-시계방향)
               */
 
-               /* 텍스트중앙 */
-               text-align: center;
-              
+                /* 텍스트중앙 */
+                text-align: center;
             }
 
-
             /* 메인이미지 */
-            .cimg{
+            .cimg {
                 width: 100%;
+
                 /* w100p */
             }
 
-
             /* 1.상단영역 */
             #top {
-                background-color: lightblue;
+                background-color: #007a0a;
+            }
+
+            /* 타이틀 */
+            #top h1 {
+                color: #43ff62;
+                font-size: 65px;
+                font-weight: normal;/*  fwn글자두께 기본 */
+                font-family: 'East Sea Dokdo', cursive;
+                margin: 10px;
+
+                /* 
+                    font-family 글씨체
+                    값 - 콤마로 구분하여 우선순위 적용함
+                    (상위체가 없으면 하위체를 적용, 이도 없으면 브라우저 기본체로 표시)
+
+                */
+                
+                /* 
+                    text-shadow : 글자그림자
+                    값 - x축 y축블러(경계흐림) 색                                 
+                    -> 콤마로 다중 그림자 사용가능!
+                 */
+                text-shadow: hoff voff blur #000;
+                text-shadow: 2px 2px 2px #002b0d;
+            }
+
+            /* 메뉴링크 */
+            #gnb a {
+                text-decoration: none; /* tdn */
+                font-size: 30px; /* fz */
+                font-family: 'Dongle', sans-serif; /* ff */
+                color: #fff;
+                vertical-align: -3px; /* va */
+            }
+            /* 가상클래스 :hover 마우스오버시 */
+            /* a+a는 앞에 a요소가 있는 형제 a요소를 선택
+            결과적으로 첫번째 a요소가 선택되지 않는다! */
+            #gnb a+a:hover {
+                color: yellow;
+                /* 글자테고 : 윗줄물결모양 */
+                text-decoration: overline;
+                text-decoration-style: solid;
+            }
+            /* 
+                vertical-align : 인라인요소간 세로정렬
+                값 - top/bottom/middle/baseline(박스맨밑)/수치
+            */
+
+            /* 로고이미지 */
+            #gnb img {
+                vertical-align: -6px;
             }
 
             /* 2.메인영역 */
-            #cont{
+            #cont {
                 margin: 20px auto;
             }
-            
+            /* 3.하단영역 */
+            #info {
+                background-color: #ccc;
+            }
+            /* 회사주소 */
+            #info address{
+                /* 기본글자 이탤릭 스타일 없애기 */
+                font-style: normal;
+                font-family: 'Noto Sans KR', sans-serif;
+                color:#515151;
+                font-weight: 100;
+                font-size: 15px;
+            }
+            /* 대표자 span*/
+            span.utxt{
+                text-decoration: underline;
+                text-decoration-style: dotted;
+                text-decoration-color: red ;
+            }
+            /* 종속선택자로 같은 이름의 클래스인데 다른 디자인으로 변경하여 셋팅하기  */
+            b.utxt{
+                text-decoration: underline;
+                text-decoration-style: wavy;
+                text-decoration-color: blue;
+            }
+         
+
+
+
         </style>
     </head>
     <body>
@@ -89,7 +184,7 @@
             <nav id="gnb">
                 <a href="index.html">
                     <!-- 상대경로 -->
-                    <img src="./images/logo.png" alt="네이버로고" style="width: 50px" />
+                    <img src="./images/logo.png" alt="네이버로고" style="width: 25px" />
                     <!-- style속성으로 CSS를 셋팅하는 방법은 인라인방식이라고 함! -->
 
                     <!-- 절대상대경로 -->
@@ -97,28 +192,40 @@
                     <!-- 절대경로 -->
                     <!-- <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="다음로고"> -->
                 </a>
-                <a href="sub1.html">정치</a>
-                <a href="sub2.html">경제</a>
-                <a href="sub3.html">사회</a>
-                <a href="sub4.html">IT/과학</a>
+                <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> | <a href="sub3.html">사회</a> |
+                <a href="sub4.html">IT/과학</a> |
                 <a href="sub5.html">TV/연예</a>
             </nav>
         </header>
         <!-- 2. 메인영역 : 컨텐츠 -->
         <main id="cont" class="bx">
-        <img class="cimg" src="./images/mainimg.jpg" alt="메인이미지" />
+            <img class="cimg" src="./images/mainimg.jpg" alt="메인이미지" />
         </main>
         <!-- 3. 하단영역 : 회사정보 -->
         <footer id="info" class="bx">
             <address>
-              서울시 강남구 역삼동 119 대호B 8F<br>
-              대표: Tom Brace Parker<br>
-              전화: 010-2222-3333
+                서울시 강남구 역삼동 119 대호B 8F<br />
+                대표: <span class="utxt">Tom Brace Parker</span><br />
+                전화: <b class="utxt">010-2222-3333</b>
             </address>
         </footer>
 
         <!-- 
-           [ 레이아웃을 위한 블록요소 ]
+        [ 웹표준이란? ]
+        - 모든 브라우저에서 하나의 소스로 동일한 디스플레이 및 기능이 작동하도록 정한 웹 코딩의 표준안이다!
+
+        [ 웹접근성이란? ]
+        - 평등의 원칙! 즉, 장애인 차별금지법에 따라 이미지(alt 속성), 동영상(자막)등에 설명을 추가하여 정보제공에 차별이 없도록 하는 것
+
+        [ img요소 : 이미지 연결요소]
+        - 필수속성
+        1) src : 이미지경로
+        (source)
+        2) alt : 이미지 설명(웹접근성)
+        (alternative text - 대체텍스트)
+
+        
+        [ 레이아웃을 위한 블록요소 ]
         div : 영역을 나누고 묶어주는 요소
         element : 요소(공통적인 성질을 지칭할때)
         tag : 개별적요소를 지칭
@@ -149,9 +256,14 @@
         3. 절대상대경로(절대개념이 들어가있는 상대경로) : 웹사이트 루트부터의 경로
         -> 슬래쉬(/)부터 씀
 
-        -> 주의 : 절대상대경로는 서버 루트가 폴더가 같이 않으면 경로가 망가짐. 또는 로컬에서 직접 웹페이지를 열어도 망가짐. ->어려움 이해잘안됨
+        -> 주의 : 절대상대경로는 서버 루트가 폴더가 같이 않으면 경로가 망가짐. 또는 로컬에서 직접 웹페이지를 열어도 망가짐. -> 어려움 이해잘안됨
 
         http://local host-> "127.0.0.1" 포트번호 -> :5500/001.HTML%ED%95%99%EC%8A%B5/01.info_PJ/index.html
+
+        
+
+
+
         -->
     </body>
 </html>
