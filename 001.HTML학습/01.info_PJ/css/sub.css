@@ -50,7 +50,7 @@ h2.stit{
     background-image: url(../images/afig1-1.jpg) ;
     /* 배경위치변경(세로y축) */
     /* background-position-y: -40px; */
-    color: rgb(110, 255, 241);
+    color: rgb(255, 171, 217);
 }
 
 /* 경제뉴스 이미지 */
@@ -62,7 +62,12 @@ h2.stit{
 }
 
 /* 사회뉴스 이미지 */
-#cont .st3
+#cont .st3{
+    /* 배경이미지 */
+    background-image: url(../images/afig3.jpg);
+    color:rgb(255, 219, 177);
+
+}
 
 
 
