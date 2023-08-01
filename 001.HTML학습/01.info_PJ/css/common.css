@@ -54,7 +54,8 @@ ______________________________
 html,
 body,
 h1,
-h2 {
+h2,
+figure {
     margin: 0;
     padding: 0;
 }

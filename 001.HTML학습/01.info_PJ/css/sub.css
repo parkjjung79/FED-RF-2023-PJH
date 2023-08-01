@@ -4,6 +4,11 @@
 /* 공통외부css 합치기 */
 @import url(./common.css);
 
+/*  서브페이지 공통 글자설정 */
+#cont{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 
 /* 서브타이틀 - 00뉴스 */
 h2.stit{
@@ -78,7 +83,7 @@ h2.st4 {
 
 /* 정치뉴스 이미지 */
 /* .st1의 적용우선순위를 높이기 위해 부모요소를 써줌! */
-h2 .st1 {
+h2.st1 {
     /* 배경이미지 */
     background-image: url(../images/afig1-1.jpg) ;
     /* 배경위치변경(세로y축) */
@@ -87,7 +92,7 @@ h2 .st1 {
 }
 
 /* 경제뉴스 이미지 */
-h2 .st2{
+h2.st2{
     /* 배경이미지 */
     background-image: url(../images/afig2.jpg);
     color: rgb(157, 255, 0);
@@ -95,7 +100,7 @@ h2 .st2{
 }
 
 /* 사회뉴스 이미지 */
-h2 .st3{
+h2.st3{
     /* 배경이미지 */
     background-image: url(../images/afig3.jpg);
     color:rgb(255, 219, 177);
@@ -103,7 +108,7 @@ h2 .st3{
 }
 
 /* TV/연예 뉴스 이미지 */
-h2 .st5{
+h2.st5{
     background-image: url(../images/afig5.jpg);
     background-position-y: -174px;
     color:rgb(0, 255, 157);
@@ -121,30 +126,17 @@ h2 .st5{
     */
 }
 
+/* 기사타이틀 */
+.atit{
+    font-size:30px;
+}
 
-/* 기사내용 */
-.acont{
-    font-size: 16px;
-    font-weight: normal;
+/* 기사이미지 박스 */
+.afig{
+    margin-bottom: 40px;
 }
-/* 기사제목 */
-h3.atit {
-    font-size: 30px;
-    letter-spacing: -2px;
-    margin: 0;
-}
-/* 기사사진 */
-.afig1,.afig2{
-    margin: 0;
+.afig img{
     width: 100%;
 }
 
-/* figcation css */
-figcaption {
-    font-weight: normal;
-    font-size: 16px;
-}
-/* 기자정보 */
-.rpt{
-    font-size: 16px;
-}
+
