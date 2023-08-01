@@ -5,7 +5,7 @@
 @import url(./common.css);
 
 
-/* 서브타이틀 */
+/* 서브타이틀 - 00뉴스 */
 h2.stit{
     font-size: 45px;
     font-family: "Dongle", sans-serif;
@@ -14,19 +14,19 @@ h2.stit{
     text-align: center;
     text-shadow: 2px 2px 2px #000000;
 }
-
+/* 기사내용 */
 .acont{
     font-size: 16px;
     font-weight: normal;
 }
-
+/* 기사제목 */
 h3.atit {
     font-size: 30px;
     line-height: 38px;
     letter-spacing: -2px;
     margin: 0;
 }
-
+/* 기사사진 */
 .afig1,.afig2{
     margin: 0;
     width: 100%;
@@ -37,7 +37,7 @@ figcaption {
     font-weight: normal;
     font-size: 16px;
 }
-
+/* 기자정보 */
 .rpt{
     font-size: 16px;
 }
