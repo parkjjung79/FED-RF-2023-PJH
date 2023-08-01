@@ -110,7 +110,7 @@ h2.st3{
 /* TV/연예 뉴스 이미지 */
 h2.st5{
     background-image: url(../images/afig5.jpg);
-    background-position-y: -174px;
+    background-position-y: -207px;
     color:rgb(0, 255, 157);
 }
 
@@ -141,9 +141,12 @@ h2.st5{
 }
 /* 기사이미지 설명 */
 .afig figcaption{
-    font-size: 15px;
     text-align: center;
     color:#767676;
+}
+.afig figcaption small{
+    font-size: 15px;
+
 }
 
 /* 기사 문단 */
@@ -156,6 +159,12 @@ h2.st5{
     word-spacing: 1px;
     /* 양쪽정렬 */
     text-align: justify;
+    /* 줄간격 lh */
+    line-height: 2.1; 
+    /* 글자 라인간 간격을 조정함
+    숫자만 쓰면 배수임(글자높이값에 대한 배수)
+    단위를 쓰면 단위에 맞게 줄간격 조정
+    -> 줄간격의 응용은 버튼 등의 글자를 세로 중앙에 오게 할때 박스높이값만큼 준다!*/
 
 }
 
@@ -166,7 +175,7 @@ h2.st5{
         div와 같은 block요소는
         width 설정을 하지 않으면
         width:auto로 자동설정됨.
-        이는 싸고 있는 컨텐츠영역을 자동을 채워준다!
+        이는 싸고 있는 컨텐츠영역을 자동으로 채워준다!
     */
     
 }
@@ -174,4 +183,19 @@ h2.st5{
 .mvbx iframe{
     border: none;
     width: 100%;
+    height: 100%;
+}
+
+/* 기사원문 */
+.alink{
+    text-align: right;
+}
+.alink a{
+    display: inline-block;
+    text-align: center;
+    line-height: 70px;
+    width: 70px;
+    height: 70px;
+    border: 1px solid darkcyan;
+    border-radius: 50%;
 }

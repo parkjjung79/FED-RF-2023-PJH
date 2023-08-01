@@ -64,7 +64,15 @@ figure {
 
 .bx {
     /* 크기 w800 -> 가로크기 */
-    width: 800px;
+    /* width: 800px; */
+    
+    /* 최대가로크기 1000px의 의미는 1000px보다 안커지고 작을 경우 auto로 전환함(부모박스 크기로 맞춤) */
+    max-width: 1000px; /* maw1000 */
+    /* min-width: 700px; */
+    /* 
+        최소 가로크기를 설정하면 최소크기보다 작아지지 않는다!
+    */
+    
     /* 외곽선 db -> 두께 종류 색상 */
     /* border: 4px double darkblue */
     border: 4px dashed darkcyan;
