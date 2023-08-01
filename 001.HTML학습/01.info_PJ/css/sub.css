@@ -14,7 +14,24 @@ h2.stit{
     text-align: center;
     text-shadow: 2px 2px 2px #000000;
 
-    outline: 4px solid red;
+    
+    border-radius: 20px;
+
+    /* outline: 4px solid rgba(95, 86, 86, 0); */
+    /* 
+        [ outline요소 ]
+        box모델의 필수속성은 아니지만
+        박스의 외곽선을 표현해주며
+        *박스자체에 크기에 영향을 주지 않음!
+        outline: 두께 종류 색상 -> 두종색
+
+        -> border와 셋팅이 같음!
+        단, border-radius 둥근모서리는 보더만 적용되었으나
+        아웃트라인도 됨 이제는...
+
+        -> 주로 사용되는 예는 input 입력창에서 포커스가 갈 경우 외곽선표시가 됨
+
+    */
     padding: 35px;
 
     /* 배경넣기 : 한번에쓰기 */
@@ -33,6 +50,22 @@ h2.stit{
     
     /* 배경크기 : 가로 세로(cover - 박스채우기) */
     background-size: cover;
+
+    /* 박스그림자 */
+    box-shadow:
+    inset 0px 0px 23px 5px #384851,
+    0px 0px 15px 2px #b9da00;
+    
+    /* 
+        [ box-shadow 속성 ]
+        - 박스 외부/내부 그림자 설정속성
+        - 값 : x축 y축 blur spread 색
+        text-shadow와 달리 spread 속성이 있음
+        이것은 그림자를 커지게 함!
+        - 내부그림자 옵선 : inset
+        - 그림자 다중설정: 콤마로 연속가능
+    */
+    margin-bottom: 30px;
     
 }
 
@@ -67,6 +100,13 @@ h2.stit{
     background-image: url(../images/afig3.jpg);
     color:rgb(255, 219, 177);
 
+}
+
+/* TV/연예 뉴스 이미지 */
+#cont .st5{
+    background-image: url(../images/afig5.jpg);
+    background-position-y: -174px;
+    color:rgb(0, 255, 157);
 }
 
 
