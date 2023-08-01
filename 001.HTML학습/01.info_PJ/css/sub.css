@@ -70,15 +70,15 @@ h2.stit{
 }
 
 /* IT/과학 배경이미지 */
-#cont .st4 {
+h2.st4 {
     /* 배경이미지 */
     background-image: url(../images/afig4.jpg) ;
-    color: yellow
+    color: rgb(255, 0, 106)
 }
 
 /* 정치뉴스 이미지 */
 /* .st1의 적용우선순위를 높이기 위해 부모요소를 써줌! */
-#cont .st1 {
+h2 .st1 {
     /* 배경이미지 */
     background-image: url(../images/afig1-1.jpg) ;
     /* 배경위치변경(세로y축) */
@@ -87,7 +87,7 @@ h2.stit{
 }
 
 /* 경제뉴스 이미지 */
-#cont .st2{
+h2 .st2{
     /* 배경이미지 */
     background-image: url(../images/afig2.jpg);
     color: rgb(157, 255, 0);
@@ -95,7 +95,7 @@ h2.stit{
 }
 
 /* 사회뉴스 이미지 */
-#cont .st3{
+h2 .st3{
     /* 배경이미지 */
     background-image: url(../images/afig3.jpg);
     color:rgb(255, 219, 177);
@@ -103,12 +103,23 @@ h2.stit{
 }
 
 /* TV/연예 뉴스 이미지 */
-#cont .st5{
+h2 .st5{
     background-image: url(../images/afig5.jpg);
     background-position-y: -174px;
     color:rgb(0, 255, 157);
 }
 
+/* 언론사로고 */
+.prlogo img{
+    height: 32px;
+    /* 
+        이미지는 기본 비율을 가지고 있어서
+        가로, 세로 중 한 쪽만 크기를 주면 나머지 방향은
+        자동으로 비율을 유지함!
+
+        가로,세로를 다 주면 비율이 깨짐!
+    */
+}
 
 
 /* 기사내용 */
