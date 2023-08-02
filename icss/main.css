@@ -1,4 +1,14 @@
 @charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gugi&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/*
+font-family: 'Black Han Sans', sans-serif;
+font-family: 'Gugi', cursive;
+font-family: 'Noto Sans KR', sans-serif;
+
+*/
+
 /* 아카이브 메인 CSS - main.css */
 
 /* 초기화 */
@@ -27,7 +37,22 @@ body{
 /* 메인타이틀 */
 .tit{
     text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 45px;
+    font-family: 'Gugi';
+    font-size: 40px;
     color: #222;
+    padding-bottom: 20px;
 }
+
+.tit img{
+    width: 25%;
+}
+
+/* part1 상단 border */
+.part1,.part2{
+    padding: 20px;
+}
+
+.part1{
+    border-top: 2px solid #544596;
+}
+
