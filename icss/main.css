@@ -11,3 +11,23 @@ html, body, h1, h2, h3, ul, ol{
 body{
     background: url(../imgs/main1.jpg) no-repeat fixed center/cover;
 }
+
+/* 전체글자체 */
+
+
+/* 전체박스 */
+.wrap{
+    background-color: rgba(255, 255, 255, 0.425);
+    width: 80%;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 40px
+}
+
+/* 메인타이틀 */
+.tit{
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 45px;
+    color: #222;
+}
