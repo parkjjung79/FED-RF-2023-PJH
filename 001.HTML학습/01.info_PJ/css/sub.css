@@ -85,16 +85,18 @@ h2.st4 {
 /* .st1의 적용우선순위를 높이기 위해 부모요소를 써줌! */
 h2.st1 {
     /* 배경이미지 */
-    background-image: url(../images/afig1-1.jpg) ;
+    background-image: url(../images/afig1-3.jpg) ;
     /* 배경위치변경(세로y축) */
     /* background-position-y: -40px; */
     color: rgb(255, 171, 217);
+    background-position-y: -110px;
+    background-position-x: -15px;
 }
 
 /* 경제뉴스 이미지 */
 h2.st2{
     /* 배경이미지 */
-    background-image: url(../images/afig2.jpg);
+    background-image: url(../images/afig2-1.jpg);
     color: rgb(157, 255, 0);
 
 }
@@ -102,7 +104,7 @@ h2.st2{
 /* 사회뉴스 이미지 */
 h2.st3{
     /* 배경이미지 */
-    background-image: url(../images/afig3.jpg);
+    background-image: url(../images/afig3-1.jpg);
     color:rgb(255, 219, 177);
 
 }
@@ -167,6 +169,35 @@ h2.st5{
     -> 줄간격의 응용은 버튼 등의 글자를 세로 중앙에 오게 할때 박스높이값만큼 준다!*/
 
 }
+
+/* 강조em요소 디자인변경 */
+.acont p em{
+    /* 이탤릭해제 */
+    font-style: normal;
+    /* 글자색 변경 */
+    color: hotpink;
+    /* 글자그림자 */
+    text-shadow: 2px 2px 3px #6eddff;
+
+    
+}
+
+.acont p mark{
+    display: block;
+    width: 65%;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin: 15px auto;
+    padding: 30px 50px;
+    font-size: 20px;
+    font-family: "East Sea Dokdo", cursive;
+    border-top: 2px solid #008eb3;
+    border-bottom: 2px solid #008eb3;
+    color: crimson;
+    line-height: 35px;
+}
+
+
 
 /* 유튜브 동영상 박스 */
 .mvbx {
