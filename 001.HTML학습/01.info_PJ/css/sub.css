@@ -5,13 +5,12 @@
 @import url(./common.css);
 
 /*  서브페이지 공통 글자설정 */
-#cont{
-    font-family: 'Noto Sans KR', sans-serif;
+#cont {
+    font-family: "Noto Sans KR", sans-serif;
 }
 
-
 /* 서브타이틀 - 00뉴스 */
-h2.stit{
+h2.stit {
     font-size: 45px;
     font-family: "Dongle", sans-serif;
     color: #00c300;
@@ -19,7 +18,6 @@ h2.stit{
     text-align: center;
     text-shadow: 2px 2px 2px #000000;
 
-    
     border-radius: 20px;
 
     /* outline: 4px solid rgba(95, 86, 86, 0); */
@@ -41,26 +39,25 @@ h2.stit{
 
     /* 배경넣기 : 한번에쓰기 */
     background: url(../images/afig4.jpg) no-repeat center/cover;
-    /* background: 색이반고윙/크;
-        배경색 이미지 반복 고정 위치/크기
+    /* 
+    background: 색이반고윙/크;
+    배경색 이미지 반복 고정 위치/크기
     */
 
     /* 배경넣기 : 속성별쓰기 */
-    
+
     /* 반복여부 */
     background-repeat: no-repeat;
-    
+
     /* 배경위치 : 가로 세로 */
     background-position: center;
-    
+
     /* 배경크기 : 가로 세로(cover - 박스채우기) */
     background-size: cover;
 
     /* 박스그림자 */
-    box-shadow:
-    inset 0px 0px 23px 5px #384851,
-    0px 0px 15px 2px #b9da00;
-    
+    box-shadow: inset 0px 0px 23px 5px #384851, 0px 0px 15px 2px #b9da00;
+
     /* 
         [ box-shadow 속성 ]
         - 박스 외부/내부 그림자 설정속성
@@ -71,21 +68,20 @@ h2.stit{
         - 그림자 다중설정: 콤마로 연속가능
     */
     margin-bottom: 30px;
-    
 }
 
 /* IT/과학 배경이미지 */
 h2.st4 {
     /* 배경이미지 */
-    background-image: url(../images/afig4.jpg) ;
-    color: rgb(255, 0, 106)
+    background-image: url(../images/afig4.jpg);
+    color: rgb(255, 0, 106);
 }
 
 /* 정치뉴스 이미지 */
 /* .st1의 적용우선순위를 높이기 위해 부모요소를 써줌! */
 h2.st1 {
     /* 배경이미지 */
-    background-image: url(../images/afig1-3.jpg) ;
+    background-image: url(../images/afig1-3.jpg);
     /* 배경위치변경(세로y축) */
     /* background-position-y: -40px; */
     color: rgb(255, 171, 217);
@@ -94,30 +90,28 @@ h2.st1 {
 }
 
 /* 경제뉴스 이미지 */
-h2.st2{
+h2.st2 {
     /* 배경이미지 */
     background-image: url(../images/afig2-1.jpg);
     color: rgb(157, 255, 0);
-
 }
 
 /* 사회뉴스 이미지 */
-h2.st3{
+h2.st3 {
     /* 배경이미지 */
     background-image: url(../images/afig3-1.jpg);
-    color:rgb(255, 219, 177);
-
+    color: rgb(255, 219, 177);
 }
 
 /* TV/연예 뉴스 이미지 */
-h2.st5{
+h2.st5 {
     background-image: url(../images/afig5.jpg);
     background-position-y: -207px;
-    color:rgb(0, 255, 157);
+    color: rgb(0, 255, 157);
 }
 
 /* 언론사로고 */
-.prlogo img{
+.prlogo img {
     height: 32px;
     /* 
         이미지는 기본 비율을 가지고 있어서
@@ -129,32 +123,31 @@ h2.st5{
 }
 
 /* 기사타이틀 */
-.atit{
-    font-size:30px;
+.atit {
+    font-size: 30px;
 }
 
 /* 기사이미지 박스 */
-.afig{
+.afig {
     margin-bottom: 40px;
 }
 /* 기사이미지 */
-.afig img{
+.afig img {
     width: 100%;
 }
 /* 기사이미지 설명 */
-.afig figcaption{
+.afig figcaption {
     text-align: center;
-    color:#767676;
+    color: #767676;
 }
-.afig figcaption small{
+.afig figcaption small {
     font-size: 15px;
-
 }
 
 /* 기사 문단 */
-.acont p{
+.acont p {
     font-size: 18px;
-    color: #303038 ;
+    color: #303038;
     /* 자간 : ls */
     letter-spacing: -1px;
     /* 단어간격 : ws */
@@ -162,27 +155,24 @@ h2.st5{
     /* 양쪽정렬 */
     text-align: justify;
     /* 줄간격 lh */
-    line-height: 2.1; 
+    line-height: 2.1;
     /* 글자 라인간 간격을 조정함
     숫자만 쓰면 배수임(글자 높이값에 대한 배수)
     단위를 쓰면 단위에 맞게 줄간격 조정
     -> 줄간격의 응용은 버튼 등의 글자를 세로 중앙에 오게 할때 박스높이값만큼 준다!*/
-
 }
 
 /* 강조em요소 디자인변경 */
-.acont p em{
+.acont p em {
     /* 이탤릭해제 */
     font-style: normal;
     /* 글자색 변경 */
     color: hotpink;
     /* 글자그림자 */
     text-shadow: 2px 2px 3px #6eddff;
-
-    
 }
 
-.acont p mark{
+.acont p mark {
     display: block;
     width: 65%;
     text-align: center;
@@ -197,8 +187,6 @@ h2.st5{
     line-height: 35px;
 }
 
-
-
 /* 유튜브 동영상 박스 */
 .mvbx {
     height: 550px;
@@ -208,17 +196,16 @@ h2.st5{
         width:auto로 자동설정됨.
         이는 싸고 있는 컨텐츠영역을 자동으로 채워준다!
     */
-    
 }
 
-.mvbx iframe{
+.mvbx iframe {
     border: none;
     width: 100%;
     height: 100%;
 }
 
 /* 인용블록 영역 */
-.bqbx{
+.bqbx {
     padding: 20px 0;
     margin: 20px 0;
     border-top: 2px dashed #ccc;
@@ -226,36 +213,32 @@ h2.st5{
     font-size: 15px;
 }
 
-.bqbx blockquote{
+.bqbx blockquote {
     padding: 15px 0;
     line-height: 2;
-    
 }
 
 /* 주해박스 */
-.descripton{
+.descripton {
     border-top: 2px dashed #ccc;
     border-bottom: 2px dashed #ccc;
     padding: 20px 0;
 }
-.descripton div{
+.descripton div {
     padding: 15px 0;
     font-size: 15px;
     line-height: 2;
-    
 }
 
-
-
 /* 인용블록 이미지 */
-.bqbx img{
+.bqbx img {
     float: right;
     border-radius: 5px;
     margin-left: 20px;
 }
 
 /* article 제목공통 - .atbx */
-.atbx h5{
+.atbx h5 {
     background-color: #ebebeb;
     padding: 10px 20px;
     display: inline-block;
@@ -264,15 +247,13 @@ h2.st5{
     color: #333;
     font-size: 20px;
     margin: 0;
-
 }
-
 
 /* 기사원문 */
-.alink{
+.alink {
     text-align: right;
 }
-.alink a{
+.alink a {
     /* 디자인적용위해 display변경하기 dib */
     display: inline-block;
     /* 가로정렬중앙 -> inline일때만 먹힘 */
@@ -282,20 +263,18 @@ h2.st5{
     width: 70px;
     height: 70px;
     border: 1px solid darkcyan;
-    border-radius: 50%;/* 원형 */
-    
+    border-radius: 50%; /* 원형 */
+
     /* a요소 기본 글자색변경, 밑줄 없앰 */
-    color:rgb(100, 255, 255);
+    color: rgb(100, 255, 255);
     text-decoration: none;
     background-color: darkcyan;
     box-shadow: inset 0 0 18px 2px #000;
     font-weight: 500;
-    
-    
 }
 
 /* 마우스 오버시 변경 */
-.alink a:hover{
+.alink a:hover {
     color: #ffffff;
     background-color: #ff7575;
     border: 1px solid #ff7575;
@@ -303,13 +282,12 @@ h2.st5{
 }
 
 /* 오늘의 작품&느낌 */
-.work{
-    text-align: center;/* 인라인요소 가운데오게 하기 */
+.work {
+    text-align: center; /* 인라인요소 가운데오게 하기 */
     /* background-color: lightpink; */
-    /* 그라데이션은 백그라운드 "이미지"로! gbi */ 
+    /* 그라데이션은 백그라운드 "이미지"로! gbi */
 
-    background-image:
-    linear-gradient(30deg,#ffa4a4,#9090ff,#ffffb9);
+    background-image: linear-gradient(30deg, #ffa4a4, #9090ff, #ffffb9);
     /* linear-gradient(45deg,red,blue,yellow); */
     /* background-image: linear-gradient(방향,색1,색2);
     background-image: linear-gradient(방향,색1,몇%,색2,몇%);
@@ -318,7 +296,6 @@ h2.st5{
         1. 방향 : to top, to bottom, to left, to :right
         2. 각도 : 각도deg
         3. 콤마로 나열된 색상에 %를 뒤에 쓰면 비율 조정가능! */
-
 
     /* border: 50px dotted red;
     padding: 50px; */
@@ -334,12 +311,11 @@ h2.st5{
 
     background-clip: content-box;
     box-shadow: inset 0 0 32px #727272;
-
 }
 
 /* 작품 타이틀 */
-.work h3{
-    font-family:'Gugi', cursive;
+.work h3 {
+    font-family: "Gugi", cursive;
     font-weight: normal;
     font-size: 26px;
     color: #333;
@@ -347,33 +323,33 @@ h2.st5{
 }
 
 /* 작품이미지 */
-.work img{
+.work img {
     border: 15px ridge #a57b11;
     /* ridge - 액자틀모양 */
 }
 
 /* 작품명 */
-.work figcaption{
-    font-family: 'Dongle', sans-serif;
+.work figcaption {
+    font-family: "Dongle", sans-serif;
     font-size: 40px;
     padding: 10px;
 }
 
 /* 작품명 인용구 */
-.work figcaption cite{
+.work figcaption cite {
     font-style: normal;
     color: darkmagenta;
 }
 
 /* 뉴스 파트 공통 class */
-.nbx{
+.nbx {
     border-top: 2px dashed #ccc;
     margin: 20px 0;
     padding: 20px 0;
 }
 
 /* 뉴스 파트 공통 a요소 */
-.nbx a{
+.nbx a {
     /* 글자크기 fz */
     font-size: 17px;
     /* 줄간격 lh */
@@ -382,22 +358,23 @@ h2.st5{
     text-decoration: none;
 }
 /* 공통 a마우스오버 */
-.nbx a:hover{
-    color:yellowgreen;
+.nbx a:hover {
+    color: yellowgreen;
     text-shadow: 1px 1px 1px #000;
 }
 
 /* 뉴스 타이틀 공통 */
-.nbx h3{
-    font-family: 'Gugi', cursive;
+.nbx h3 {
+    font-family: "Gugi", cursive;
     font-size: 30px;
     font-weight: normal;
-    background-image:
-    linear-gradient(to right, lightblue, transparent);
+    background-image: linear-gradient(to right, lightblue, transparent);
     padding: 10px;
 }
 /* 한줄 말줄임표히사기 공통처리 */
-.nbx li, .nbx dd, .nbx td{
+.nbx li,
+.nbx dd,
+.nbx td {
     /* 1. 줄바꿈방지 wh */
     white-space: nowrap;
     /* 2. 넘치는 컨텐츠 숨기기 oh */
@@ -415,17 +392,13 @@ h2.st5{
     */
 }
 
-
-
 /* 주요뉴스 ul */
 /* ::before -> 가상요소 */
-.cnews ul li::before{
-    content: '🌝';/* 이미지를 넣고싶으면 url, 이모지는 윈도우 + .*/
-
+.cnews ul li::before {
+    content: "🌝"; /* 이미지를 넣고싶으면 url, 이모지는 윈도우 + .*/
 }
-.cnews ul li::after{
-    content: '🙈'
-
+.cnews ul li::after {
+    content: "🙈";
 }
 /* 
     [ css 가상요소 : before, after ]
@@ -436,20 +409,19 @@ h2.st5{
 */
 
 /* 주요뉴스 li별 글자색 바꾸기 */
-.cnews li:first-child a{
+.cnews li:first-child a {
     color: red;
 }
-.cnews li:nth-child(2) a{
+.cnews li:nth-child(2) a {
     color: blue;
 }
-.cnews li:last-child a{
+.cnews li:last-child a {
     color: green;
 }
 
-
 /* 분야별뉴스 */
-.snews dt{
-    font-family: 'Dongle', sans-serif;
+.snews dt {
+    font-family: "Dongle", sans-serif;
     font-size: 30px;
     background-color: aqua;
     display: inline-block;
@@ -460,22 +432,22 @@ h2.st5{
 }
 
 /* dd앞에 가상요소로 블릿 넣기 */
-.snews dd::before{ 
-    content: '🚩';
+.snews dd::before {
+    content: "🚩";
 }
 
 /* 분야별뉴스 dt별 글자색, 배경색변경하기 */
-.snews dt:first-of-type{
+.snews dt:first-of-type {
     border-color: #f1f1f1;
     color: red;
     background-color: lightpink;
 }
-.snews dt:nth-of-type(2){
+.snews dt:nth-of-type(2) {
     border-color: #f1f1f1;
     color: green;
     background-color: lightgreen;
 }
-.snews dt:last-of-type{
+.snews dt:last-of-type {
     border-color: #f1f1f1;
     color: blue;
     background-color: lightblue;
