@@ -164,7 +164,7 @@ h2.st5{
     /* 줄간격 lh */
     line-height: 2.1; 
     /* 글자 라인간 간격을 조정함
-    숫자만 쓰면 배수임(글자높이값에 대한 배수)
+    숫자만 쓰면 배수임(글자 높이값에 대한 배수)
     단위를 쓰면 단위에 맞게 줄간격 조정
     -> 줄간격의 응용은 버튼 등의 글자를 세로 중앙에 오게 할때 박스높이값만큼 준다!*/
 
@@ -415,15 +415,27 @@ h2.st5{
     - 이미지는 url()사용!
 */
 
+/* 주요뉴스 li별 글자색 바꾸기 */
+.cnews li:first-child a{
+    color: red;
+}
+.cnews li:nth-child(2) a{
+    color: blue;
+}
+.cnews li:last-child a{
+    color: green;
+}
+
+
 /* 분야별뉴스 */
 .snews dt{
-    display: inline;
     font-family: 'Dongle', sans-serif;
     font-size: 30px;
     background-color: aqua;
+    display: inline;
     padding: 17px;
-    border: 4px dashed blue;
     border-radius: 106px;
+    border: 4px dashed blue;
     margin-top: 55px;
 }
 
