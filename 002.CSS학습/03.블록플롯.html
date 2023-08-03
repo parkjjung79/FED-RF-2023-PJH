@@ -46,7 +46,7 @@
                 -> 단점: 만약 자식요소가 부모요소
                 바깥으로 나가야 할 경우 숨겨져서
                 제약이 따르게 됨!!!
-                (이럴경우 위의 1,2번을 쓸것! 특히 2번추천!!!)
+                (이럴경우 위의 1,2번을 쓸것! 특히 2번추천!!!) ->이해안됨, 다시보기
 
             4. 높이값을 강제로 주는 방법도 있음(비추;;;;)
 
@@ -133,7 +133,8 @@
         /* float해제용 가상요소 */
         .flclb::after{
             content: '';/* span을 쓴 것 같은"느낌"! */
-            clear:both;
+            display: block;
+            clear: both;
 
         }
         
@@ -204,7 +205,7 @@
     <div class="wrap">
         <div class="bx bx1 fll"></div>
         <div class="bx bx2 flr" ></div>
-        <div class="bx bx3 fll"></div>
+        <div class="bx bx3 clb fll"></div>
         <div class="bx bx4 flr"></div>
         <!-- clear속성은 블록인 형제요소에만 적용됨! -->
         <div style="clear: both;"></div>
@@ -219,7 +220,7 @@
     <div class="wrap flclb">
         <div class="bx bx1 fll"></div>
         <div class="bx bx2 flr" ></div>
-        <div class="bx bx3 fll"></div>
+        <div class="bx bx3 clb fll"></div>
         <div class="bx bx4 flr"></div>
     </div>
 
