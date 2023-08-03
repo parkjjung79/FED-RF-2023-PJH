@@ -396,6 +396,26 @@ h2.st5{
     linear-gradient(to right, lightblue, transparent);
     padding: 10px;
 }
+/* 한줄 말줄임표히사기 공통처리 */
+.nbx li, .nbx dd, .nbx td{
+    /* 1. 줄바꿈방지 wh */
+    white-space: nowrap;
+    /* 2. 넘치는 컨텐츠 숨기기 oh */
+    overflow: hidden;
+    /* 3. 넘치는 글자 말줄임표시 tv */
+    text-overflow: ellipsis;
+    /* 
+        추가) 여러줄일때 말줄임은 아래 3가지 추가
+        display:
+        -webkit-box;
+        -webkit-line-clamp: 2; -> 라인수
+        -webkit-box-orient: vertical;
+        단, 박스 높이값을 글자가 보일만큼 조절함 -> "박스 높이값 정해야함!"
+        ->>> whtite-space: nowrap; 없음!
+    */
+}
+
+
 
 /* 주요뉴스 ul */
 /* ::before -> 가상요소 */
@@ -432,7 +452,7 @@ h2.st5{
     font-family: 'Dongle', sans-serif;
     font-size: 30px;
     background-color: aqua;
-    display: inline;
+    display: inline-block;
     padding: 17px;
     border-radius: 106px;
     border: 4px dashed blue;
@@ -443,3 +463,34 @@ h2.st5{
 .snews dd::before{ 
     content: '🚩';
 }
+
+/* 분야별뉴스 dt별 글자색, 배경색변경하기 */
+.snews dt:first-of-type{
+    border-color: #f1f1f1;
+    color: red;
+    background-color: lightpink;
+}
+.snews dt:nth-of-type(2){
+    border-color: #f1f1f1;
+    color: green;
+    background-color: lightgreen;
+}
+.snews dt:last-of-type{
+    border-color: #f1f1f1;
+    color: blue;
+    background-color: lightblue;
+}
+
+/*
+[ 자식요소 선택 가상클래스 : 자식요소 종류가 같아야함! ]
+    요소:first-child -> 첫번째 자식요소
+    요소:nth-child(n) -> n번째 자식요소
+    요소:last-child -> 마지막째 자식요소
+[ 여러종류가 섞여 있을 경우 형제 선택하기 ]
+    요소:first-of-type -> 같은 요소 중 첫번째
+    요소:nth-of-type(n) -> 같은 요소 중 n번째
+    요소:last-of-type -> 같은 요소 중 마지막째
+
+    (단, n은 1부터)
+
+*/
