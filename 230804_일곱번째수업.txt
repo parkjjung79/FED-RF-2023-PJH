@@ -26,8 +26,16 @@ D:>GIT-Jh\FED-RF-2023-PJH>600.공유자료>Balsamiq_Mockups_3
 개인 프로젝트
 영화관 홈페이지
 
-레퍼 : 롯데시네마
+레퍼
+http://magazine.kofic.or.kr/main.do
+https://www.biff.kr/kor/
 배경 : 블랙
+
+서브 : 예매창
+
+메인
+http://magazine.kofic.or.kr/contents/202308/Industry/Trend.do
+https://www.lottecinema.co.kr/
 
 
 [영화관 사이트 구성]
@@ -52,14 +60,14 @@ D:>GIT-Jh\FED-RF-2023-PJH>600.공유자료>Balsamiq_Mockups_3
 8. 하단영역
 
 
-서브 : 예매창
+
+
 
 선정이유
 
-1. 롯데시네마, 메가박스, cgv 홈페이지를 둘러봤는데
-영화관람 욕구가 안생김
+1. 메인에는 현재 상영작이 노출되는데, 몰입도가 덜해 호기심 생기지 않아 영화관람 욕구가 덜함
 
-
+2. 퀄리티 높은 소스도 많고 구하기 용이할 것 같아서
 
 
 
