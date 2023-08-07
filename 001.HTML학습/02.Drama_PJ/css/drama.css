@@ -8,7 +8,7 @@
 */
 
 /* 초기화 */
-html,body{
+html, body{
     margin: 0;
     padding: 0;
 }
@@ -73,4 +73,31 @@ html,body{
     border-bottom: 2px solid #555;
 
 }
+/* 짝수번째 tbody tr의 배경색 넣기 */
+#drama tbody tr:nth-child(even) td{
+    background-color: #f1f1f1;;
+}
 
+/* 하단부분(tfoot) */
+#drama tfoot td{
+    text-align: center;
+    padding: 45px 0;
+}
+
+/* 링크 a공통변경 */
+#drama a{
+    text-decoration: none;
+    color: #222;
+}
+/* 드라마명 a 오버시 */
+#drama tbody a:hover{
+    color: rgb(143, 143, 0);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+/* 페이징 a 오버시 */
+#drama tfoot a:hover{
+    color: rgb(64, 255, 96);
+    text-decoration: overline;
+    text-decoration-style: double;
+}
