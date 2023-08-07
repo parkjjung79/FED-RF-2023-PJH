@@ -73,7 +73,7 @@ html,body{
     border-bottom: 2px solid #555;
 
 }
-/* 짝수번째 tbody tr의 배경색 넣기 */
+/* 짝수번째 tbody tr의 td배경색 넣기 */
 #drama tbody tr:nth-child(even) td{
     background-color: #f1f1f1;;
 }
