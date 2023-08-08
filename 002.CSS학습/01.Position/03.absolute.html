@@ -5,14 +5,14 @@
     <title>02. relative 포지션</title>
     <style>
         .bx{
-            width: 100px;
-            height: 100px;
+            width: 300px;
+            height: 300px;
             border: 2px solid blue;
             text-align: center;
             font-size: 24px;
             font-weight: bold;/* fwb */
             /* 글자세로중앙 */
-            line-height: 100px;
+            line-height: 300px;
         }
 
         /* 첫번째 앱솔루트!!! */
@@ -26,13 +26,13 @@
                 [ 3. absolute 포지션 ]
                 - 절대적인 부모를 기준하여 위치를 이동하는 포지션
                 - 부모자격을 따져서 기준을 삼는다!
-                (단, 위치속성값을 쓴 경우에만!!!)*
+                (단, 위치속성값을 쓴 경우에만!!!)****
 
                 1. absolute 포지션을 위치 이동값을 쓰기 전과 후로 나눌 수 있다!
 
                 (1) 위치이동값을 쓰지 않은 경우
 
-                - 자기보다 위에 있는 static한 요소를 존중하여 그 아래에 위치함 ->>> 젠틀앱솔루트!!!!"그자리에 가만히"
+                - 자기보다 위에 있는 static(고정된)한 요소를 존중하여 그 아래에 위치함 ->>> 젠틀앱솔루트!!!!"그자리에 가만히"
 
                 + 어떤 자식요소로 있을 경우 앱솔루트이면 그 부모 박스에 부모자격이 없는 경우에도 그 부모박스 위치에 그대로 가만히 위치한다->> 젠틀앱솔루트!!!
 
@@ -45,7 +45,7 @@
                 앱솔루트가 위치를 잡을 때 기준이 되는 부모는 static이 아닌요소가 부모다!
 
                 ->static이 아닌 포지션이란?
-                relative / absolute / fixed / sitcky
+                relative / absolute / fixed / sitcky  ->부모자격이 있음
 
                 나를 싸고있는건 = 부모
 
@@ -59,12 +59,15 @@
                 width나 height 값을 %단위로 줄 경우 부모자격을 가진 요소를 기준으로 그 크기를 잡는다!
                 (일반적으로 %단위의 크기는 바로 싸고 있는 직계부모박스를 기준한다!)
 
-                2. 앱솔루트의 가로, 세로,크기를 주지 않은경우 일반적으로 block요소 이므로 width: auto로써 부모박스 끝까지 차지하지만...앱솔루트는 애용만큼만 그 크기를 가진다!
+                2. 앱솔루트의 가로, 세로 크기를 주지 않은경우 일반적으로 block요소 이므로 width: auto로써 부모박스 끝까지 차지하지만...앱솔루트는 내용만큼만 그 크기를 가진다!
                 ---> 앱솔루트 판타롱스타킹
 
-                3. 원래 block이 아닌 요소를 앱솔루트를 줄 경우 자동으로 display: block 으로 설정된다!
+                3. 원래 block이 아닌 요소에 앱솔루트를 줄 경우 자동으로 display: block 으로 설정된다!
                 이유는 자동크기를 설정할 경우 불록이 아니면 크기를 설정할 수 없기 때문이다!
                 ->일반적으로 앱솔루트 포지션 요소는 블록이다!
+
+                4. 앱솔루트끼리는 서로 겹친다!
+
 
 
 
@@ -105,8 +108,8 @@
         /* 또하나의 랠러티브 */
         #r2{
            position: relative;
-           bottom: 10px;
-           right: -70px;
+           bottom: 90px;
+            right: -207px;
            background: url(./images/ab4.jpg) no-repeat center/cover;
         }
         
@@ -153,7 +156,7 @@
         .abs{
             position: absolute;
             width: 50px;
-            height: #fff;
+            height: 50px;
             background: url(./images/ab1.jpg) no-repeat center/cover;
         }
 
@@ -166,9 +169,10 @@
         .a4{
             top:0;
             left:0;
-            width:50%;
-            height: 50%;
-        /* 나의부모는? */
+            /* 나의부모는? */
+            width: 25%;
+            height: 40%;
+            /* 앱솔루트요소 크기를 %로 주면 부모자격박스를 기준한다! */
         }
 
         /* sapn을 앱솔루트로 만들경우! */
@@ -180,6 +184,68 @@
             border: 4ps dotted red;
         }
 
+        /* 앱솔루트 : 판타롱스타킹 */
+        .a5{
+            position: absolute;/* poa */
+            /* 크기를 안주면 내용만큼 늘어남! */
+            top: 20%;
+            right: 10%;
+            /* 부모는?  */
+            outline: 2px solid red;
+        }
+        /* 블록박스 내의 단독 이미지 */
+        .a5 img{
+            vertical-align: top;
+            /*
+                박스에 단일한 이미지를 넣을 경우
+                하단에 자연스러운 간극이 존재한다!(4px)
+                이것을 없애려면 vertical-align
+                인라인요소간 세로정렬 속성의 값으로
+                top / bottom / middle 중 어떤 것을 써도 
+                하단간극이 사라진다! 
+             */
+        }
+
+        
+        
+
+        /* 앱솔루트끼리는 서로 겹친다 */
+        .absimg{
+            width: 92px;
+            height: 115px;
+            border: 10px ridge goldenrod;
+        }
+
+        .absimg img{
+            position:absolute;
+            /* 젠틀앱솔루트이기 떄문에 부모자격이 없는 일반 static요소여도 그자리에 이미지가 가만히 있음! 
+            -> 앱솔루트 이미지끼리는 서로 겹쳐짐
+            위,아래관계는 나중에 온 것이 위에옴
+            z-index로 위치관계 조정가능!
+            */            
+        }
+
+        /* 두번째 이미지 닥스만 투명하게 만들기 */
+        .absimg img:last-child{
+            
+            /* 투명도 : opacity(0-투명, 1-불투명, 0.몇-반투명)*/
+            opacity: 0;/* op숫자 */
+            /* 트랜지션 : transition - trs 
+            transition : 속성 시간 이징 지연시간(속시이지)
+            -> 두가지 속성값 변경을 애니메이션 해주는 속성
+            시간만 사용하면 모든 속성변경을 애니메이션함
+            시간은 초단위 s를 사용하여 표시함*/
+            transition: 0.5s;/* 0.5초 */
+
+        }
+
+
+        /* 박스에 오버시 닥스 보이기 */
+        .absimg:hover img:last-child{
+            opacity: 1;
+        }
+
+
     </style>
 </head>
 <body>
@@ -189,6 +255,24 @@
     <div class="bx" id="r2">r2</div>
     <div class="bx" id="s2">s2</div>
     <div class="bx" id="a2" title="나는 보이는 화면이 기준이다! 부모가 없어서 ㅠ.ㅠ">a2</div>
+
+    <!-- 앱솔루트 : 판타롱스타킹 -->
+    <div class="a5" title="앱솔루트 판타롱스타킹">
+        <img src="./images/ab2.jpg" alt="타노스">
+    </div>
+
+    <!-- 앱솔루트끼리는 서로 겹친다 - 연습 -->
+    <div class="absimg_p">
+        <img src="./images/ab0.jpg" alt="포스터">
+        <img src="./images/ab1.jpg" alt="아이언맨">
+
+    </div>
+
+    <!-- 앱솔루트끼리는 서로 겹친다 -->
+    <div class="absimg">
+        <img src="./images/ab3.jpg" alt="토르">
+        <img src="./images/ab4.jpg" alt="닥스">
+    </div>
 
     <!-- 부모를 찾는 앱솔루트! -->
     <div class="bx2 s5">s5
@@ -203,6 +287,8 @@
             </div>
         </div>
     </div>
+
+
 
 
 
