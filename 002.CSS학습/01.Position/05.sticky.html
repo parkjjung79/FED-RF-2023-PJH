@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>04. fixed 포지션</title>
+    <title>05. sticky 포지션</title>
     <style>
         .bx{
             width: 300px;
@@ -14,48 +14,49 @@
             /* 글자세로중앙 */
             line-height: 300px;
         }
+        
+        /* sticky 박스 */
+        .stbx {
+            position: sticky;
+            /********************************* 
+                [ 5.sticky 포지션 ]
+
+                1. 위치값 top 설정에 따라 화면에 고정되는 포지션
+
+                2. 원리: 처음에는 relative하게(left값 적용됨!) 가만히 현재위치를 점유하고 있음
+                top값을 셋팅한 경우 그 top값은 보이는 화면 최상단으로 부터의 위치값이 된다
+                스크롤로 이동시 sticky요소는 셋팅된 값 위치를 만나는 순간 fixed와 같이 화면에 고정된다!
+
+                3. sticky 적용구간
+                    -> 싸고 있는 박스가 기준이 된다!
+                    주의사항)
+                    1) 전체 스크롤시 적용요소가 body 바로 아래 자식요소로 있어야함
+
+                    2)부모요소를 만들고 그 부모요소들 중
+                    overflow: auto / hidden / scroll
+                    이 적용된 경우 스티키가 작동안함!
+
+                    3) 특정박스 하위요소인 경우 스티키는
+                    박스 내부에서만 보이는 화면기준으로 작동하기 때문에 반드시 height값이 셋팅되어야함!
+                    height: auto 또는 height값이 없으면
+                    스티키 작동안함!(높이값을 기준으로 작동하기 때문임!)
+
+            *********************************/
+            top: 200px;
+            z-index: 999999;
+            left: 50px;
+            width: 50%;
+            text-align: center;
+            font-size: 30px;
+            padding: 50px;
+            background-color: lightpink;
+        }
 
 
         /* fixed박스 공통 */
         .fxbx{
-            position: fixed; /* pof */  
-            /*********************************** 
-                [ 4. fixed 포지션]    
+            position: fixed; /* pof */ 
 
-                1. 보이는 화면을 기준한 포지션이다!
-                -> 대부분의 속성은 absolute와 같으나
-                부모만 다르다고 보면 된다!
-
-                2. 스크롤이 내려갈때 요소가 그대로 화면에 멈춰있다!
-
-                3. 위치 속성값을 설정하지 않으면 젠틀하여다!
-                -> 젠틀픽스드! (젠틀앱솔루트와 같음!)
-
-                4. 크기설정을 하지 않으면 내용만큼만 자동크기 설정됨
-                -> 픽스트 판타롱스타깅 (앱솔루트와 똑같음)
-
-                5. 인라인요소도 fixed를 주면 block으로 자동전환됨!
-
-                6. 부모요소가 아무리 많이 쌓여있어도 fixed를 주면 화면을 기준하여 위치를 잡는다!
-
-                7. 이미 부모가 fixed이면 자손요소는 fixed를 할 필요가 없다!
-
-                8. 활용도
-                1) 스크롤에 관계없이 화면 고정시
-                2) 화면바깥에 숨겼다가 나타나기를 할때
-                3) 보이는 화면을 기준하는 구현의 모든 경우
-
-                
-                (유의 : 배경이미지 고정과는 다르다! 배경고정은 보이는 화면을 기준한 박스의 배경이미지를 고정해주는 것!
-                박스가 움직이면 배경이미지도 안보이게 됨
-                반면, fixed포지션은 요소를 고정함!)
-
-
-
-
-
-
-            ***********************************/
             background: url(./images/ab0.jpg) repeat-x 0/auto 100%;
             color:#fff;
             z-index: 999;
@@ -107,7 +108,9 @@
 
             /* 위치이동값 */
             top: 50px;
-            left: 50px;            
+            left: 50px;
+
+            
 
             z-index: 1;
             /* 먼저 그렸지만 z-index를 1만 줘도 위로 올라감! */
@@ -119,8 +122,8 @@
         /* 또하나의 랠러티브 */
         #r2{
            position: relative;
-           bottom: 90px;
-            right: -207px;
+           /* bottom: 90px;
+            right: -207px; */
            background: url(./images/ab4.jpg) no-repeat center/cover;
         }
         
@@ -170,7 +173,7 @@
             position: absolute;
             width: 50px;
             height: 50px;
-            color: #fff;
+            color:#fff;
             background: url(./images/ab1.jpg) no-repeat center/cover;
         }
 
@@ -183,13 +186,13 @@
         .a4{
             top:0;
             left:0;
-            /* 나의부모는? */
+            /* 나의부모는? .s7 */
             width: 25%;
             height: 40%;
             /* 앱솔루트요소 크기를 %로 주면 부모자격박스를 기준한다! */
         }
 
-        /* sapn을 앱솔루트로 만들경우! */
+        /* span을 앱솔루트로 만들경우! */
         .spabs{
             position: absolute;
             bottom: 0;
@@ -281,7 +284,7 @@
             right: 0;
             width: 100px;
             height: 100px;
-            border-radius: 50%;
+            border-radius: 50px;
         }
 
         /* 고정포스터박스 */
@@ -328,6 +331,23 @@
             vertical-align: middle;
         }
 
+        /* 구간적용 스티키 */
+        .stickybox{
+            height: 1000px;
+            padding-top: 500px;
+            border: 5px dashed darkblue;
+        }
+
+        /* 스티키박스 */
+        .iambox{
+            position:sticky;
+            top: 500px;
+            width: 200px;
+            height: 200px;
+            border: 5px dotted red;
+            
+        }
+
 
 
 
@@ -336,10 +356,12 @@
 <body>
     <div class="bx" id="r1">r1</div>
     <div class="bx" id="s1">s1</div>
-    <!-- 젠틀 fixed -->
-    <div class="fxbx f1">
-        나는 젠틀 fixed다!
+
+    <!-- sticky 포지션 박스 -->
+    <div class="stbx">
+    나는 sticky다! 사라지지 않아!
     </div>
+
     <div class="bx" id="a1" title="나는 젠틀앱솔루트다!">a1</div>
     <div class="bx" id="r2">r2</div>
     <div class="bx" id="s2">s2</div>
@@ -348,29 +370,29 @@
     <div class="fxbx f2">
         나는 fixed다! 부모는 화면이다!
     </div>
-
-    <!-- 포스터 고정박스  -->
+    
+    <!-- 포스터 고정박스 -->
     <div class="fixedposter">
         <img src="./images/ab0.jpg" alt="포스터">
         <span>포스터보기</span>
     </div>
-
+    
     <div class="bx" id="a2" title="나는 보이는 화면이 기준이다! 부모가 없어서 ㅠ.ㅠ">a2</div>
-
-    <!-- 앱솔루트 : 판타롱스타킹! -->
+    
+    <!-- 앱솔루트 : 판타롱스타킹 -->
     <div class="a5" title="앱솔루트 판타롱스타킹">
         <img src="./images/ab2.jpg" alt="타노스">
     </div>
-
-
+    
+    
     <!-- 앱솔루트끼리는 서로 겹친다 -->
     <div class="absimg" title="앱솔루트끼리는 겹친다">
         <img src="./images/ab3.jpg" alt="토르">
         <img src="./images/ab4.jpg" alt="닥스">
     </div>
+    
 
-
-
+    
     <!-- 부모를 찾는 앱솔루트! -->
     <div class="bx2 s5">s5
         <div class="bx2 s6">s6
@@ -385,6 +407,18 @@
         </div>
     </div>
 
+    <!-- 스티키 구간적용박스 -->
+    <div class="stickybox">
+        <div class="iambox"></div>
+    </div>
+
+    <div class="stickybox">
+        <div class="iambox"></div>
+    </div>  
+
+    <div class="stickybox">
+        <div class="iambox"></div>
+    </div>
 
 
 
