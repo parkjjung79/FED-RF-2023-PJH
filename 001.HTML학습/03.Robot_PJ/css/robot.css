@@ -351,7 +351,7 @@ body * {
     left: -5%;
     width: 110%;
     height: 80%;
-    background-image: linear-gradient(to right #ccc, #393939);
+    background-image: linear-gradient(to right, #ccc, #393939);
     border-top: 5px solid #000;
 }
 
@@ -365,7 +365,7 @@ body * {
     width: 140%;
     height: 60px;
     background-image:
-    linear-gradient(to right #ccc, #393939);
+    linear-gradient(to right, #ccc, #393939);
     border: 2px solid #000;
     border-bottom: 10px solid #000;
     border-radius: 40px 40px 0 0;
