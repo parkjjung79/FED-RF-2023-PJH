@@ -229,7 +229,7 @@
 /* 입나불나불애니 */
 @keyframes mouth-ani {
     to{
-        transform: scaleY(.5s);
+        transform: scaleY(.5);
     }   
 }
 /* 입애니호출 */
