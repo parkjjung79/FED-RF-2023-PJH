@@ -87,6 +87,9 @@ body * {
     padding: 200px 0 600px;
     /* 마진탑 */
     /* margin-top: 30px; */
+    
+    /* 처음 등장 상태(트랜스폼 변경설정) - 크기(scale)는 작게 위치(translate)변경 */
+    translate(29%, -7%) scale(0.1);
 }
 /* 2-1-1.머리 */
 .head {
