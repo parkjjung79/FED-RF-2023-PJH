@@ -225,3 +225,14 @@
     animation:
     right-arm-ani-04 .4s ease-in 7.4s infinite alternate;
 }
+
+/* 입나불나불애니 */
+@keyframes mouth-ani {
+    to{
+        transform: scaleY(.5s);
+    }   
+}
+/* 입애니호출 */
+.mouth {
+    animation: mouth-ani .03s linear 7s infinite alternate;
+}
