@@ -109,13 +109,13 @@
 /* 로봇 위치/크기 변경애니 */
 @keyframes robot-ani {
     to{
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(.8);
     }
 }
 /* 로봇애니 호출 */
 .box-robot{
-    transform-origin: center;
-    animation: robot-ani 10s linear 3.5s forwards;
+    transform-origin: right bottom;
+    animation: robot-ani 4s linear 2.5s forwards;
 }
 /* 걷는다리 키프레임 */
 @keyframes walking-ani {
@@ -126,9 +126,44 @@
 
 /* 왼쪽다리 애니호출 */
 .leg1{
-    animation: walking-ani .3s ease-in-out 3.5s 13 alternate;
+    animation: walking-ani .4s ease-in-out 2s 10 alternate;
 }
 /* 오른쪽다리 애니호출 */
 .leg2{
-    animation: walking-ani .3s ease-in-out 4s 13 alternate;
+    animation: walking-ani .4s ease-in-out 2.5s 10 alternate;
 }
+
+/* 왼팔 애니1 키프레임 */
+@keyframes left-arm-ani-01 {
+    to{
+        transform: rotate(45deg);
+    } 
+}
+/* 왼팔 애니2 키프레임 */
+@keyframes left-arm-ani-02 {
+    to{
+        transform: rotate(-90deg);
+    } 
+}
+/* 왼팔 애니3 키프레임 */
+@keyframes left-arm-ani-03 {
+    to{
+        transform: rotate(-90deg);
+    } 
+}
+
+/* 왼팔 애니1 호출 */
+.arm1 {
+    animation: left-arm-ani-01 .3s ease-in 6s forwards
+}
+/* 왼팔 애니2 호출 */
+.arm1 span {
+    transform-origin: top;
+    animation: left-arm-ani-01 .3s ease-in 6.5s forwards
+}
+/* 왼팔 애니3 호출 */
+.arm1 span::after {
+    transform-origin: top;
+    animation: left-arm-ani-01 .3s ease-in 6.5s forwards
+}
+

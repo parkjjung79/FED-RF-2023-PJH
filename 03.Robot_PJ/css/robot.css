@@ -83,13 +83,16 @@ body * {
 }
 /* 2-1.로봇박스 */
 .box-robot {
+    /* 위치고정 */
+    position: fixed;
+    width: 100%;
     /* 패딩 : 위, 양쪽, 아래 */
     padding: 200px 0 600px;
     /* 마진탑 */
     /* margin-top: 30px; */
 
     /* 처음 등장 상태(트랜스폼 변경설정) - 위치(translate)변경 크기(scale)변경 */
-    transform: translate(28%, 11%) scale(0.1);
+    transform: translate(26%, -65%) scale(0.1);
 }
 /* 2-1-1.머리 */
 .head {
@@ -280,6 +283,8 @@ body * {
     width: 50px;
     height: 200px;
     border-radius: 20%;
+    /* 팔회전축 변경 */
+    transform-origin: left top;
 }
 /* 가상요소 팔관절 중앙원 */
 .arm::before{
@@ -382,6 +387,7 @@ body * {
 /* 왼팔 */
 .arm1{
     left: -62px;
+
 }
 /* 오른팔 */
 .arm2{
