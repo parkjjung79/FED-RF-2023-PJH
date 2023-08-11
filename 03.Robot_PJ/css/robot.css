@@ -87,9 +87,9 @@ body * {
     padding: 200px 0 600px;
     /* 마진탑 */
     /* margin-top: 30px; */
-    
-    /* 처음 등장 상태(트랜스폼 변경설정) - 크기(scale)는 작게 위치(translate)변경 */
-    translate(29%, -7%) scale(0.1);
+
+    /* 처음 등장 상태(트랜스폼 변경설정) - 위치(translate)변경 크기(scale)변경 */
+    transform: translate(28%, 11%) scale(0.1);
 }
 /* 2-1-1.머리 */
 .head {
@@ -395,6 +395,9 @@ body * {
     width: 80px;
     height: 250px;
     border-radius: 20%;
+    /* 애니를 위한 트랜스폼 기준축변경 */
+    transform-origin: top;
+
 }
 
 /* 다리하단부분 공통 */
@@ -478,6 +481,7 @@ body * {
 /* 왼다리 */
 .leg1{
     left: 25px;
+    
 }
 /* 오른다리 */
 .leg2{

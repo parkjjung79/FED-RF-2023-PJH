@@ -109,11 +109,26 @@
 /* 로봇 위치/크기 변경애니 */
 @keyframes robot-ani {
     to{
-        translate(0, 0) scale(0.1);
+    transform: translate(0, 0) scale(1);
     }
 }
 /* 로봇애니 호출 */
 .box-robot{
-    transform-origin: bottom;
+    transform-origin: center;
     animation: robot-ani 10s linear 3.5s forwards;
+}
+/* 걷는다리 키프레임 */
+@keyframes walking-ani {
+    to{
+    transform: scaleY(.9);
+    }
+}
+
+/* 왼쪽다리 애니호출 */
+.leg1{
+    animation: walking-ani .3s ease-in-out 3.5s 13 alternate;
+}
+/* 오른쪽다리 애니호출 */
+.leg2{
+    animation: walking-ani .3s ease-in-out 4s 13 alternate;
 }
