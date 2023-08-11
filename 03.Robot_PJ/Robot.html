@@ -78,14 +78,23 @@
                             <div class="screen">
                                 <!-- 유튜브동영상 -->
                                 <iframe id="mv" allow="autoplay"src="https://www.youtube.com/embed/ZUGPWsa2was"></iframe>
+                                <!-- 
+                                    영상아이디:
+                                    1. QE_MBUXGp3c
+                                    2. wbP9EFR0Au0
+                                    3. VgFGxU5LofE
+                                -->
                             </div>
-                            <!-- 영상정보
-                            1. QE_MBUXGp3c
-                            2. wbP9EFR0Au0
-                            3. VgFGxU5LofE -->
-
+                                
+                            <!-- 조작버튼박스 -->
+                            <!-- 
+                                이벤트 속성값으로 함수를 호출
+                                onclick="값"
+                                onclick="함수명(전달값)"
+    
+                             -->
                             <div class="box-btn">
-                                <button onclick="바꿔('QE_MBUXGp3c')">ch1</button>
+                                <button onclick="바꿔('ts7xa3UPBWc')">ch1</button>
                                 <button onclick="바꿔('wbP9EFR0Au0')">ch2</button>
                                 <button onclick="바꿔('VgFGxU5LofE')">ch3</button>
                                 <!-- 축소확대버튼 -->
@@ -93,13 +102,6 @@
                             </div>
 
                         </div>
-                        <!-- 조작버튼박스 -->
-                        <!-- 
-                            이벤트 속성값으로 함수를 호출
-                            onclick="값"
-                            onclick="함수명(전달값)"
-
-                         -->
                     </div>
                 </section>
                 <!-- 2-2.로봇설명박스 -->
@@ -111,6 +113,7 @@
                 <!-- 3-1.회사정보 -->
             </footer>
         </div>
+        
         <!-- 자바스크립트 코딩구역 -->
         <script>
             // 자바스크립트 문법이 적용되는 곳!
@@ -162,6 +165,9 @@
     
                    
             } //////////////////////////바꿔함수/////////////////
+
+            
+            // tv배율변경 클래스 적용 함수///
             /*********************
                 함수명: 커짐
                 기능: 클릭시 클래스를 한번은 넣고
@@ -169,18 +175,26 @@
                 작성일
             *********************/
 
-            // tv배율변경 클래스 적용 함수///
             function 커짐(){
                 console.log('커지냐?');
 
                 /****************************** 
                     [js에서 클래스 제어하기]
+                    classList 내장객체
+                    1) add(클래스명) : 클래스추가
+                    2) remove(클래스명) : 클래스제거
+                    3) toggle(클래스명) : 클래스넣기/빼기
+                    ->toggle은 없으면 넣고 있으면 뺌!
 
-                
                 ******************************/
                 document
                 .getElementsByClassName('tv').item(0)
                 .classList.toggle('on');
+
+                // getElementsByClassName(클래스명)
+                // get Elements By ClassName
+                // -> 가져와 요소들 클래스명으로!
+                // item(순번) - 클래스 중 순번(0부터)
 
 
             }///////////////////////커짐함수/////////////////////
