@@ -92,7 +92,7 @@ body * {
     /* margin-top: 30px; */
 
     /* 처음 등장 상태(트랜스폼 변경설정) - 위치(translate)변경 크기(scale)변경 */
-    transform: translate(26%, -65%) scale(0.1);
+    transform: translate(26%, -13%) scale(0.1);
 }
 /* 2-1-1.머리 */
 .head {
