@@ -189,15 +189,17 @@
             ________________________________________    
 
             [ 선택자 문법을 그대로 사용하는 요소 선택법 ]
+            
+            
             1. querySelector(CSS선택자)
             -> 선택자에 맞는 요소를 처음 만나는 것으로 선택 
             -> 무조건 하나만 가져오므로 순번 불필요!
 
-
-
             예) document.querySelector('#my>li')
             -> 만나는 첫번째 li요소를 선택함
             
+
+
             2. querySelectorAll(CSS선택자)
             -> 선택자에 맞는 요소를 모두 가져옴!
             -> html요소 컬렉션에 담겨서 저장됨
@@ -360,16 +362,31 @@
        function 맘대로해라(헐,헉스){
             // 헐 - .원이야 순번 / 헉스 - 그림제목
             //1. 호출 및 전달값 확인
-            console.log("니맘대로하세요!",헐,헉스)
+            console.log("니맘대로하세요!",헐,헉스);
 
             //2. 대상선정 : .박스야 .원이야
             var 멍청이 =
-            document.querySelectorAll(".박스야 .원이야")
+            document.querySelectorAll(".박스야 .원이야")[헐];
+            // 헐 - .원이야 순번
+            
+            console.log('선택!',멍청이,멍청이.length);
 
 
-            // 기존 방식보다 더 간단한 querySelector를 사용함!
+            // 기존 방식보다 더 간단한 querySelectorAll를 사용함!
             // document.getElementsByClassName("박스야").item(0)
             // .getElementsByClassName("원이야")
+            // 3. 변경내용 : 트랜지션으로 화면 왼쪽하단으로
+            // 나열되도록 위치를 바꾸고 모양을 변경하고
+            // 작품명을 하단에 나오게 한다!
+
+            // 3-1. 트랜지션
+            멍청이.style.transition =
+            '1s ease-out, border-radius 1s 1s'
+            // 3-2. 위치이동 : top, left
+            멍청이.style.top = 'calc(100% - 200px)';
+            멍청이.style.right =
+            'calc(100% - 200px - '+헐+'*200px)';
+
 
 
 
