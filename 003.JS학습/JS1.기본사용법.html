@@ -300,10 +300,10 @@
             목표.style.color = "lime";
 
             // 3-3. 글자크기 변경하기 : 40px
-            목표.style.fontSize = "40px";
+            목표.style.fontSize = '40px';
 
             // 3-4. 줄간격 변경하기 : 100px
-            목표.style.linHeight = "100px";
+            목표.style.linHeight = '100px';
 
             // 3-5. 글자그림자 : 2px 2px 2px #000
             목표.style.textShadow = '2px 2px 2px #000';
@@ -393,7 +393,8 @@
             멍청이.style.transition =
             '1s ease-out, border-radius 1s 1s'
             // 3-2. 위치이동 : top, left
-            멍청이.style.top = 'calc(100% - 200px)';
+            멍청이.style.top =
+            'calc(100% - 200px)';
             멍청이.style.right =
             'calc(100% - 200px - '+헐+'*200px)';
 
@@ -452,7 +453,7 @@
             console.log("사각사각!");
 
             // 2. 대상선정: .넌뭐냐
-            var 나야나 = document.querySelector('.넌뭐냐')
+            var 나야나 = document.querySelector('.넌뭐냐');
             // querySelector(선택자) -> 하나만 가져옴!(순번불필요!)
             console.log("나야나:",나야나);
 
@@ -461,12 +462,12 @@
             나야나.style.borderRadius = '0';
             나야나.style.width = '100%';
             나야나.style.height = '100%';
-            나야나.style.transition = '3s 1s, top 1s 0s';
+            나야나.style.transition = '3s 1s,top 1s 0s';
             // top값부터 1초간 작동함!
             
             // 4. 추가변경 : 글자넣기
             // innerText = 글자내용 -> 태그없는 글자 데이터 넣기!
-            나야나.innerText = 'JS입문을 환영합니다!'
+            나야나.innerText = 'JS입문을 환영합니다!';
 
 
             // 5. 글자관련 CSS변경하기
