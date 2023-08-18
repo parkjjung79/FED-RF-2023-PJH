@@ -83,8 +83,7 @@ body {
     z-index: 99;
 }
 
-/* 1-2.링크타이틀 */
-/* 1-3.탑이동버튼 */
+/* 1-2.탑이동버튼 */
 .btn-top{
     position: fixed;
     bottom: 50px;
@@ -95,44 +94,10 @@ body {
     border-radius: 50%;
     border: 5px outset #Fff;
     background-color: #ccc;
+
+    /* 위치상위 */
+    z-index: 10;
 }
-/* 마우스 오버시 배경색 변경 */
-.link-title:hover{
-    background-image: radial-gradient(rgb(4, 173, 18) 50%,rgb(212, 120, 0));
-    color:#fff;
-}
-/* 
-[ 2. 원형 그라데이션 ]
-
-            - 기본형, 영역지정형은 박스모양을 따라감!
-
-            1) 기본형: 중앙중심, 모양은 박스크기에 맞춤
-            background-image: 
-                radial-gradient(색1,색2,색3,...);
-            - 시작색으로부터 중앙에서 시작됨
-
-            2) 영역 지정형:
-            background-image: 
-                radial-gradient(색1 몇%,색2 몇%,색3 몇%,...);
-            - 색 뒤에 한칸 띄고 %수치로 영역지정함
-
-            3) 그라데이션 모양을 원형으로 사용할 경우:
-            background-image: 
-                radial-gradient(circle,색1,색2,색3,...);
-            - circle 키워드를 첫번째에 사용함
-
-            4) 영역옵션 지정형: 중심점 변경
-            background-image: 
-                radial-gradient(옵션 at 가로위치 세로위치,색1,색2,색3,...);
-            - 옵션4가지 : closest-side / farthest-side
-                        closest-corner / farthest-corner
-                        ___________________________________
-                        - closest는 중심점으로 좀더 모아진것
-                        - farthest는 중심점에서 멀리 퍼진것
-                        - side와 corner는 경계선과 끝부분옵션임
-            - 가로위치, 세로위치 (중심점) - 단위는 px / %
-
-*/
 
 /* 버튼 a요소 */
 .btn-top a{
@@ -147,6 +112,19 @@ body {
     /* 줄간격은 높이값 100px - 보더10px = 90px */
     text-decoration: none;
 }
+
+/* 버튼 마우스 오버시 */
+.btn-top:hover{
+    background-color: #ff0;
+    border-style: inset;
+}
+
+/* 버튼 오버시 글자색 */
+.btn-top:hover a{
+    color: #f00;
+}
+
+
 /*********************** 2. 메인영역 ***********************/
 .main-aria {
     padding-top: 860px;
@@ -682,11 +660,10 @@ body {
     color:orangered;
     font-size: 5vw;
     background-color: #fff;
-    padding: 5wm 3vw;
+    padding: 5w 3vw;
     border-radius: 50%;
     border: 10px dashed orangered;
     text-decoration: none;
-
 
     /* 처음에 안보임  */
     transform: scale(0);
@@ -694,12 +671,6 @@ body {
     /* 트랜스폼 축변경 : 가로 세로 */
     transform-origin : left bottom;
 }
-
-
-
-
-
-
 
 /* 가상요소로 삼각형 만들기 */
 .link-title::after{
@@ -716,6 +687,45 @@ body {
     border-top: 20px solid red;
 
 }
+
+/* 마우스 오버시 배경색 변경 */
+.link-title:hover{
+    background-image: radial-gradient(rgb(4, 173, 18) 50%,rgb(212, 120, 0));
+    color:#fff;
+}
+/* 
+[ 2. 원형 그라데이션 ]
+
+            - 기본형, 영역지정형은 박스모양을 따라감!
+
+            1) 기본형: 중앙중심, 모양은 박스크기에 맞춤
+            background-image: 
+                radial-gradient(색1,색2,색3,...);
+            - 시작색으로부터 중앙에서 시작됨
+
+            2) 영역 지정형:
+            background-image: 
+                radial-gradient(색1 몇%,색2 몇%,색3 몇%,...);
+            - 색 뒤에 한칸 띄고 %수치로 영역지정함
+
+            3) 그라데이션 모양을 원형으로 사용할 경우:
+            background-image: 
+                radial-gradient(circle,색1,색2,색3,...);
+            - circle 키워드를 첫번째에 사용함
+
+            4) 영역옵션 지정형: 중심점 변경
+            background-image: 
+                radial-gradient(옵션 at 가로위치 세로위치,색1,색2,색3,...);
+            - 옵션4가지 : closest-side / farthest-side
+                        closest-corner / farthest-corner
+                        ___________________________________
+                        - closest는 중심점으로 좀더 모아진것
+                        - farthest는 중심점에서 멀리 퍼진것
+                        - side와 corner는 경계선과 끝부분옵션임
+            - 가로위치, 세로위치 (중심점) - 단위는 px / %
+
+*/
+
 
 /* 2-2.로봇설명박스 */
 .box-text{
