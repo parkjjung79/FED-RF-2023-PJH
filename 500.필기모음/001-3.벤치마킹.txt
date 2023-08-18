@@ -30,6 +30,12 @@ https://investigation.rollingstone.com/dj-photo-war-crimes-bosnia/
 -> mousemove 이벤트 활용!
 2) 글자 중앙에서 생성되어 등장하기!(이건해보기!)
 
+4. 에이전시회사
+https://journey.zajno.com/
+- 각종 글자등장 좋다!
+3D적용 글자, 사진 이동 애니(스크롤이벤트 연결)
+-> 이건 해보자!
+
 
 
 
