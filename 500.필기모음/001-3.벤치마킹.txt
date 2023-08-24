@@ -56,6 +56,10 @@ https://dezea.digital/showcases/designing-balance-for-somati
 2. 메뉴 열고 닫을때, 메뉴 사이 오버시 경계선 휘어지기!
 -> JS실험실에서 해보자!
 
+7. twogood
+https://twogood.com.au/
+1. 여러모로 참고할 소스가 있음
+
 
 ________________________________________________________________________
 
