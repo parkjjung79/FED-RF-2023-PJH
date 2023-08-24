@@ -3,124 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEGABOX</title>
+    <meta name="description" content="MEGABOX"/>
+    <title>MEET PLAY SHARE, 메가박스</title>
     <!-- 메인CSS -->
     <link rel="stylesheet" href="./css/main.css">
-    
 </head>
 <body>
-    <!-- 전체 랩핑박스 -->
-    <div class="wrap">
-        <!-- 1. 상단영역 -->
-        <header class="top-area">
-            <div class="inbox clb">
-                <div class="part-box col-2">
-                    <!-- 로고박스 -->
-                    <h1 class="logo">
-                        <a href="#">
-                            <img src="./images/mega_logow.png" alt="로고">
-                        </a>
-                    </h1>
-                </div>
-            
-                <div class="part-box col-10">
-                    <!-- 네비게이션박스 -->
-                    <nav class="gnb">
-                        <ul class=".line-ani ">
-                            <li class="m3">
-                                <a href="#">예매</a>
-                                <!-- 서브메뉴 -->
-                                <div class="sub-menu">
-                                    <ol>
-                                        <li>
-                                            <a href="#">빠른예매</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">상영시간표</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">제휴/할인</a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
-                            <li class="m2">
-                                <a href="#">영화</a>
-                                <!-- 서브메뉴 -->
-                                <div class="sub-menu">
-                                    <ol>
-                                        <li>
-                                            <a href="#">현재상영작</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">상영예정작</a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
-                            <li class="m1">
-                                <a href="#">영화관</a>
-                                <!-- 서브메뉴 -->
-                                <div class="sub-menu">
-                                    <ol>
-                                        <li>
-                                            <a href="#">스페셜관</a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
-                            <li class="m3">
-                                <a href="#">이벤트</a>
-                                <!-- 서브메뉴 -->
-                                <div class="sub-menu">
-                                    <ol>
-                                        <li>
-                                            <a href="#">진행중인 이벤트</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">지난이벤트</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">당첨자발표</a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
-                            <li class="m4">
-                                <a href="#">스토어</a>
-                                <!-- 서브메뉴 -->
-                                <div class="sub-menu">
-                                    <ol>
-                                        <li>
-                                            <a href="#">베스트</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">포토카드</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">관람권</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">스낵음료</a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-            <div class="part-box">
-
+    
+    <!-- 확장형 레이아웃 -->
+    <!-- 1. 상단영역 -->
+    <div id="header">
+        <header class="header inbox">
+            <!-- 파트박스 2개 -->
+            <!-- 1-1.로고박스영역 -->
+            <div class="partbox col-3">
+                <!-- 메인로고 -->
+                <h1 class="header__logo">
+                    <img src="./images/mega_logow.png" alt="메가박스로고">
+                </h1>
             </div>
-        </div>
+            <!-- 1-2.gnb영역 -->
+            <div class="partbox col-9">
+                <!-- 1-2-1.Top메뉴 -->
+                <nav class="top-menu">
+                    <ul>
+                        <li>
+                            <a href="#">로그인</a>
+                        </li>
+                        <li>
+                            <a href="#">회원가입</a>
+                        </li>
+                        <li>
+                            <a href="#">고객센터</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- 1-2-2.gnb메뉴 -->
+                <nav class="gnb">
+                    <ul>
+                        <li>
+                            <a href="#">예매</a>
+                        </li>
+                        <li>
+                            <a href="#">영화</a>
+                        </li>
+                        <li>
+                            <a href="#">영화관</a>
+                        </li>
+                        <li>
+                            <a href="#">이벤트</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        <!-- 컨텐츠영역 -->
-        <div class="main-area">
-            여기에 내용이 들어감
-        </div>
     </div>
+    <!-- 2. 캐릭터소개영역 -->
+    <div id="banner">
+        <section class="banner inbox">
+            <h2 class="blind">캐릭터소개영역</h2>
+            <!-- 파트박스 2개 -->
+            <div class="partbox col-12"></div>
+        </section>
+    </div>
+    <!-- 2.5. 도깨비 메뉴 -->
+    <div id="dokebi-menu">
+        <nav class="dokebi-menu inbox">
+            <ul>
+                <li class="on">
+                    <a href="#">메인</a>
+                </li>
+                <li class="be-sub">
+                    <a href="#">프로그램 소개</a>
+                    <!-- 서브메뉴 -->
+                    <div class="dokebi-sub-menu">
+                        <ol>
+                            <li>
+                                <a href="#">프로그램 소개</a>
+                            </li>
+                            <li>
+                                <a href="#">인물 소개</a>
+                            </li>
+                            <li>
+                                <a href="#">인물관계도</a>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">미리보기</a>
+                </li>
+                <li>
+                    <a href="#">동영상</a>
+                </li>
+                <li class="be-sub">
+                    <a href="#">사진첩</a>
+                </li>
+                <li>
+                    <a href="#">OST</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- 3. 메인영역 -->
+    <div id="main">
+        <main class="main inbox">
+            <!-- 파트그룹박스 5개 -->
+            <div class="group-part group-part-01">
+                <h2>방송편성소개파트</h2>
+            <!-- 파트박스 2개 -->
+                <div class="partbox col-6"></div>
+                <div class="partbox col-6"></div>
+            </div>
+            <div class="group-part group-part-02">
+                <h2>미리보기</h2>
+                <!-- 파트박스 8개 -->
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+            </div>
+            <div class="group-part group-part-03">
+                <h2>현장포토</h2>
+                <!-- 파트박스 8개 -->
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+            </div>
+            <div class="group-part group-part-04">
+                <h2>대표이미지</h2>
+                <!-- 파트박스 4개 -->
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+            </div>
+            <div class="group-part group-part-05">
+                <h2>최신동영상</h2>
+                <!-- 파트박스 4개 -->
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+                <div class="partbox col-3"></div>
+            </div>
+        </main>
+    </div>
+    <!-- 4. 하단영역 -->
+    <div id="footer">
+        <footer class="footer inbox">
+            <h2>바로가기</h2>
+             <!-- 파트박스 5개 -->
+             <div class="partbox col-8"></div>
+             <div class="partbox col-4"></div>
 
+             <div class="partbox col-12">
+                <!-- 하단로고 -->
+                <div class="footer__logo">
+                    <img src="./images/mega_logow.png" alt="메가박스로고">
+                </div>
+             </div>
+             
+             <div class="partbox col-9"></div>
+             <div class="partbox col-3"></div>
+        </footer>
+
+    </div>
 
 </body>
 </html>
