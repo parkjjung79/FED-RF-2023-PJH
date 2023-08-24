@@ -9,13 +9,14 @@
         <!-- defer : 연기하다 -->
         <!-- 스타일시트 구역 -->
         <style>
-            /*******************************************
-                [ css에서 변수사용하기! ]
-                1. 정의 : 같은 값을 사용하는 속성에
-                변수를 사용하여 반복작업을 줄여주기 위한
-                css에서만 사용되는 변수
+            /********************************* 
+                [ CSS에서 변수사용하기! ]
+                1. 정의: 같은 값을 사용하는 속성에
+                변수를 사용하여 반복작업을 줄여주기위한
+                CSS에서만 사용되는 변수
 
                 2. 사용법:
+
                 (1) 변수선언 및 셋팅구역
                 :root{
                     --변수명:값;
@@ -24,17 +25,30 @@
                 }
 
                 (2) 변수호출
-                    - 사용하고자 하는 속성값에 변수를 아래처럼 호출
+                    - 사용하고자 하는 속성값에 변수를
+                    아래처럼 호출
                     var(--변수명)
-                    
-                    예)
-                    :root{
 
+                    예) 
+                    :root{
+                        --my-color:red;
+                        --my-num:5;
                     }
                     
-                    color: 
-            
-            *******************************************/
+                    #my{
+                        width: calc(1000px/var(--my-num))
+                    }
+
+                    h1{
+                        color: var(--my-color);
+                    }
+
+                    .mymy{
+                        background-color: var(--my-color);
+                    }
+
+            *********************************/
+
 
             /* 변수구역 */
             :root{
@@ -42,6 +56,13 @@
                 --sp-num: 5;
                 /* 2. 보더색 */
                 --bd-color: red;
+                /* 3. 타이틀글씨크기 */
+                --tit-font-size: 55px;
+                /* 4. 상품명글씨크기 */
+                --item-font-size: 20px;
+                /* 5. 상품명글씨굵기 */
+                --item-font-weight: 500;
+                /*  */
             }
 
             /* 초기화 */
@@ -64,6 +85,7 @@
             /* 타이틀 */
             .tit {
                 text-align: center;
+                font-size: var(--tit-font-size);
             }
             /* 쇼핑몰 리스트 박스 */
             .list-box {
@@ -113,12 +135,21 @@
                 background-color: rgb(0 0 0 / 53%);
             }
 
+            /* 상품명 */
+            h3{
+                font-size: var(--item-font-size);
+                font-weight: var(--item-font-weight);
+            }
+
             /* 1300이하 미디어쿼리 시작*/
             @media screen and (max-width:1300px) {
                 /* 분할개수 조정하기 - 변수만 업데이트! */
                 :root{
                     --sp-num: 4;
                     --bd-color: hotpink;
+                    --tit-font-size: 50px;
+                    --item-font-size: 18px;
+                    --item-font-weight: 400;
                 }
             }
             /* 1300이하 미디어쿼리 종료*/
@@ -129,6 +160,10 @@
                 :root{
                     --sp-num: 3;
                     --bd-color: blue;
+                    --tit-font-size: 42px;
+                    --item-font-size: 18px;
+                    --item-font-weight: 400;
+                   
                 }
             }
             /* 1100이하 미디어쿼리 종료*/
@@ -140,6 +175,9 @@
                 :root{
                     --sp-num: 2;
                     --bd-color: purple;
+                    --tit-font-size: 35px;
+                    --item-font-size: 16px;
+                    --item-font-weight: 300;
                 }
             }
             /* 700이하 미디어쿼리 종료*/
@@ -150,6 +188,9 @@
                 :root{
                     --sp-num: 1;
                     --bd-color: yellow;
+                    --tit-font-size: 24px;
+                    --item-font-size: 16px;
+                    --item-font-weight: 300;
                 }
             }
             /* 500이하 미디어쿼리 종료*/

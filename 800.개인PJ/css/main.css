@@ -7,25 +7,25 @@
 @import url(./common.css);
 
 /* 공사중표시 */
+
 body * {
     outline: 2px dashed #ccc;
 }
 body > div > * {
     outline-color: red;
 }
+.wrap{
+    /* 보이는 화면 100% 채우기 */
+    height: 100vh;
+}
 
-/* 개별영역 박스 -> 확장형 박스
-        -> 개별영역 중앙속박스에 높이값을 주면 파트박스가 늘어날 경우 높이값에 제한을 받게 된다
-        확장형은 반드시 파트박스에 높이값을 설정한다!(중요)*/
-
-/********************** 2. 캐릭터소개 **********************/
 #banner {
     background-color: lightpink;
 }
 .banner .partbox {
     height: 530px;
 }
-/********************** 3. 메인영역 : .group-part **********************/
+
 #main {
     background-color: lightgrey;
 }
@@ -60,13 +60,12 @@ h1.tit {
     padding: 20px;
 }
 
-
 /* 공통클래스 */
 /* 속박스 */
-.inbox{
+.inbox {
     max-width: 1280px;
     margin: 0 auto;
-    
+    border: 2px solid blue;
 }
 
 /* 파트박스 */
@@ -239,8 +238,8 @@ h1.tit {
     display: none;
 }
 /* 마지막요소 아이콘 적용 i요소 */
-.top-menu li:last-child a i{
-    margin-top: min(6px,0.6vw);
+.top-menu li:last-child a i {
+    margin-top: min(6px, 0.6vw);
 }
 
 /* 메인영역 */
