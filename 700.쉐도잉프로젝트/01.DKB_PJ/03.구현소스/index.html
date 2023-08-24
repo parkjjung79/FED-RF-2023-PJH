@@ -18,13 +18,27 @@
             <!-- 1-1.로고박스영역 -->
             <div class="partbox col-3">
                 <!-- 메인로고 -->
-                <div class="header__logo">
+                <h1 class="header__logo">
                     <img src="./images/pc/tvnlogo2.png" alt="tvn로고">
-                </div>
+                </h1>
             </div>
             <!-- 1-2.gnb영역 -->
             <div class="partbox col-9">
-                <!-- 1-2-1.메뉴 -->
+                <!-- 1-2-1.Top메뉴 -->
+                <nav class="top-menu">
+                    <ul>
+                        <li>
+                            <a href="#">로그인</a>
+                        </li>
+                        <li>
+                            <a href="#">회원가입</a>
+                        </li>
+                        <li>
+                            <a href="#">검색</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- 1-2-2.gnb메뉴 -->
                 <nav class="gnb">
                     <ul>
                         <li>
@@ -62,12 +76,50 @@
     <!-- 2. 캐릭터소개영역 -->
     <div id="banner">
         <section class="banner inbox">
-            <h2>캐릭터소개영역</h2>
+            <h2 class="blind">캐릭터소개영역</h2>
             <!-- 파트박스 2개 -->
             <div class="partbox col-12"></div>
         </section>
     </div>
-
+    <!-- 2.5. 도깨비 메뉴 -->
+    <div id="dokebi-menu">
+        <nav class="dokebi-menu inbox">
+            <ul>
+                <li class="on">
+                    <a href="#">메인</a>
+                </li>
+                <li class="be-sub">
+                    <a href="#">프로그램 소개</a>
+                    <!-- 서브메뉴 -->
+                    <div class="dokebi-sub-menu">
+                        <ol>
+                            <li>
+                                <a href="#">프로그램 소개</a>
+                            </li>
+                            <li>
+                                <a href="#">인물 소개</a>
+                            </li>
+                            <li>
+                                <a href="#">인물관계도</a>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">미리보기</a>
+                </li>
+                <li>
+                    <a href="#">동영상</a>
+                </li>
+                <li class="be-sub">
+                    <a href="#">사진첩</a>
+                </li>
+                <li>
+                    <a href="#">OST</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     <!-- 3. 메인영역 -->
     <div id="main">
         <main class="main inbox">
@@ -78,7 +130,6 @@
                 <div class="partbox col-6"></div>
                 <div class="partbox col-6"></div>
             </div>
-
             <div class="group-part group-part-02">
                 <h2>미리보기</h2>
                 <!-- 파트박스 8개 -->
@@ -128,12 +179,14 @@
              <!-- 파트박스 5개 -->
              <div class="partbox col-8"></div>
              <div class="partbox col-4"></div>
+
              <div class="partbox col-12">
                 <!-- 하단로고 -->
                 <div class="footer__logo">
                     <img src="./images/pc/tvnlogo2.png" alt="tvn로고">
                 </div>
              </div>
+             
              <div class="partbox col-9"></div>
              <div class="partbox col-3"></div>
         </footer>
