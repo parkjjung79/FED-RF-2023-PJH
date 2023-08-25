@@ -60,6 +60,10 @@ https://dezea.digital/showcases/designing-balance-for-somati
 https://twogood.com.au/
 1. 여러모로 참고할 소스가 있음
 
+8. lefruitstudio
+https://lefruitstudio.fr/
+-> 전체메뉴에서 글자위 오버시 이미지 따라다니는 것
+->>>>>JS실험실에서 하자!
 
 ________________________________________________________________________
 
