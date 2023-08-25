@@ -14,7 +14,41 @@ html,body,h1{
 body{
     background-color: #9c0;
     /* 배경색 애니메이션: 이시이지반방마 */
-    /* animation: bg-ani 10s linear infinite; */
+    animation: bg-ani 5s linear infinite;
+}
+
+/* 배경색 애니 키프레임 */
+@keyframes bg-ani {
+    0%{
+        background-color: #9c0;
+    }
+    20%{
+        background-color: rgb(88, 117, 0);
+    }
+    40%{
+        background-color: rgb(49, 65, 4);
+    }
+    60%{
+        background-color: rgb(24, 31, 5);
+    }
+    80%{
+        background-color: rgb(43, 48, 27);
+    }
+    100%{
+        background-color: rgb(88, 117, 0);
+    }
+    80%{
+        background-color: rgb(43, 48, 27);
+    }
+    60%{
+        background-color: rgb(24, 31, 5);
+    }
+    40%{
+        background-color: rgb(49, 65, 4);
+    }
+    20%{
+        background-color: rgb(88, 117, 0);
+    }
 }
 
 /* 전체 타이틀 */
@@ -30,7 +64,22 @@ body{
     color: #fff;
     text-shadow: 2px 2px 2px #222;
     overflow: hidden;
+
+
 }
+
+/* 타이틀 span */
+.tit span{
+    display: inline-block;
+
+    /* 처음에 아랫쪽으로 나가있어! */
+    transform: translateY(150%);
+    
+    /* 애니메이션 호출 */
+    animation: appear-ani .6s cubic-bezier(1, -0.53, 0, 1.5) 1.6s forwards;
+    
+}
+
 
 /* 전체랩핑박스 */
 .wrap{
@@ -45,7 +94,22 @@ body{
     height: 300px;
     margin: 0 auto;
     background-color: #900;
+
+    /* 처음에 아랫쪽으로 나가있어! */
+    transform: translateY(150%);
+
+    /* 애니메이션 호출 */
+    animation: appear-ani .6s cubic-bezier(1, -0.53, 0, 1.5) 1s forwards;
 }
+
+/* 문짝 등장애니 키프레임 */
+@keyframes appear-ani {
+    to{
+        transform: translateY(0%);
+    }
+    
+}
+
 /* 문프레임 */
 .frame{
     position: relative;
@@ -68,6 +132,7 @@ body{
     *******************************/
     perspective: 480px;
 
+    perspective-origin: 50% 50%;
      /*********************************************** 
         [ 뷰포인트(관찰자위치) 변경옵션 ]
         perpective-origin : 가로 세로;
@@ -77,13 +142,13 @@ body{
         2가지를 같이 셋팅함!
     ***********************************************/
     /* 파도치는 애니 호출 */
-    animation: waver-ani 3s ease-in-out infinite alternate center fill-mode;
+    animation: wave-ani 3s ease-in-out infinite alternate;
 }
 
 /* 배경이미지 크기변경으로 파도치는 키프레임 */
 @keyframes wave-ani {
     to{
-        background-size: auto 120%;
+        background-size: auto 130%;
     }
     
 }
@@ -102,7 +167,7 @@ body{
     background-color: #c90;
 
     /* 문짝회전 :y축 */
-    transform:  rotateY('0deg');
+    transform: rotateY(0deg);
     
     /* 축변경 */
     transform-origin: left;
@@ -145,10 +210,10 @@ body{
 /* 문짝 여닫기 키프레임 - 2번 */
 @keyframes open-door-ani {
     0%{
-        transform:  rotateY(60deg);
+        transform: rotateY(60deg);
     }
     100%{
-        transform:  rotateY(-60deg);
+        transform: rotateY(-60deg);
     }
     
 }
@@ -175,7 +240,7 @@ body{
 
     /* 프레임과 같은 크기*/
     width: 150px;
-    height: 200px;
+    height: 280px;
 
     /* 넘치는 요소숨기기 */
     overflow: hidden;
@@ -183,10 +248,26 @@ body{
 
 /* 엘사이미지 */
 #elsa img{
-    margin-left: 130px;
+    margin-left: 133px;
     /* 엘사 회전축변경 바닥 */
     transform-origin: bottom;
-    transform: rotate(-10deg);
+    
+    /* 애니메이션 호출 */
+    animation: elsa-ani 1s ease-in-out infinite alternate;
+
+    /* 오버전 애니멈춤 */
+    animation-play-state: paused;
+}
+/* 오버시 애니 작동 */
+.cont:hover #elsa img{
+    animation-play-state: running;
+
 }
 
 /* 엘사 애니 키프레임 */
+@keyframes elsa-ani {
+    to{
+        transform: rotate(-10deg);
+    }
+    
+}
