@@ -53,7 +53,7 @@
 
    [ 설정된 키프레임 호출하는 방법 ] 
    
-   animation : 이시이지반방마
+   animation : 이/시/이/지/반/방/마
     (이름 시간 이징 지연시간 반복 방향 마지막상태)
 
     1) 이름(animation-name) : keyframe 이름
@@ -204,7 +204,7 @@
 /* 오른팔 애니1,2 호출 */
 .arm2 {
     transform-origin: right top;
-    right:-45px;/* 위치조정 */
+    right: -45px;/* 위치조정 */
     animation:
     /* 팔들기 */
     right-arm-ani-01 .4s ease-in 7s forwards,

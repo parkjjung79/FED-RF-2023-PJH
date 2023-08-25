@@ -77,14 +77,11 @@ body{
 
 
 /* 타이틀 */
-h1{
-    perspective: 50vh;
-}
-
 .tit {
     position: relative;
     top:100%;
     /* -> 아랫쪽에 내려가서 안보이는 상태 */
+
     z-index: 1;
     /* 행성들보다 위 */
 
@@ -96,16 +93,28 @@ h1{
     font-size: 80px;
     text-align: center;
     padding-top: 20px;
+
+    /* 자식 span을 위한 원근설정 */
+    perspective: 40vh;
+
+    /* 애니메이션 호출 */
+    animation: tit-fly-up-ani 5s ease-out 2s forwards;
 }
 
-/* 타이틀 위로 이동등장애니 키프레임 */
-@keyframes tit-fly-up {
-    to{
+/* 내부글자 span */
+.tit span{
+    display: block;
+    /* 회전애니 적용위해 block화 */
 
+}
+
+
+/* 타이틀 위로 이동등장애니 키프레임 */
+@keyframes tit-fly-up-ani {
+    to{
+        top: 15vh;
     }
-    from{
-        
-    }
+    
 }
 
 
@@ -157,8 +166,8 @@ h1{
 /* 지구 */
 #earth{
     position: absolute;
-    top: calc(50 - var(--earth-size)/2);
-    left: calc(50 - var(--earth-size)/2);
+    top: calc(50% - var(--earth-size)/2);
+    left: calc(50% - var(--earth-size)/2);
     /* 부모는? #solar */
     width: var(--earth-size);
     height: var(--earth-size);
@@ -187,15 +196,16 @@ h1{
         */
     }
     to{
-        transform: rotate(360deg) translateX(var(--earth-trans-size)) rotate(-360deg);
+        transform:
+        rotate(360deg) translateX(var(--earth-trans-size)) rotate(-360deg);
     }
 } /* 지구회전 키프레임 */
 
 /* 달 */
 #moon{
     position: absolute;
-    top: calc(50 - var(--moon-size)/2);
-    left: calc(50 - var(--moon-size)/2);
+    top: calc(50% - var(--moon-size)/2);
+    left: calc(50% - var(--moon-size)/2);
     /* 부모는? #solar */
     width: var(--moon-size);
     height: var(--moon-size);
@@ -220,8 +230,8 @@ h1{
 /* 목성 */
 #jupiter{
     position: absolute;
-    top: calc(50 - var(--jupiter-size)/2);
-    left: calc(50 - var(--jupiter-size)/2);
+    top: calc(50% - var(--jupiter-size)/2);
+    left: calc(50% - var(--jupiter-size)/2);
     /* 부모는? #solar */
     width: var(--jupiter-size);
     height: var(--jupiter-size);
@@ -247,6 +257,17 @@ h1{
 /* 토성 */
 #saturn{
     position: absolute;
+    top: calc(50% - var(--saturn-size)/2);
+    left: calc(50% - var(--saturn-size)/2);
+    /* 부모는? #solar */
+    width: var(--saturn-size);
+    height: var(--saturn-size);
+    /* 배경이미지 */
+    background:
+    url(../images/saturn.png) no-repeat 0/100% 100%;
+
+    /* 애니메이션 호출 */
+    animation: rotate-jupiter-ani  55s linear infinite;
     
 }
 /* 가상요소로 토성이미지 배경으로 넣기 */
@@ -262,12 +283,12 @@ h1{
 
 
 /* 토성회전 키프레임 */
-@keyframes saturn {
+@keyframes rotate-satrun-ani {
     from{
-        
+        transform: rotate(0deg) translateY(var(--saturn-trans-size)) rotate(0deg);
     }
     to{
-        
+        transform: rotate(360deg) translateY(var(--saturn-trans-size)) rotate(-360deg);
     }
 } /* 토성회전 키프레임 */
 
