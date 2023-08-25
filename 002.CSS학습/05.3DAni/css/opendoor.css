@@ -37,18 +37,6 @@ body{
     100%{
         background-color: rgb(88, 117, 0);
     }
-    80%{
-        background-color: rgb(43, 48, 27);
-    }
-    60%{
-        background-color: rgb(24, 31, 5);
-    }
-    40%{
-        background-color: rgb(49, 65, 4);
-    }
-    20%{
-        background-color: rgb(88, 117, 0);
-    }
 }
 
 /* 전체 타이틀 */
