@@ -6,16 +6,18 @@
 
 /********************** 1. 상단영역 **********************/
 #header {
-    /* background-color: lightblue; */
+    background-color: #000;
 }
 .header .partbox {
     height: 120px;
 }
 /* 1-1.로고박스 */
 .header__logo img{
-        margin-top: 40px;
-        width: 126px;
+        margin-top: 60px;
+        width: 80%;
 }
+
+
 /* 1-2-1.탑메뉴 */
 .top-menu ul{
     /* 플렉스박스 */
@@ -31,6 +33,7 @@
 /* 탑메뉴 a */
 .top-menu a{
     font-size: 1.3rem;
+    color: #fff;
 }
 
 /* 1-2-2.gnb메뉴 */
@@ -48,6 +51,7 @@
     padding: 28px 16px;
     /* 줄바꿈방지 */
     white-space: nowrap;
+    color: #fff;
     
 }
 
@@ -71,7 +75,7 @@
 }
 /********************** 4. 하단영역 **********************/
 #footer {
-    background-color: lightslategray;
+    background-color: #222;
 }
 .footer .partbox {
     height: 100px;
