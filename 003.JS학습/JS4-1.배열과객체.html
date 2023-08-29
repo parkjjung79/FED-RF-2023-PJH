@@ -35,6 +35,15 @@
                 margin: 5px auto;
                 font-size: 24px;
             }
+
+            /* 초이스 버튼 클래스 on */
+            .choice button{
+                border: 0px solid;
+                background-color: #fff;
+                box-shadow: 1px 1px 3px #0000006b;
+                border-radius: 20px;
+                padding: 5px;
+            }
         </style>
         <!-- JS코드구역 -->
         <script>
@@ -485,6 +494,7 @@
                 // for(시;한;증;){코드}
                 for (let i = 0; i < choice_cnt; i++) {
                     choice[i].onclick = function () {
+                        // this -> 클릭된 버튼 자신!
                         //1. 버튼텍스트
                         let btxt = this.innerText;
                         console.log("난누구?", btxt);
@@ -549,6 +559,16 @@
 
                         // 3. 객체 함수 호출
                         showMovieInfo();
+
+                        // 4. 모든 버튼 클래스 on 빼기
+                        choice.forEach(function(ele){ // ele - wktls
+                            // forEach(function(자신,순번,전체){})
+                            // console.log('forEach:',a,b,c);
+                            ele.classList.remove('on');
+                        }); ///////////// forEach /////////////
+
+                        // 5. 클릭된 버튼에 클래스 on 주기!
+                        this.classList.add('on');
 
                     }; ////// 클릭이벤트 함수 ////////////
 
@@ -645,6 +665,7 @@
         <div class="cont"></div>
         <div class="cont choice">
             <!-- 영화초이스 버튼 박스 -->
+            <button>내초이스</button>
             <button>탐쌤초이스</button>
             <button>조은초이스</button>
             <button>동엽초이스</button>
