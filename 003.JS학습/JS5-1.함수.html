@@ -5,14 +5,16 @@
         <title>JS5-1. 함수(function)</title>
         <style>
             body {
-                /* background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564) no-repeat fixed center/cover; */
-                min-height: 100vh;
-                /* height: 100vh 최소 높이로 보이는 화면 크기만큼 지정하면 기본적으로 body가 보이는 화면을 유지하다가 컨텐츠가 많아져 스크롤이 생성되어서 body height도 늘어남  해놓으면 컨텐츠가 늘어났을때 body의 크기는 변하지 않음  */
                 margin: 0;
+                min-height: 100vh;
+                /* height: 100vh -> 이렇게 설정하면 지정하면 기본적으로 body가 보이는 화면을 유지하다가 컨텐츠가 많아져 스크롤이 생성되어서 body height도 늘어남
+                min-height: 100vh; -> 이렇게 설정하면
+                최소 높이로 보이는 화면 크기만큼 설정이라 컨텐츠가 늘어났을때 body의 크기는 변하지 않음  */
+                /* background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564) no-repeat fixed center/cover; */
             }
 
             /* 배경박스 */
-            .bgbox{
+            .bgbox {
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -22,21 +24,23 @@
                 /* body가 투명하므로 아래쪽에 내려가 있어도 배경은 보인다! -> 배경처리시 이렇게 하면 됨! */
             }
 
-            .bgbox ul{
+            .bgbox ul {
                 margin: 0;
                 padding: 0;
                 list-style: none;
+                width: 100%;
+                height: 100%;
             }
 
-            .bgbox li{
+            .bgbox li {
                 position: absolute;
                 /* 서로겹쳐짐 */
                 width: 100%;
                 height: 100%;
                 /* 투명하게 */
-                /* opacity: 0; */
+                opacity: 0;
                 /* 트랜지션 */
-                transition: 1s ease-in-out;
+                transition: .5s ease-in-out;
             }
 
             .bgbox li.on{
@@ -44,8 +48,6 @@
                 opacity: 1;
                 /* 맨 위로 오게함 */
                 z-index: 1;
-
-
             }
 
             h2 {
@@ -205,10 +207,18 @@
 
         // 온라인상 배경이미지 주소를 배열로 셋팅
         const scene = [
-            "https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2F1ee63066-4239-11ec-b414-b1f6389ab345.jpg?crop=2667%2C1500%2C0%2C0&resize=1200", 
-            "https://www.asml.com/-/media/asml/images/careers/working-at-asml/south-korea/gyeongbokgung_palace_south_korea.jpg?mw=1920&rev=5154661f5c8943bb8c81419c01b327e2&hash=30B844A1D30F8A9B2BB0A2FE6377E953", 
-            "https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564"
+            "https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2F1ee63066-4239-11ec-b414-b1f6389ab345.jpg", 
+            "https://www.asml.com/-/media/asml/images/careers/working-at-asml/south-korea/gyeongbokgung_palace_south_korea.jpg", 
+            "https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg",
+            "https://www.wallpaperflare.com/static/353/548/867/cityscape-seoul-south-korea-landscape-wallpaper-preview.jpg",
+            "https://wallpaperaccess.com/full/11675.jpg",
+            "https://wallpaperaccess.com/full/11676.jpg",
+            "https://wallpaperaccess.com/full/11678.jpg",
+            "https://wallpaperaccess.com/full/5480068.jpg",
+            "https://wallpaperaccess.com/full/11682.jpg"
         ];
+
+                
 
             /*////////////////////////////////
                 함수명: Korea
@@ -288,7 +298,7 @@
             //////////////////////////////////
 
             // 선언적함수보다 위에서 이 함수를 호출! //
-            callMe("함수위에서 호출!");
+            // callMe("함수위에서 호출!");
             // 호출됨! 어떻게? -> 미리로딩되었다는 증거!
             // 코드위에서 호출되므로 이것을 함수호출 호이스팅(Hoisting)
             // 이라고 부른다!
@@ -298,9 +308,7 @@
             // VO적재공간에 모두 로딩함!(먼저읽어들임)
             function callMe(txt) {
                 // txt 전달변수
-                // console.log("나, 불렀어?", txt);
-
-                
+                console.log("나, 불렀어?", txt);
             } ///////// callMe 함수 /////////////
 
             // 할당형 익명함수를 코드 위에서 호출!
@@ -369,6 +377,35 @@
                 함수명: myFn
                 기능: 파라미터 얼마든지 받아서 h2만들어 넣기
             ************************************************/
+            // 함수의 전달변수가 없어도 보내는 전달값이 있으면
+            // 함수의 arguments라는 전달변수배열객체에
+            // 값을 자동으로 담아준다!
+
+            // arguments는 익명함수에서 사용가능함!
+            // 단, 화살표함수는 사용불가!
+
+            // const myFn = ()=>{
+            // const myFn = function(){
+            function myFn(){
+                // 파라미터가 전혀 없음!
+                console.log('내함수!',
+                arguments,
+                typeof arguments,
+                typeof scent);
+
+                // 대상선정: body
+                for(let i=0;i<arguments.length;i++){
+                    document.body.innerHTML +=
+                    `<h2>${arguments[i]}</h2>`;
+                    // 기존 body 자식으로 추가(+=대입연산자)
+                }//////////// for //////////
+            }//////////// myFn함수 //////////
+
+
+            // 타임아웃 함수를 사용하여 일정시간뒤 코드실하기
+            setTimeout(() => {
+                myFn('동해물과','백두산이','마르고','닳도록','하느님이','보우하사','우리나라','만세!');
+            }, 3000);
 
 
             /////////////////// 로드구역 /////////////////////
@@ -383,20 +420,60 @@
                 let hcode = '';
 
                 hcode += '<ul>';
-                for(let i=0;i<3;i++)
-                    hcode += `<il ${i==0?"class='on'":""}></il>`;
-                    hcode += '</ul>';
 
-                    // 대상넣기
-                    bgbox.innerHTML = hcode;
-                    
-                    // 배경박스 li에 배경이미지 넣기
-                    let bgli = bgbox.querySelectorAll('li');
-                    for(let i=0; i<bgli.length; i++){
-                        bgli[i].style.background = 
-                        `url(${scene[i]} no-repeat center/cover`;
+                // 반복코드 li는 for문으로!
+                // 명령문이 하나면 중괄호 생략가능!
+                // class='on'을 넣기 위해
+                // 삼항연산자(비?집:놀이동산)를 사용
+                // i==0 이면 class='on'넣기
 
-                    }////////////////// for //////////////////
+                // li 개수는 동적으로 scene 배열변수의
+                // 개수와 같게 생성하고 배경을 셋팅한다!
+
+                //scene 개수 변수
+                let scene_cnt = scene.length;
+                console.log('배경배열개수:',scene_cnt);
+                
+                for(let i = 0; i < scene_cnt; i++){
+                hcode += 
+                `<il ${i==0?"class='on'":""}></il>`;
+                } ///////////////// for ///////////////////
+
+                hcode += '</ul>';
+
+                // 대상넣기
+                bgbox.innerHTML = hcode;
+                
+                // 배경박스 li에 배경이미지 넣기
+                let bgli = bgbox.querySelectorAll('li');
+                for(let i=0; i<bgli.length; i++){
+                    bgli[i].style.background = 
+                    `url(${scene[i]}) no-repeat center/cover`;
+
+                }////////////////// for //////////////////
+
+                // 배경이미지 순서대로 li에 class on 넣기!
+                // 2초간격으로 계속 실행! - 인터벌함수 
+
+                // li순번변수
+                let seq = 0;
+
+                    setInterval(() => {
+                        // 1.순번증가 전 클래스 제거
+                        bgli[seq].classList.remove('on');
+
+                        // 2.순번증가
+                        seq++;
+                        
+                        // 3.한계수 체크(마지막번호+1->0번으로)
+                        // 마지막번호는 (배열개수-1)
+                        // 마지막번호다음은 개수다! 
+                        if(seq == scene_cnt) seq = 0;
+
+
+                        // 4.다음해당순번 적용하기
+                        bgli[seq].classList.add('on');
+                    }, 2000); ///인터발 함수 ////
                 
             });
             /////////////////// 로드구역 /////////////////////
@@ -405,12 +482,10 @@
 
     <body>
         <!-- 배경박스 -->
-        <div class="bgbox">
-
-        </div>
+        <div class="bgbox"></div>
 
         <!-- 프로젝트 버튼 -->
-        <button onclick="Korea('우')">
+        <button onclick="alert(Korea('우'))">
             우리나라 대한민국 만세 프로젝트 시작!
         </button>
         <!-- 
