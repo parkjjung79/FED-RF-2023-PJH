@@ -5,7 +5,47 @@
         <title>JS5-1. 함수(function)</title>
         <style>
             body {
-                background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564) no-repeat fixed center/cover;
+                /* background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564) no-repeat fixed center/cover; */
+                min-height: 100vh;
+                /* height: 100vh 최소 높이로 보이는 화면 크기만큼 지정하면 기본적으로 body가 보이는 화면을 유지하다가 컨텐츠가 많아져 스크롤이 생성되어서 body height도 늘어남  해놓으면 컨텐츠가 늘어났을때 body의 크기는 변하지 않음  */
+                margin: 0;
+            }
+
+            /* 배경박스 */
+            .bgbox{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: -1;
+                /* body가 투명하므로 아래쪽에 내려가 있어도 배경은 보인다! -> 배경처리시 이렇게 하면 됨! */
+            }
+
+            .bgbox ul{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .bgbox li{
+                position: absolute;
+                /* 서로겹쳐짐 */
+                width: 100%;
+                height: 100%;
+                /* 투명하게 */
+                /* opacity: 0; */
+                /* 트랜지션 */
+                transition: 1s ease-in-out;
+            }
+
+            .bgbox li.on{
+                /* 보이게함 */
+                opacity: 1;
+                /* 맨 위로 오게함 */
+                z-index: 1;
+
+
             }
 
             h2 {
@@ -200,7 +240,7 @@
                 alert(txt); //'우리'
 
                 // 2. 다른함수 호출
-                let na = Na(txt+'나') //'우리나'
+                let na = Na(txt+'나'); //'우리나'
 
                 // 3. 리턴값 찍기
                 alert(na); // '우리나라 대한'
@@ -222,7 +262,7 @@
                  alert(txt); //'우리나'
 
                  // 2. 다른함수 호출
-                 let ra = Ra(txt+'라') //'우리나라'
+                 let ra = Ra(txt+'라'); //'우리나라'
 
                  // 3. 리턴값 찍기
                  alert(ra); // '우리나라 대'
@@ -258,7 +298,7 @@
             // VO적재공간에 모두 로딩함!(먼저읽어들임)
             function callMe(txt) {
                 // txt 전달변수
-                console.log("나, 불렀어?", txt);
+                // console.log("나, 불렀어?", txt);
 
                 
             } ///////// callMe 함수 /////////////
@@ -329,11 +369,47 @@
                 함수명: myFn
                 기능: 파라미터 얼마든지 받아서 h2만들어 넣기
             ************************************************/
-            
+
+
+            /////////////////// 로드구역 /////////////////////
+            window.addEventListener('load',function(){
+                console.log('로딩완료!');
+
+                // 1. 대상선정: .bgbox
+                let bgbox = document.querySelector('.bgbox');
+
+                // 2. 대상에 html 넣기
+                // html 넣을 변수!
+                let hcode = '';
+
+                hcode += '<ul>';
+                for(let i=0;i<3;i++)
+                    hcode += `<il ${i==0?"class='on'":""}></il>`;
+                    hcode += '</ul>';
+
+                    // 대상넣기
+                    bgbox.innerHTML = hcode;
+                    
+                    // 배경박스 li에 배경이미지 넣기
+                    let bgli = bgbox.querySelectorAll('li');
+                    for(let i=0; i<bgli.length; i++){
+                        bgli[i].style.background = 
+                        `url(${scene[i]} no-repeat center/cover`;
+
+                    }////////////////// for //////////////////
+                
+            });
+            /////////////////// 로드구역 /////////////////////
         </script>
     </head>
 
     <body>
+        <!-- 배경박스 -->
+        <div class="bgbox">
+
+        </div>
+
+        <!-- 프로젝트 버튼 -->
         <button onclick="Korea('우')">
             우리나라 대한민국 만세 프로젝트 시작!
         </button>
