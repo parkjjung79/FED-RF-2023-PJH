@@ -14,3 +14,15 @@
       - 체크사항 : 모바일 배경fixed(robot.html)
 
 3. 프로젝트 구현 및 리뷰 시간
+
+
+button {
+    border: 0px solid;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px #0000006b;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+선혜언니 장소 연락
+노니 / 개미 / 보미 연락
