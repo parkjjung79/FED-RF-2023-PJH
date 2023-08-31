@@ -18,6 +18,15 @@
 // 1. 전역변수 설정하기
 // 1-1. 페이지 변수
 let pg_num = 0;
+// 1-2. 휠상태변수
+let sts_wheel = 0;
+
+// 새로고침시 첫페이지로 리셋하기
+// 브라우저 스크롤바 위치 캐싱때문에 함!
+setTimeout(()=>{window.scrollTo(0,0)},500);
+
+
+
 
 // 2. 이벤트 등록하기 ////////////////////////////////////
 // 대상: window -> 전체창에 스크롤 작동
@@ -36,11 +45,31 @@ window.addEventListener('wheel',wheelFn);
 function wheelFn(e){ // e -> 이벤트 전달변수(자동)
     // 함수호출확인!
     console.log('휠!');
-
+    
+    // 0. 광휠금지설정 ///////
+    if(sts_wheel) return; // 여기서나감!
+    sts_wheel = 1; //잠금!
+    setTimeout(()=>{sts_wheel=0},500);
+    // 0.5초 후 잠금 해제!
+    
+    // 함수호출확인!
+    console.log('휠작동!');
+    
     // 1. 휠 방향에 따른 페이지 변수 변경하기!
     // 휠방향은 wheelDelta로 알아냄!
     let delta = e.wheelDelta;
     console.log('휠델타:',delta);
+    
+    // 음수(-)는 아랫방향, 양수(+) 는 윗방향
+    if(delta<0) pg_num++;
+    else pg_num--;
+
+    // 한계수체크(양끝페이지 고정!)
+    if(pg_num<0) pg_num=0;
+    if(pg_num>6) pg_num=6; 
+
+    // 전체 페이지번호 확인
+    console.log('페이지번호:',pg_num);
 
     // 2. 페이지이동하기
     // scrollTo(x축위치, y축위치)
@@ -48,9 +77,6 @@ function wheelFn(e){ // e -> 이벤트 전달변수(자동)
     // 스크롤 애니메이션은 html{scroll-behavior:smooth}로처리
     // 화면단위로 이동하므로 윈도우 높이값을 기본값으로 처리
     // window.innerHeight -> window 높이값 구해온다!
-
-    if(delta<0) pg_num++;
-    else pg_num--;
 
     window.scrollTo(0,window.innerHeight*pg_num);
 
