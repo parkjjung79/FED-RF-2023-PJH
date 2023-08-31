@@ -20,27 +20,45 @@
 let pg_num = 0;
 // 1-2. 휠상태변수
 let sts_wheel = 0;
+// 1-3. 전체페이지수
+let total_pg;
 
 // 새로고침시 첫페이지로 리셋하기
 // 브라우저 스크롤바 위치 캐싱때문에 함!
 setTimeout(()=>{window.scrollTo(0,0)},500);
 
 
-
-
 // 2. 이벤트 등록하기 ////////////////////////////////////
 // 대상: window -> 전체창에 스크롤 작동
 window.addEventListener('wheel',wheelFn);
-
-
+window.addEventListener('DOMContentLoaded',loadFn);
 
 
 // 3. 이벤트 연결함수 ///////////////////////////////////
 
+// DOM선택함수 ////////////////////////////////
+const qs = x => document.querySelector(x);
+const qsa = x => document.querySelectorAll(x);
+
+
+/*********************************************
+    함수명 : loadFn
+    기능 : html로딩 후 실행코드구역
+ *********************************************/
+function loadFn(){
+    // 호출확인
+    console.log('로딩완료');
+
+    // 전체페이지수 확인
+    total_pg = qsa('.page').length;
+    console.log('전체페이지수:',total_pg);
+
+
+}/////////////// loadFn함수 ///////////////////////////
+
 /*********************************************
     함수명 : wheelFn
     기능 : 마우스 휠 작동시 페이지 이동
-
 **********************************************/
 function wheelFn(e){ // e -> 이벤트 전달변수(자동)
     // 함수호출확인!
@@ -66,7 +84,7 @@ function wheelFn(e){ // e -> 이벤트 전달변수(자동)
 
     // 한계수체크(양끝페이지 고정!)
     if(pg_num<0) pg_num=0;
-    if(pg_num>6) pg_num=6; 
+    if(pg_num>total_pg) pg_num = total_pg-1; 
 
     // 전체 페이지번호 확인
     console.log('페이지번호:',pg_num);
