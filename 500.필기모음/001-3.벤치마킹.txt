@@ -161,6 +161,12 @@ https://thisisdash.com/
 1) 드래그 기능 있음!(HOME)
 2) 흘러가는 글씨(ABOUT)
 
+11. 패션관련 업체 
+https://synchrodogs.com/info
+
+1) 포폴제작시 "기타목록" 나열 레이아웃 참고
+2) font-family: "GT America";
+
 **************************************************
 [ FED-PJ-2022 과정 벤치마킹 ]
 
