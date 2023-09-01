@@ -34,11 +34,15 @@ body > div > * {
 .cat-box{
     position: absolute;
     bottom: 5%;
+
     /* flex박스 */
     display: flex;
     flex-wrap: wrap;
     /* 진행방향정렬 */
     justify-content: center;
+
+    /* 사이간격 */
+    gap: 0 1.2vw;
 
     width: 100%;
     margin: 0 auto;

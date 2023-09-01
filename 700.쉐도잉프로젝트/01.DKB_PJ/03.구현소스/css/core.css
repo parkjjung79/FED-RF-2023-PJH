@@ -128,15 +128,15 @@ body{
 /* 클래스명 scbar */
 .scbar::-webkit-scrollbar{
     /* 전체 스크롤바 크기변경 */
-    width: 7px;
+    width: 5px;
 }
 .scbar::-webkit-scrollbar-thumb{
     /* 스크롤바 */
-    background-color: #222222;
+    background-color: #505050;
     border-radius: 5px;
 }
 .scbar::-webkit-scrollbar-track{
     /* 스크롤바 트랙 */
-    background-color: #ddd;
-    border-radius: 5px;
+    background-color: red;
+    border-radius: 3px;
 }

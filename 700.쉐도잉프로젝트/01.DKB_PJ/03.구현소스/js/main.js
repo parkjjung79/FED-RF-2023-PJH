@@ -18,7 +18,8 @@ function loadFn(){
     // 이벤트 객체의 이벤트 버블링 막아주는 메서드임!
     
     // 대상: .desc-box
-    let desc_box = document.querySelectorAll('.dexs-box');
+    let desc_box = document.querySelectorAll('.desc-box');
+    console.log(desc_box);
 
     // 모든 캐릭터 설명박스는 이벤트 버블링 막기!
     // -> 여기서 마우스휠 됨!!!
