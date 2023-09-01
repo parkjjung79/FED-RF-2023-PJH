@@ -30,7 +30,7 @@ body{
  */
 
 .wrap{
-    /* 1. 화면고정필수(fixed) --- 중요!@ */
+    /* 1. 화면고정필수(fixed) --- 중요! */
     position: fixed;
     /* 2. 화면과 같은 크기 설정 */
     width: 100vw;
@@ -92,14 +92,14 @@ body{
 
 /* 또 하나의 큐브 */
 .cube2{
-    top: calc(50vh - var(--box-height)/2);
+    top: calc(150vh - var(--box-height)/2);
 }
 
 
 /* 큐브 각면 공통 */
 .cube span{
     position: absolute;
-    /* 앱솔루투는 자동block! */
+    /* 앱솔루투는 자동 block! */
     width: 100%;
     height: 100%;
 
