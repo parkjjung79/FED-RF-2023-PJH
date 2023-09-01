@@ -75,7 +75,8 @@ body{
     background: url(../images/seoulCity.jpg) no-repeat center/cover;
     
     /* 화면방향 : z축 */
-    transform: translateZ(calc(var(--cube-size)/2));
+    transform:
+    translateZ(calc(var(--cube-size)/2));
 }
 
 /* 2. 오른쪽면 */
@@ -149,7 +150,7 @@ body{
     to{
         transform:
         rotateX(370deg) rotateY(-330deg);
-        transform: rotate3d(370deg,-330deg);
+        
         /* transform:
         rotateX(370deg) rotateY(390deg) rotateZ(360deg); */
 
