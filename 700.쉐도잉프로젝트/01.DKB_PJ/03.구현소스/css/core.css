@@ -107,7 +107,7 @@ body{
     clear: both;
 }
 
-/* IR(Images Replaycement)
+/* IR(Images Replacement)
 - 배경이미지 설명 숨기기 클래스 */
 .ir{
     display: block;

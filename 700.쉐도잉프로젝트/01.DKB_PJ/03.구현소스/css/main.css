@@ -58,8 +58,16 @@ body > div > * {
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 95%;
+    /* 트랜지션 */
+    transition: height .4s ease-in-out;
+}
+/* ************************************************** */
+/* 개별상위 박스 오버시 컨텐트박스 설명보이기 */
+.cat-box article:hover .cat-content{
     height: 200%;
 }
+
 .cat-content .part{
     flex: 1;
     /* 등분할 */
@@ -85,14 +93,15 @@ body > div > * {
     display: none;
 }
 
-/* 개별박스 오버시 흐린글자 숨기기 */
+/* 개별박스에 오버시 진한글자 보이기 */
 .cat-box article:hover 
 .img-box figcaption img:last-child{
     display: inline;
 }
-/* 개별박스 오버시 진한글자 숨기기 */
-.cat-box article:hover
-.img-box figcaption img:last-child{
+
+/* 개별박스 오버시 흐린글자 숨기기 */
+.cat-box article:hover 
+.img-box figcaption img:first-child{
     display: none;
 }
 
@@ -102,9 +111,10 @@ body > div > * {
     /* 스크롤바 생성 */
     overflow: auto;
     background: url(../images/pc/eachBG.jpg) no-repeat bottom/cover;
+    border-radius: 10px 5px 5px 10px;
 }
 /* 캐릭터 타이틀*/
-.desc-box-h3{
+.desc-box h3{
     font-family: 'Gugi';
     font-size: min(2.4rem,1.7vw);
     font-weight: normal;
