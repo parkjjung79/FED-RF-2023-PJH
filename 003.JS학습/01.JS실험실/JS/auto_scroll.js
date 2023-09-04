@@ -124,9 +124,13 @@ function wheelFn(e){ // e -> 이벤트 전달변수(자동)
 window.addEventListener('touchstart', touchStart);
 window.addEventListener('touchend', touchEnd);
 
+// 2. 모바일 이벤트 함수 만들기
+
+// 터치 위치값 변수
+let pos_start=0, pos_end=0;
+
 
 // 2-1. 터치시작 이벤트 호출 함수! ///////////////////////////////
-// 2. 모바일 이벤트 함수만들기
 function touchStart(e){ //e - 이벤트 전달변수
     // 모바일 이벤트 화면 위치값 구하기
     // 모바일 오리저널 이벤트 객체 - originalEvent(제이쿼리에서만 씀)
@@ -136,15 +140,13 @@ function touchStart(e){ //e - 이벤트 전달변수
     // 스크린 위치값 구하기
     // 제이쿼리는 originalEvent를 사용해야 나옴!
     // let scY = e.originalEvent.touches[0].screenY
-    pos_start = e.touches[0].screenY
+    pos_start = e.touches[0].screenY;
 
     // 함수호출확인
     console.log('터치시작!',pos_start); 
 
 } //////////// mobileFn함수 //////////////////////////////
 
-// 터치 위치값 변수
-let pos_start=0, pos_end=0;
 
 
 // 2-2. 터치끝 이벤트 호출 함수! ///////////////////////////////
@@ -164,24 +166,38 @@ function touchEnd(e){ //e - 이벤트 전달변수
     // 원리: 시작위치 - 끝위치
     // 음수면 윗방향이동 양수면 아랫방향이동
     let result = pos_start - pos_end;
+    
+    // 함수호출확인
+    console.log('터치끝!',pos_end,'결과:',result); 
 
     //return값이 차가 0이면 함수 나감!
     if(result=0) return;
 
     // 이벤트 처리함수 호출
-    // 음수명 1 양수명 0을 넘겨준다
-    movePage(result<0?1:0);
-    
-
-    // 함수호출확인
-    console.log('터치끝!',pos_end,'결과:',result); 
+    // 양수면 1, 음수면 0을 넘겨준다
+    movePage(result>0?1:0);
 
 } //////////// mobileFn함수 //////////////////////////////
 
 
 ///// 2-3. 이벤트 처리함수 : 화면이동 /////////////////////
-function movePage(dir){
+function movePage(dir){ // dir은 방향값( 1 - 아랫쪽, 0 - 윗쪽 )
     // 함수호출확인
     console.log('이동방향은?',dir);
+
+    // 1. 페이지번호 변경 반영하기 ////////////////////////
+    // 1은(true) 아랫방향, 0은 윗방향
+    // 1값은 true, 0값은 false로 처리됨!
+    if(dir) pg_num++;
+    else pg_num--;
+
+    // 2. 페이지 번호 한계수체크(양끝페이지 고정!)
+    if(pg_num<0) pg_num=0;
+    if(pg_num>total_pg) pg_num = total_pg-1; 
+    
+    // 3. 페이지 이동하기 //////////
+    window.scrollTo(0,window.innerHeight*pg_num);
+    
+
 
 } ////////////// movePage함수 ///////////////////////////
