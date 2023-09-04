@@ -35,7 +35,7 @@ body{
 }
 /* 공사중 */
 body *{
-    outline: 2px dashed yellow;
+    /* outline: 2px dashed yellow; */
 }
 
 /*********** 공통 클래스 ***********/
@@ -49,25 +49,50 @@ body *{
     text-align: center;
     font-size: 4rem;
 }
+/* 첫페이지 타이틀 */
+.t1{
+    font-family: 'Monoton', cursive;
+    font-weight: normal;
+    font-size: 5vw;
+    transform: translateY(5vh);
+}
+
+/* 하위 span */
+.t1 span{
+    transform: translateY(200%) scale(0);
+    display: inline-block;
+    transition: .4s ease-in;
+}
+
+
 /********************* 개별요소 디자인 *********************/
 
 .avengers-box{
     position: absolute;
     /* 부모는? .page */
     top: calc(50% - 400px/2);
-    left: calc(50% - 400px/2);
+    left: calc(50% - 300px/2);
     /* 부모박스 정중앙 */
     width: 300px;
     height: 400px;
 
     border-radius: 50%;
     box-shadow:
-    /* 내부글로우 */
-    inset 0 0 50px 8px lightgreen,
     /* 바깥글로우 */
-    0 0 50px 10px cyan;
+    0 0 50px 10px cyan,
+    /* 내부글로우 */
+    inset 0 0 50px 8px lightgreen;
 
     background: url(../ab_img/ab0.jpg) no-repeat center/cover;
+
+    /* 트랜스폼 처음에 안보임 */
+    transform: scale(0);
+    /* 트랜지션 */
+    transition: 2s ease-in-out;
+}
+/* 클래스 on을 주면 등장! */
+.avengers-box.on{
+    transform: scale(1);
 }
 
 /* 캐릭터 공통 */
@@ -79,7 +104,19 @@ body *{
     
     width: 150px;
     height: 150px;
+
+    /* 처음에 모두 안보이게 */
+    opacity: 0;
+
+    /* 트랜지션 */
+    transition: 1s ease-in-out 2s;
 }
+
+/* 부모박스 .on 적용시 동시에 보이게 함! */
+.avengers-box.on .hero{
+    opacity: 1;
+}
+
 
 /* 어벤저스 이미지 */
 .hero img{
@@ -108,13 +145,14 @@ body *{
     right: 110%;
     width: 320px;
     font-size: 1.4rem;
-    padding: 1.6rem;
     line-height: 1.5;
     background-color: rgb(255 255 255 / 33%);
     border-radius: 15px;
     text-shadow: 1px 1px 1px #000;
+
     /* transform: translateY(-50%); */
     transform: translateY(25%);
+
     /* 숨기기 설정 */
     height: 0;
     overflow: hidden;
@@ -131,7 +169,6 @@ body *{
 /* 패딩과 보더는 하위박스에 주고 완전히 숨기기 */
 .txt>div{
     padding: 2rem;
-
 }
 
 /* 설명박스 위치 오른쪽 클래스 */
@@ -148,24 +185,24 @@ body *{
 }
 
 /* .hero 순서별 위치값셋팅 */
-.hero:nth-child(1){
+.avengers-box.on .hero:nth-child(1){
     /* 개별위치이동값 */
-    transform: translate(-170%,-130%);
+    transform: translate(-170%,-130%) rotateY('720deg');
 }
-.hero:nth-child(2){
+.avengers-box.on .hero:nth-child(2){
     /* 개별위치이동값 */
-    transform: translate(-170%, 130%);
+    transform: translate(-170%, 130%) rotateY('720deg');
 }
-.hero:nth-child(3){
+.avengers-box.on .hero:nth-child(3){
     /* 개별위치이동값 */
-    transform: translate(0%,220%);
+    transform: translate(0%,220%) rotateY('720deg');
 }
-.hero:nth-child(4){
+.avengers-box.on .hero:nth-child(4){
     /* 개별위치이동값 */
-    transform: translate(170%,110%);
+    transform: translate(170%,110%) rotateY('720deg');
 }
-.hero:nth-child(5){
+.avengers-box.on .hero:nth-child(5){
     /* 개별위치이동값 */
-    transform: translate(170%,-110%);
+    transform: translate(170%,-110%) rotateY('720deg');
 }
 
