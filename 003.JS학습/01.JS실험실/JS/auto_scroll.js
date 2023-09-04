@@ -99,3 +99,89 @@ function wheelFn(e){ // e -> 이벤트 전달변수(자동)
     window.scrollTo(0,window.innerHeight*pg_num);
 
 }/////////////// wheelFn 함수 /////////////////
+
+
+/********************************************************** 
+    [모바일 이벤트처리]
+    
+    [ 모바일 터치 스크린에서 사용하는 이벤트 종류 ]
+    1. touchstart - 손가락이 화면에 닿을때 발생
+    2. touchend - 손가락이 화면에서 떨어질때 발생
+    3. touchmove - 손가락이 화면에 닿은채로 움직일때 발생
+    
+    [ 화면터치 이벤트관련 위치값 종류 ]
+    1. screenX, screenY :
+        디바이스 화면을 기준한 x,y 좌표
+    2. clientX, clientY : 
+        브라우저 화면을 기준한 x,y 좌표(스크롤미포함)
+    3. pageX, pageY :
+        스크롤을 포함한 브라우저 화면을 기준한 x,y 좌표
+
+**********************************************************/
+
+// 1. 모바일 이벤트 등록하기
+// 대상: window
+window.addEventListener('touchstart', touchStart);
+window.addEventListener('touchend', touchEnd);
+
+
+// 2-1. 터치시작 이벤트 호출 함수! ///////////////////////////////
+// 2. 모바일 이벤트 함수만들기
+function touchStart(e){ //e - 이벤트 전달변수
+    // 모바일 이벤트 화면 위치값 구하기
+    // 모바일 오리저널 이벤트 객체 - originalEvent(제이쿼리에서만 씀)
+    // 하위 터치 이벤트 컬렉션 - touches[0]
+    // 변경된 터치이벤트를 담는 컬렉션 - changedTouches[0]
+
+    // 스크린 위치값 구하기
+    // 제이쿼리는 originalEvent를 사용해야 나옴!
+    // let scY = e.originalEvent.touches[0].screenY
+    pos_start = e.touches[0].screenY
+
+    // 함수호출확인
+    console.log('터치시작!',pos_start); 
+
+} //////////// mobileFn함수 //////////////////////////////
+
+// 터치 위치값 변수
+let pos_start=0, pos_end=0;
+
+
+// 2-2. 터치끝 이벤트 호출 함수! ///////////////////////////////
+function touchEnd(e){ //e - 이벤트 전달변수
+    // 모바일 이벤트 화면 위치값 구하기
+    // 모바일 오리저널 이벤트 객체 - originalEvent(제이쿼리에서만 씀)
+    // 하위 터치 이벤트 컬렉션 - touches[0]
+    // 변경된 터치이벤트를 담는 컬렉션 - changedTouches[0]
+
+    // 스크린 위치값 구하기
+    // 제이쿼리는 originalEvent를 사용해야 나옴!
+    // let scY = e.originalEvent.touches[0].screenY;
+    // 터치가 끝날때는 changedTouches[0]를 사용!
+    pos_end = e.changedTouches[0].screenY;
+
+    // 2. 터치방향 알아내기 /////////
+    // 원리: 시작위치 - 끝위치
+    // 음수면 윗방향이동 양수면 아랫방향이동
+    let result = pos_start - pos_end;
+
+    //return값이 차가 0이면 함수 나감!
+    if(result=0) return;
+
+    // 이벤트 처리함수 호출
+    // 음수명 1 양수명 0을 넘겨준다
+    movePage(result<0?1:0);
+    
+
+    // 함수호출확인
+    console.log('터치끝!',pos_end,'결과:',result); 
+
+} //////////// mobileFn함수 //////////////////////////////
+
+
+///// 2-3. 이벤트 처리함수 : 화면이동 /////////////////////
+function movePage(dir){
+    // 함수호출확인
+    console.log('이동방향은?',dir);
+
+} ////////////// movePage함수 ///////////////////////////
