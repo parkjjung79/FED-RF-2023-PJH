@@ -177,7 +177,7 @@ function touchEnd(e){ //e - 이벤트 전달변수
     console.log('터치끝!',pos_end,'결과:',result); 
 
     //return값이 차가 0이면 함수 나감!
-    if(result=0) return;
+    if(result==0) return;
 
     // 이벤트 처리함수 호출
     // 양수면 1, 음수면 0을 넘겨준다
@@ -199,7 +199,7 @@ function movePage(dir){ // dir은 방향값( 1 - 아랫쪽, 0 - 윗쪽 )
 
     // 2. 페이지 번호 한계수체크(양끝페이지 고정!)
     if(pg_num<0) pg_num=0;
-    if(pg_num>total_pg) pg_num = total_pg-1; 
+    if(pg_num==total_pg) pg_num = total_pg-1; 
     
     // 3. 페이지 이동하기 //////////
     // offsetTop은 선택요소의 top 위치값 리턴함!
