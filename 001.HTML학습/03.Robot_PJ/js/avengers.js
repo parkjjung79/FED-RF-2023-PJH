@@ -1,5 +1,9 @@
 // 어벤저스 JS - aevengers.js
 
+
+// 
+
+
 // 초기 데이터 셋팅하기
 // 데이터 : 어벤저스 데이터 - data.js > character
 
@@ -88,9 +92,13 @@ new_span.forEach((ele,idx)=>{
 
 // 어벤저스 박스 나올때까지(5초) 기다린 후
 // span의 transform 변경하기
+// + .hero 오버시 설정 적용되도록 어벤저스 박스에
+// 클래스 active 넣기!
 setTimeout(()=> {
-    for(let x of new_span)
-    x.style.transform = 'translateY(0) scale(1)';
+    // for(let x of new_span)
+    // x.style.transform = 'translateY(0) scale(1)';
+    mytit.classList.add('on');
+    avengers.classList.add('active');
 },5000);
 
 
