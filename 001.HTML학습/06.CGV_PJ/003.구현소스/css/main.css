@@ -8,7 +8,7 @@
 
 /* 공사중 표시 */
 body * {
-    outline: 1px dashed ghostwhite;
+    /* outline: 1px dashed ghostwhite; */
 }
 
 /* 전체배경색 */
@@ -47,17 +47,21 @@ body{
 .main{
     position: relative;
     /* 부모자격 */
-
-    height: 788px;
-    background: url(../images/bg.jpg) no-repeat center;
+    /* height: 788px; */
+    /* 비율박스는 높이값을 주지 않는다!!!! - 비율이 유지되어야 하니까! */
+    aspect-ratio: 1200/788;
+    background: url(../images/bg.jpg) no-repeat center 0/100%;
 }
 /* 2-1. 스크린 */
 .screen{
     position: absolute;
-    top: 137px;
-    left: 257px;
-    width: 698px;
-    height: 395px;
+
+    top: 17.2%;
+    left: 21.4%;
+    width: 58.4%;
+    height: 50.7%;
+     /* 비율박스 부모기준 크기,위치값% 설정! */
+
     background-color: #000;
 }
 /* 아이프레임 */
@@ -70,7 +74,10 @@ body{
 /* 2-2. 포스터메뉴 */
 .poster-menu{
     position: absolute;
-    width: 700px;
+
+    width: 60%;
+    /* 비율박스 부모기준 가로크기 % 설정! */
+
     left: 50%;
     bottom: 5%;
     transform: translateX(-50%);
