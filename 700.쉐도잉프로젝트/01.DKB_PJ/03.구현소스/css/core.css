@@ -45,7 +45,11 @@ body{
     display: block;
     clear: both;
 }
-
+/* 그룹파트박스 */
+.group-part{
+    /* 상하패딩 넣기 */
+    padding: 60px 0;
+}
 /* 파트박스 */
 .partbox {
     /* 옆으로 흐르게 */
@@ -99,6 +103,14 @@ body{
     width: 100%;
 }
 /* 참고: https://www.w3schools.com/css/css_rwd_grid.asp */
+
+/* 공통 서브타이틀 */
+.stit{
+    padding-bottom: 32px;
+    font-size: 3.8rem;
+
+}
+
 
 /* 클리어 가상요소 클래스*/
 .clb::after{
