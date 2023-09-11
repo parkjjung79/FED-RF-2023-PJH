@@ -76,15 +76,16 @@ function loadFn() {
   // data-seq로 순번 속성을 넣을 것임!
   slide
     .querySelectorAll("li")
-    .forEach((ele, idx) => ele.setAttribute("data-seq", idx)); // setAttribute(속성명,속성값) -> 속성셋팅 JS내장메서드
+    .forEach((ele, idx) => ele.setAttribute("data-seq", idx));
+    // setAttribute(속성명,속성값) -> 속성셋팅 JS내장메서드
 
   // 2. 이벤트 설정하기 : 버튼요소들 -> forEach()
-  abtn.forEach((ele) => addEvt(ele, "click", goSlide));
+  abtn.forEach(ele=>addEvt(ele, "click", goSlide));
 
   // 3. 함수만들기
   function goSlide() {
     //광클금지
-    if (clickSts) return; // 나가!
+    if(clickSts) return; // 나가!
     clickSts = 1; // 잠금!
     setTimeout(() => (clickSts = 0), TIME_SLIDE); // 해제! // 횟수제한할때도 사용!
 
@@ -122,6 +123,7 @@ function loadFn() {
       // 같은 left 값을 동시에 변경하면 효과가 없음!
       // 비동기적으로 처리해야함!
       // -> setTimeout으로 싸주기!
+      // 시간은 0이어도 비동기 처리므로 효과있음!
 
       setTimeout(() => {
         // 4. left값 0으로 들어오기!
@@ -135,13 +137,17 @@ function loadFn() {
     // 4. 블릿순번 변경 함수 호출
     chgIndic(isRight); // 방향값을 보냄!
 
+    // 5. 자동넘김 멈춤함수 호출하기
+    clearAuto();
+
    
   } /////// goSlide함수 //////
 
 
   // 블릿순번 변경함수 /////////////////////////
-  function chgIndic(isRight){ // isRight(0-왼쪽, 1- 오른쪽)}
-    // 4. 슬라이드 순번과 일치하는 블릿에 클래스 넣기
+  function chgIndic(isRight){ // isRight(0-왼쪽, 1- 오른쪽)
+
+    // 1. 슬라이드 순번과 일치하는 블릿에 클래스 넣기
     // 대상: .indic li -> indic변수
     // 맨앞 슬라이드 li의 'data-seq' 값 읽어오기
     // isRight 값이 true이면 오른쪽 버튼이고 순번은[1]
@@ -152,7 +158,7 @@ function loadFn() {
 
     console.log("현재슬라이드 순번:", nowSeq);
 
-    // 해당순번 블릿li에 클래스 on넣기
+    // 2. 해당순번 블릿li에 클래스 on넣기
     // 블릿전체순회시 해당순번은 on넣고 나머지는 on빼기
     indic.forEach((ele, idx) => {
         if (idx == nowSeq) ele.classList.add("on");
@@ -194,25 +200,52 @@ function loadFn() {
     ******************************************/
   // 인터발 변수
   let autoI;
+  // 인터발타이밍함수를 변수에 할당수
+  // clearInterval(할당변수) 해야 멈출 수 있다!
   
+  // 타임아웃변수
+  let autoT;
+  // 타임아웃함수도 마찬가지임!
+  // clearTimeout(할당변수) 해야 실행 쓰나미를 막을 수 있다!
+
+
   // 인터발 호출 함수 ///////////////
-  function slideAuto(){}
+  function slideAuto(){
     autoI = setInterval(() => {
-    // console.log('실행!');
-    // 오른쪽버튼 클릭이벤트 강제발생!
-    // 선택요소.click()
-    abtn[1].click();
-  }, 3000);
+        // 오른쪽이동 슬라이드 함수호출
+        rightSlide();
+        //Q 블릿변경함수호출(오른쪽은 1)
+        chgIndic(1);
+
+        // console.log('실행!');
+        // 오른쪽버튼 클릭이벤트 강제발생!
+        // 선택요소.click()
+        // abtn[1].click();
+    }, 3000);
 
     } ///////// slideAuto 함수 //////////////
+
+    // 인터발함수 최초호출
+    slideAuto();
 
   // 버튼을 클릭할 경우를 구분하여 자동넘김을 멈춰준다!
    function clearAuto() {
     // 자동넘김 지우기
     // clearInterval(인터발할당변수)
     clearInterval(autoI);
-   }// clearAuto 함수 ///////////
+    console.log('멈춤!!!');
 
 
-} //////////////// loadFn 함수 ///////////////
+        // 1. 인터발 지우기
+        clearInterval(autoI);
+        // 2. 타임아웃 지우기(재실행호출 쓰나미 방지)
+        clearTimeout(autoT);
+        // 3. 일정시간 후 다시 인터발호출셋팅하기!!
+        autoT = setTimeout(slideAuto,5000);
+        // 결과적으로 5초후 인터발재실행은 하나만 남는다!
+
+   }///////// clearAuto 함수 ///////////
+
+
+}//////////////// loadFn 함수 ///////////////
 /////////////////////////////////////////////
