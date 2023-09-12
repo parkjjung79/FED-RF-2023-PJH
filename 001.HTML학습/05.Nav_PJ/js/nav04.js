@@ -48,7 +48,9 @@ function showSub() {
     console.log("처리해봐!", hv);
 
     // 3) .smenu(isSub)의 높이값 적용하기
-    isSub.style.height = hv + "px";
+    // 토글기능구현 : isSub의 높이가 0이면 hv, 아니면 0
+    // isSub.clientHeight==0 ? hv : 0
+    isSub.style.height = (isSub.clientHeight==0?hv:0) + "px";
 
     // 4) 클릭된 li 이외의 li서브는 닫기
     // 방법 : 전체 li를 순회하며 현재 li만 빼고 처리
