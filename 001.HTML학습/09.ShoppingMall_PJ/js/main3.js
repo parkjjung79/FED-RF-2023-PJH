@@ -44,7 +44,7 @@ function loadFn() {
   // 1-1.이벤트 대상: .abtn
   const abtn = qsa(".abtn");
   // 1-2.변경대상: #slide li
-  const slide = qs("#slide li");
+  const slide = qsa("#slide li");
   // 슬라이드 개수
   const CNT_SLIDE = slide.length;
   // 1-3. 블릿박스 대상:
@@ -66,7 +66,7 @@ function loadFn() {
     // slide[snum].classList.remove('on');
 
     // 1. 버튼구분하기
-    let isR = this.classList.contains('ab2')
+    let isR = this.classList.contains('ab2');
     console.log('오른쪽?',isR);
 
     // 2. 버튼별 분기하기
