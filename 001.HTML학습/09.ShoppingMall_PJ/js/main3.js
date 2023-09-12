@@ -100,7 +100,7 @@ function loadFn() {
          // 현재li가 아니면 클래스 "on"지우기!
          if(!ele.isSameNode(slide[snum]))
          ele.classList.remove("on");
-    }) /////////// forEach ///////////
+    }); /////////// forEach ///////////
 
 
   }////////// goSlide함수 ////////////
