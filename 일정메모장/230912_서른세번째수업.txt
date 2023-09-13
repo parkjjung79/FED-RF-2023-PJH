@@ -1,7 +1,7 @@
 
 [ 오늘의 일정 ]
 
-9월12일(월)
+9월12일(화)
 ------------------------------
 
 1. Nav PJ : 네비게이션 유형별 구현
@@ -21,7 +21,3 @@ _________
 https://www.awwwards.com/sites/motion-sickness-2
 3. 메뉴 변경
 
-.button-class{
-  border: 0;
-  background-color: transparent;
-}
