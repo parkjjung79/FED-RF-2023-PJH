@@ -13,6 +13,9 @@ const domFn = {
 
   // 바운딩 위치값 함수
   getBCR: (ele) => ele.getBoundingClientRect().top,
+
+  // 옵셋탑값 반환함수
+  getOT: (ele) => ele.offsetTop,
 }; /////// domFn 객체 /////////////
 
 // 부드러운 스크롤 호출
@@ -52,20 +55,31 @@ startSS();
      ************************************************/
 
 // 1. 대상선정:
-// 스크롤 등장 대상: .scact
-const scAct = domFn.qsa(".scact");
+// 스크롤 등장 대상: .hide-el
+const scAct = domFn.qsa(".hide-el");
 console.log("대상:", scAct);
 
 // 2. 전체 window에 스크롤 이벤트 셋팅하기
-// 스크롤 등장액션 이벤트 설정
+// 2-1. 스크롤 등장액션 이벤트 설정
 domFn.addEvt(window, "scroll", showIt);
-// 스크롤시 떨어지는 여자 이벤트 설정
+// 2-2. 스크롤시 떨어지는 여자 이벤트 설정
 domFn.addEvt(window, "scroll", moveWoman);
+// 2-3. 스크롤시 타이틀 이동애니 이벤트 설정
+domFn.addEvt(window,'scroll',moveTit);
 
 // 요소 위치값
 // let pos1 = scAct[0].offsetTop;
 // let pos2 = scAct[1].offsetTop;
 // let pos3 = scAct[2].offsetTop;
+
+// 각요소 옵셋top값 구하기
+const posTop = [];
+
+scAct.forEach((ele,idx)=>{
+    posTop[idx] = domFn.getOT(ele)
+}); ///// forEach /////////////
+
+console.log('각위치배열:',posTop);
 
 // 3. 스크롤 등장 기준설정 : 화면의 3/4
 const CRITERIA = (window.innerHeight / 4) * 3;
@@ -167,12 +181,56 @@ function moveWoman(){
     // 이미지이동값 = 윈도우높이 * 스크롤이동값 / 스크롤한계값
     let wTop = winH * scTop / scLimit;
 
-    console.log('난떨녀!',wTop);
+    // console.log('난떨녀!',wTop);
 
     // 3. 떨어지는 여자에 적용하기
     woman.style.top = wTop + 'px';
 
     // 4. 맨 위일때 윗쪽으로 숨기기
     if(scTop == 0) woman.style.top = '-20%';
-        
+
 } /////////////// moveWoman ///////////////////
+
+//////////////////////////////////////////
+////////// 타이틀 이동 애니 함수 ///////////
+// 대상 : .tit
+const tit = domFn.qs('.tit');
+
+
+function moveTit(){
+    // 스크롤 위치값
+    let scTop = window.scrollY;
+    // console.log('타이틀이야!,scTop);
+
+
+    // 1. 맨위 위치로 이동
+    if(scTop < posTop[0]-winH/2){
+        tit.style.top = '0';
+        tit.style.left = '50%';
+        tit.style.transition = '1s';
+    }
+
+
+    // 2. 첫번째 포스터 옆으로 이동
+    if(scTop > posTop[0]-winH/2 && scTop < posTop[0]){
+        tit.style.top = '50%';
+        tit.style.left = '25%';
+        tit.style.transition = '2s';
+    }
+
+    // 3. 두번째 포스터 옆으로 이동
+    if( scTop > posTop[1]-winH/2 && scTop < posTop[1]){
+        tit.style.top = '70%';
+        tit.style.left = '65%';
+        tit.style.transition = '1s';
+    }
+
+    // 4. 세번째 포스터 옆으로 이동
+    if(scTop > posTop[2]-winH/2 && scTop < posTop[2])
+        {
+        tit.style.top = '50%';
+        tit.style.left = '25%';
+        tit.style.transition = '.5s';
+    }
+
+} //////////// moveTit 함수 //////////////
