@@ -32,18 +32,19 @@ let seqNum = 0;
 
 for(let x of myText){
   // console.log(x);
-  if (x == " ")
-    hcode += "&nbsp";
-  else
-    hcode +=
-    `<span style="transition-delay: ${seqNum*0.1}s;">${x}</span>`;
+  if(x== ' ')
+  hcode += '&nbsp;&nbsp;';
+else
+  hcode += 
+  `<span style="transition-delay: ${seqNum*0.04}s;">${x}</span>`;
 
   // 순차적인 지연시간 생성을 위한 숫자변수 증가
   seqNum++;
+
   // &nbsp;는 공백문자로 no break space란 말 줄바꿈없는 공백
 } /////// for of /////////
 
-console.log("코드:", hcode);
+console.log('코드:', hcode);
 
 // 5. 스테이지박스에 코드 출력하기
 stage.innerHTML = hcode;

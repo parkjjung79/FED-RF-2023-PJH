@@ -31,21 +31,19 @@ body {
 /* 글자등장 스타일 1 */
 .style1 span{
     /* 현재위치로부터 이동 */
-    transform: translate(0, 0);
+    transform: translate(500%, -300%);
     /* 투명도 0 */
     opacity: 0;
     /* 트랜지션: 속시이지 */
-    transition: 0.1s ease-in;
+    transition: 0.05s ease-in;
     
 }
 /* 등장클래스 .on */
 .style1.on span{
     /* 현재위치로부터 이동 */
-    transform: translate(500%, -300%);
+    transform: translate(0,0);
     /* 투명도 0 */
     opacity: 1;
-    /* 트랜지션: 속시이지 */
-    transition: 0.3s ease-in;
 }
 
 
@@ -62,22 +60,19 @@ body {
 /* 등장클래스 .on */
 .style2.on span{
     /* 현재위치로부터 이동 */
-    transform: translate(500%, -300%);
+    transform: translate(0,0);
     /* 투명도 0 */
     opacity: 1;
-    /* 트랜지션: 속시이지 */
-    transition: 0.1s ease-in;
 }
-
 
 /* 글자등장 스타일 3 */
 .style3{
     /* 원근설정 */
     perspective: 100vh;
 }
-.style3.on span{
+.style3 span{
     /* 현재위치로부터 이동 */
-    transform: translate(0, 50%);
+    transform: rotateX(90deg);
     /* 투명도 0 */
     opacity: 0;
     /* 트랜지션: 속시이지 */
@@ -85,11 +80,9 @@ body {
     
 }
 /* 등장클래스 .on */
-.style3 span{
+.style3.on span{
     /* 현재위치로부터 이동 */
     transform: rotateX(0deg);
     /* 투명도 0 */
-    opacity: 0;
-    /* 트랜지션: 속시이지 */
-    transition: 0.3s ease-in;
+    opacity: 1;
 }
