@@ -90,7 +90,7 @@ body {
     left: 0;
     display: flex;
     width: calc(100vw + 3000px);
-    /* 가로크기는 타겟박스가 이동하는크기인
+    /* 가로크기는 타겟박스가 이동하는 크기인
     3000px에 맞도록 100vw에 더하여 잡아준다!
     이유는 JS의 getBoundingClientRect().top
     값의 수치와 정확히 일치 시키기 위함! */
