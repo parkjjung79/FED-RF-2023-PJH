@@ -1,0 +1,119 @@
+@charset "utf-8";
+/* 네비 유형6 시코르 상단공통 css - common.css */
+
+body{
+    background-image: linear-gradient(to bottom,lightpink,lightblue);
+    height: 100vh;
+}
+
+/* 속박스 */
+.ibx{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    outline: 2px dashed yellow;
+}
+
+/* 1. 상단영역 */
+#top-area{
+    background-color: #000;
+}
+
+/* 상단속박스 */
+.top-area{
+    /* position: relative; */
+    /* 부모자격 - .smenu */
+}
+
+/* 탑메뉴박스 */
+.top-menu{
+    padding-top: 28px;
+}
+
+/* 로고박스 - 가운데 오게! */
+.logo-box{
+    text-align: center;
+}
+
+/****************** GNB박스 ******************/
+.gnb{
+    display: flex;
+    gap:0 20px;
+    line-height: 60px;
+}
+
+
+
+/* gnb공통 a */
+.gnb>ul>li:first-child>a{
+    color: #fff;
+}
+
+/* 서브메뉴 박스 : 100% 차지 서브영역 */
+.smenu{
+    position: absolute;
+    left: 0; /* 끝에서부터 나오게 */
+    width: 100%; /* 포지션 앱솔이라 100% */
+    height: 0;
+    overflow: hidden; /* 숨김박스 */
+    display: none;
+    /* outline: 2px dashed red; */
+    background-color: #fff;
+
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+
+
+/* -> 동적 높이값은 js로 함!(+이벤트) 
+.gnb>ul>li:hover .smenu{
+    height: 300px;
+} */
+
+.gnb>ul>li:hover .smenu{
+    display: block;
+}
+/* 임시 첫번째 */
+/* .gnb>ul:first-child .smenu{
+    display: block;
+} */
+
+/* 서브 첫타이틀 */
+.stit{
+    font-size: 30px;
+}
+/* 서브 내부 랩핑박스 : 최대 1200px의 중앙 박스*/
+.smbx{
+    display: flex;
+    gap: 0 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* 서브 2차 타이틀 박스 */
+.smbx h2{
+    width: 200px;
+    padding-right: 20px;
+    border-right: 1px solid #f1f1f1;
+}
+
+/* 서브 메뉴 dl랩핑박스 */
+.swrap{
+    display: flex;
+    flex-wrap: wrap;
+    /* 랩핑 플렉스박스 - 꽉차면 아래로 떨어져라!*/
+
+}
+/* 서브 dl */
+.swrap dl{
+    width: 180px;
+}
+/* 2차메뉴 : dt */
+.swrap dt{
+    font-size: 20px;
+}
+
+/* 3차메뉴 : dd */
+.swrap{
+    font-size: 14px;
+    line-height: 2;
+}
