@@ -158,15 +158,21 @@ function chgMenu(){
 // [GNB li를 클릭시 메뉴 변경하기!]
 // -> pg_num을 업데이트 후 chgMenu()함수를 호출한다!
 
-gnbList.forEach((ele,idx)=>{
-    domFn.addEvt(ele,'click',()=>{
-        // 1. 전역 페이지 변수 업데이트하기
-        pg_num = idx; // 메뉴순번으로 업뎃!
-        // 2. 메뉴변경함수 호출
-        chgMenu(); 
-    }); //////// addEvt ////////
+// 메뉴그룹 배열만큼 클릭기능 만들기 ////
+// for of문 사용
+for(let x of menuGrp){ // x - gnbList, indicList 순회!
+    x.forEach((ele,idx)=>{
+        domFn.addEvt(ele,'click',()=>{
+            // 1. 전역 페이지 변수 업데이트하기
+            pg_num = idx; // 메뉴순번으로 업뎃!
+            console.log('페이지번호:',pg_num);
+            // 2. 메뉴변경함수 호출
+            chgMenu(); 
+        }); //////// addEvt ////////
+    
+    }); //////// forEach ////////
 
-}); //////// forEach ////////
+} ////// for of 문 -> 제어문 -> 메서드이다! ////////////
 
 /********************************************************** 
     [모바일 이벤트처리]
