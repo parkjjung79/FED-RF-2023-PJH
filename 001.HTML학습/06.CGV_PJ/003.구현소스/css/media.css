@@ -93,9 +93,15 @@
     font-size: 3.5vw;
   }
 
+  /* 모바일버전에서는 맵버튼 숨기기! */
+  .btn-map{
+    display: none;
+  }
+
   /* 3-3. sns박스 */
   .sns-box {
     margin-left: 0;
   }
+  
 }
 /************* 800px 이하 사이즈 종료 *************/
