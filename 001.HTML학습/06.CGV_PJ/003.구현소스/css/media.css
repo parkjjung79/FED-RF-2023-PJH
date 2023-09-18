@@ -49,6 +49,7 @@
     font-size: 8vw;
   }
   /**************** 2.메인영역 ****************/
+
   .main {
     aspect-ratio: 1/1.3;
     background-position: center -22%;
@@ -83,6 +84,15 @@
   .co-info address {
     text-align: center;
   }
+  /* 영화정보박스 */
+  .mv-info {
+    font-size: 3.2vw;
+  }
+  /* 영화정보박스 제목만 변경 */
+  .mv-info li:first-child {
+    font-size: 3.5vw;
+  }
+
   /* 3-3. sns박스 */
   .sns-box {
     margin-left: 0;
