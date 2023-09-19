@@ -1,7 +1,7 @@
 // 패럴렉스 PJ JS - main.js
 
 // 부드러운 스크롤 불러오기
-import {startSS, setPos} from "./smoothScroll20.js";
+import {startSS,setPos} from "./smoothScroll20.js";
 // DOM함수 불러오기
 import dFn from "./dom.js";
 
@@ -36,6 +36,15 @@ setTimeout(() => {
     setPos(0);
     // 안하면 원래 위치로 스크롤 튐!
 }, 400);
+// 0. 스크롤바 트랙을 잡고 위치이동시 위치값 반영
+dFn.addEvt(window,'mouseup',()=>{
+    setPos(window.scrollY);   
+}); //////// mouseup ///////////
+
+// 0. 키보드 방향키 이동시 위치값 반영
+dFn.addEvt(window,'keyup',()=>setPos(window.scrollY));
+//////// keyup ///////////
+
 
 // 1. 대상선정
 // 1-1. 글자박스
@@ -84,7 +93,7 @@ function moveEl(elPos,ele,setH){
     // [패럴렉스 범위 : 윈도운 높이값 ~ 0]
     // 화면에서 완전히 사라질때 범위는 0보다 작다(약간의 마이너스값)
 
-    if(elPos < winH && elPos > 0){
+    if(elPos < winH && elPos > -200){
         // 1. 위치 이동값 계산
         // 실제이동값 = 정한범위 - (위치값*정한범위 / 전체범위)
         let x = setH - (elPos*setH / winH);
