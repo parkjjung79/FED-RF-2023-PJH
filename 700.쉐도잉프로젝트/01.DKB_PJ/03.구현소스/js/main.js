@@ -1,24 +1,13 @@
 // 도깨비 PJ 메인 JS - main.js
 
-// DOM 함수 객체 //////////////
-const domFn = {
-  // 요소선택함수 ////////
-  qs: (x) => document.querySelector(x),
-  qsEl: (el, x) => el.querySelector(x),
-  qsa: (x) => document.querySelectorAll(x),
-  qsaEl: (el, x) => el.querySelectorAll(x),
+// 모듈불러오기 ///////////////
+// DOM함수 모듈
+import dFn from './dom.js';
+// 부드러운 스크롤 모듈
+import { startSS, setPos } from './smoothScroll23.js';
+// 데이터모듈
+import { gridData,gnbData } from './data_drama.js';
 
-  // 이벤트셋팅함수
-  addEvt: (ele, evt, fn) => ele.addEventListener(evt, fn),
-}; /////// domFn 객체 /////////////
-
-// 로딩구역 호출설정
-window.addEventListener("DOMContentLoaded", loadFn);
-
-//// 로딩구역 함수 /////////////////
-function loadFn() {
-  // 로딩확인
-  console.log("로딩완료!");
 
   // 부드러운 스크롤 적용
   startSS();
@@ -45,7 +34,7 @@ function loadFn() {
    - 배열데이터를 이용하여 HTML 코드 구성!]
  *********************************/
   // 1. 대상선정 : .live-box
-  const liveBox = domFn.qs(".live-box");
+  const liveBox = dFn.qs(".live-box");
   console.log("대상:", liveBox);
 
   // 2. 현장포토 데이터를 기반으로 html코드 만들기
@@ -53,7 +42,7 @@ function loadFn() {
 
   // 반복코드 만들기 ////
   // 현장포토 데이터 - data_drama.js에서 가져옴
-  liveData.forEach((val) => {
+  gridData[0].forEach((val) => {
     // html변수에 계속 넣기
     hcode +=
     `<li>
@@ -71,8 +60,7 @@ function loadFn() {
   // 3. 대상박스에 html코드 넣기
   liveBox.innerHTML = hcode;
 
-} ////////// loadFn함수 //////////////
-//////////////////////////////////////
+
 
 
 // [ gnb 서브메뉴 셋팅하기 ]
@@ -81,13 +69,13 @@ function loadFn() {
 // 1. 대상선정 : .gnb > ul > li
 // 서브메뉴 넣을 li는 하위 a요소의 텍스트가 gnbData 속성명 1차메뉴와 
 // 일치하는 경우 하위메뉴를 넣어준다!
-const gnbList = domFn.qsa('.gnb>ul>li')
+const gnbList = dFn.qsa('.gnb>ul>li')
 console.log('메뉴:',gnbList,'/데이터:',gnbData);
 
 // 3. 대상에 하위메뉴 태그 만들기
 gnbList.forEach(ele=>{
   // 1. 하위 a요소 텍스트 읽기
-  let atxt = domFn.qsEl(ele,'a').innerText;
+  let atxt = dFn.qsEl(ele,'a').innerText;
   
   // 2. gnb 데이터 읽기
   let gData = gnbData[atxt];
@@ -125,8 +113,8 @@ gnbList.forEach(ele=>{
 ****************************************************/
 
 // 1. 대상선정
-const gnb = domFn.qsa('.gnb>ul>li');
-const smenu = domFn.qsa('.smenu');
+const gnb = dFn.qsa('.gnb>ul>li');
+const smenu = dFn.qsa('.smenu');
 console.log('대상:',gnb,smenu);
 
 
@@ -135,9 +123,9 @@ console.log('대상:',gnb,smenu);
 gnb.forEach(ele=>{
   // 서브메뉴가 있을때만 이벤트 설정하기!
   // if문에서 undefined/null 은 false 처리됨!
-  if(domFn.qsEl(ele,'.smenu')){
-    domFn.addEvt(ele,'mouseover',overFn);
-    domFn.addEvt(ele,'mouseout',outFn);
+  if(dFn.qsEl(ele,'.smenu')){
+    dFn.addEvt(ele,'mouseover',overFn);
+    dFn.addEvt(ele,'mouseout',outFn);
   }
 });
 
@@ -145,16 +133,16 @@ gnb.forEach(ele=>{
 function overFn(){
     // console.log('오버',this)
     // 1) 하위 .smenu 높이값 알아오기
-    let hv = domFn.qsEl(this,'.smbx').clientHeight;
+    let hv = dFn.qsEl(this,'.smbx').clientHeight;
     console.log('높이:',hv);
     // 2) 하위 서브메뉴박스만큼 .smenu 높이값 주기
-    domFn.qsEl(this,'.smenu').style.height = hv + 'px';
+    dFn.qsEl(this,'.smenu').style.height = hv + 'px';
     
 } //////////////// overFn 함수 //////////////////
 
 function outFn(){
     // console.log('아웃',this);
     // 서브메뉴 박스 높이값 0만들기!
-    domFn.qsEl(this,'.smenu').style.height = '0px';
+    dFn.qsEl(this,'.smenu').style.height = '0px';
 
 }
