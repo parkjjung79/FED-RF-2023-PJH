@@ -1,12 +1,13 @@
-// Smooth Scroll JS Verson 2023.09
-// 부드러운 스크롤 2020.12 초기버전
+// Smooth Scroll JS Verson 2020.12
 // 부드러운 스크롤 2023.09.19 버전 : 모듈화
 // arranged by Tom Brace Parker
 
 // startSS()함수를 호출하여 사용
 function startSS() {
-    new SmoothScroll(document, 30, 20)
+    new SmoothScroll(document, 30, 22);
 }
+
+
 
 // 전역변수 스크롤 위치값
 let pos;
@@ -24,55 +25,55 @@ function SmoothScroll(target, speed, smooth) {
             document.body.parentNode ||
             document.body) // cross browser support for document scrolling
 
-    var moving = false
-    pos = target.scrollTop
+    var moving = false;
+    pos = target.scrollTop;
     var frame = target === document.body &&
         document.documentElement ?
         document.documentElement :
         target // safari is the new IE
 
     target.addEventListener('mousewheel', scrolled, {
-        passive: false
-    })
+        passive: false,
+    });
     target.addEventListener('DOMMouseScroll', scrolled, {
-        passive: false
-    })
+        passive: false,
+    });
 
     function scrolled(e) {
         e.preventDefault(); // disable default scrolling
 
-        var delta = normalizeWheelDelta(e)
+        var delta = normalizeWheelDelta(e);
 
-        pos += -delta * speed
+        pos += -delta * speed;
         pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
 
-        if (!moving) update()
+        if (!moving) update();
     }
 
     function normalizeWheelDelta(e) {
         if (e.detail) {
             if (e.wheelDelta)
-                return e.wheelDelta / e.detail / 40 * (e.detail > 0 ? 1 : -1) // Opera
+                return e.wheelDelta / e.detail / 40 * (e.detail > 0 ? 1 : -1); // Opera
             else
-                return -e.detail / 3 // Firefox
+                return -e.detail / 3; // Firefox
         } else
-            return e.wheelDelta / 120 // IE,Safari,Chrome
+            return e.wheelDelta / 120; // IE,Safari,Chrome
     }
 
     function update() {
-        moving = true
+        moving = true;
 
-        var delta = (pos - target.scrollTop) / smooth
+        var delta = (pos - target.scrollTop) / smooth;
 
-        target.scrollTop += delta
+        target.scrollTop += delta;
 
         if (Math.abs(delta) > 0.5)
-            requestFrame(update)
+            requestFrame(update);
         else
-            moving = false
+            moving = false;
     }
 
-    var requestFrame = function () { // requestAnimationFrame cross browser
+    var requestFrame = (function () { // requestAnimationFrame cross browser
         return (
             window.requestAnimationFrame ||
             window.webkitRequestAnimationFrame ||
@@ -83,9 +84,9 @@ function SmoothScroll(target, speed, smooth) {
                 window.setTimeout(func, 1000 / 50);
             }
         );
-    }()
+    })();
 }
 
 
-// 내보내기 : 시작함수 + 위치랎변수
+// 내보내기 : 시작함수 + 위치값변경함수
 export {startSS,setPos};
