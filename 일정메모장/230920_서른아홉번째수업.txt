@@ -13,5 +13,16 @@
 _________________________________
 
 
-
+<div id="banner">
+        <section class="banner inbox">
+            <!-- 파트박스 1개 - 메인배너 -->
+            <div class="flex-box">
+                <div class="partbox col-12">
+                    <div class="main_banner">
+                        <img src="../images/main_1200.jpg" alt="영화her">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
