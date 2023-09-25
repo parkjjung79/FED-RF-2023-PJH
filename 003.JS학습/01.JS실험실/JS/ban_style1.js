@@ -3,6 +3,19 @@
 // DOM 모듈함수
 import dFn from "./dom.js";
 
+// 슬라이드 대상요소 : .banbx
+const banbx = dFn.qsa('.banbx');
+console.log('슬라이드 대상:', banbx);
+
+
+// 슬라이드 만큼 모두 호출하기!
+banbx.forEach(ele=>{
+    // 슬라이드 함수 호출하기
+    slideFn(ele);
+    // 실제 DOM요소를 보낸다!
+
+    
+});
 // 슬라이드 함수 호출하기
 slideFn('.banbx');
 
@@ -58,12 +71,12 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
     
   // 1. 대상선정
   // 1-1. 슬라이드 부모요소 : 전달된 선택요소 -> selEl
-    const sldWrap = dFn.qs(selEl);
+  const sldWrap = selEl; // DOM요소를 직접 받음!
   // 1-1.변경대상: 선택요소 하위 .slide
   const slide = dFn.qsEl(sldWrap,'.slide');
   // 1-2.이벤트 대상: 선택슬라이드 하위 .abtn
   const abtn = dFn.qsaEl(sldWrap,'.abtn');
-  // 1-3. 블릿박스 대상:
+  // 1-3. 블릿박스 대상: 선택요소 하위 .indic li
   let indic = dFn.qsEl(sldWrap,'.indic');
 
   // 대상확인
@@ -73,9 +86,10 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
   // 대상: .indic -> indic 변수
   // 슬라이드 개수
   let sldCnt = dFn.qsaEl(slide,'li').length;
+  // for문으로 블릿 li생성(0번만 클래스 on 넣기)
   for(let i=0; i < sldCnt; i++){
-    indic.innerHtml += `
-        <li class="on">
+    indic.innerHTML += `
+        <li ${i==0?'class="on"':''}>
             <img src="images/dot1.png" alt="흰색">
             <img src="images/dot2.png" alt="회색">
         </li>
@@ -100,6 +114,11 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
 
   // 3. 함수만들기
   function goSlide() {
+
+    // a요소 기본이동 막기
+    event.preventDefault();
+
+
     //광클금지
     if(clickSts) return; // 나가!
     clickSts = 1; // 잠금!
@@ -130,7 +149,8 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
       //왼쪽버튼
       // 1. 맨뒤 li 맨앞으로 이동
       // 놈.놈.놈 -> insertBefore(넣을놈,넣을놈전놈)
-      slide.insertBefore(eachOne[eachOne.length - 1], eachOne[0]);
+      slide.insertBefore(
+        eachOne[eachOne.length - 1], eachOne[0]);
       // 2. left값 -330% 만들기 : 들어올 준비 위치!
       slide.style.left = "-330%";
       // 3. 트랜지션 없애기
@@ -248,7 +268,6 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
    function clearAuto() {
     // 자동넘김 지우기
     // clearInterval(인터발할당변수)
-    clearInterval(autoI);
     console.log('멈춤!!!');
 
 
