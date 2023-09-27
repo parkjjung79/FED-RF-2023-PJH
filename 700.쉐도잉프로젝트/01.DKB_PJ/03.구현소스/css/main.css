@@ -144,6 +144,7 @@ body > div > * {
     background-color: #fff;
 }
 .dokebi-menu ul{
+    
     /* 플렉스박스 */
     display: flex;
     padding: 12px 0;
@@ -360,10 +361,19 @@ body > div > * {
     height: 542px;
 }
 /*********************** 최신동영상파트 ***********************/
+.clip-area{
+    position: relative;
+    /* 부모자격 */
+}
 
 .clip-box ul {
+    position: relative;
+    left: 0;
+    /* 이동초기값 */
     display: flex;
     gap: 0 2%;
+    /* 트랜지션 */
+    transition: left .4s ease-in-out;
 }
 
 .clip-box li {
@@ -412,9 +422,26 @@ body > div > * {
 /* 양쪽 버튼 만들기 */
 .btn-box button{
     position: absolute;
-    background-color: #11111191;
+    z-index: 999;
+    top: 43%;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    line-height: 65px;
+    font-size: 30px;
+    font-weight: bold;
     color: #fff;
-    width: 50px;
-    height: 50px;
-    border-radius: 30px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+/* 왼쪽버튼 */
+.btn-box button:first-child{
+    left: -35px;
+    /* 왼쪽버튼 처음에 안보임 */
+    display: none;
+}
+/* 오른쪽버튼 */
+.btn-box button:last-child{
+    right: -35px;
 }
