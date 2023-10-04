@@ -15,19 +15,33 @@ import dFn from '../js/dom.js';
 
 // 0. 데이터 셋팅: x,y축 회전 각도를 배열에 셋팅!
 const iDeg = [ // 제일 중요한 각도셋팅!
-    //상단박스영역
-    [30,-60,"img6.jpg"],
-    [30,-30,"elsa.png"],
-    [30,0,"capma.png"],
-    [30,30,"superman.png"],
-    [30,60,"saturn.png"],
-    //하단박스영역
-    [-30,-60,"Bart_Simpson,png"],
-    [-30,-30,"Lisa_Simpson,png"],
-    [-30,0,"Maggie_Simpson,png"],
-    [-30,30,"Marge_Simpson,png"],
-    [-30,60,"simpson,png"],
+    // 상단영역
+    [30,-60,"imgs_moving/mv1.jpg"],
+    [30,-30,"imgs_moving/mv2.jpg"],
+    [30,0,"imgs_moving/mv3.jpg"],
+    [30,30,"imgs_moving/mv4.jpg"],
+    [30,60,"imgs_moving/mv5.jpg"],
+    // 중간영역
+    [0,-60,"imgs_moving/mv6.jpg"],
+    [0,-30,"imgs_moving/mv7.jpg"],
+    [0,0,"imgs_moving/mv8.jpg"],
+    [0,30,"imgs_moving/mv9.jpg"],
+    [0,60,"imgs_moving/pt1.jpg"],
+    // 하단영역
+    [-30,-60,"imgs_moving/pt2.jpg"],
+    [-30,-30,"imgs_moving/pt3.jpg"],
+    [-30,0,"imgs_moving/pt4.jpg"],
+    [-30,30,"imgs_moving/pt5.jpg"],
+    [-30,60,"imgs_moving/pt6.jpg"],
 ];
+
+// 이벤트 박스에 속박스 넣기
+const eBox = dFn.qs('.evt-box');
+for(let i=0;i<15;i++){
+    eBox.innerHTML += '<div></div>';
+} ///////// for 함수 //////////
+
+
 
 
 // 1. 대상선정
@@ -58,7 +72,33 @@ function seeMe(seq){// seq - 순번받기
 
     // 2. 변경적용하기 :
     // 앞면 이미지
+    screen.style.backgroundImage = `url(images/${iDeg[seq][2]})`
+    screen.style.backgroundColor = `white`
 
 } ////// seeMe 함수 //////////////////
 
+// 이벤트영역 박스 5초후 작동되도록 width값 변경하기 ///
+// 대상: .evt-box -> eBox변수
+setTimeout(()=>{
+    eBox.style.width = '100vw';
+},5000);
 
+// 마우스 포인터 변경하기!
+// 대상: .evt-box -> eBox변수
+dFn.addEvt(eBox,'mouseover',()=>{
+    
+    console.log('마우스 포인터바뀜!')
+})
+
+/* 
+    [ 마우스 오버/아웃 관련 이벤트 차이점 ]
+    1. mouseover/mouseout : 요소자체를 기준
+    2. mouseenter/mouseleave : 요소 경계선 기준
+    -> 둘의 차이는 이벤트 버블링에 있다!
+    -> 경계전 기준의 이벤트인 mouseenter/mouseleavesms 자체요소에서만
+    발생하고 버블링되지 않는다!
+    -> 자손요소에서 버블링되어 발생하는 mouseover/mouseout으로 셋팅할
+    경우 빈번한 이벤트 발생이 문제가 될 경우
+    mouseenter/mouseleave를 사용할 것을 w3c가 권고함!
+
+*/

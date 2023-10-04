@@ -85,8 +85,8 @@ body{
     height: 305px;
     /* background-color: rgba(255, 0, 0, 0.438); */
     background-repeat: no-repeat;
-    background-size: center;
-    block-size: 100%;
+    background-position: center;
+    background-size: 100%;
 }
 
 
@@ -279,7 +279,7 @@ body{
     top: 0;
     left: 0;
     z-index: 999;
-    width: 100vw;
+    width: 0;
     height: 100vh;
     /* 플렉스박스 */
     display: flex;
@@ -288,6 +288,6 @@ body{
 }
 .evt-box div{
     width: 20%;;
-    height: 50%;
+    height: 33.33%;
     outline: 1px dashed green;
 }
