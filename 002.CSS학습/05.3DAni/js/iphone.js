@@ -85,10 +85,9 @@ setTimeout(()=>{
 
 // 마우스 포인터 변경하기!
 // 대상: .evt-box -> eBox변수
-dFn.addEvt(eBox,'mouseover',()=>{
-    
-    console.log('마우스 포인터바뀜!')
-})
+dFn.addEvt(eBox,'mouseenter',function()=>{
+
+});
 
 /* 
     [ 마우스 오버/아웃 관련 이벤트 차이점 ]
