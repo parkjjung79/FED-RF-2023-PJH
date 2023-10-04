@@ -83,11 +83,33 @@ setTimeout(()=>{
     eBox.style.width = '100vw';
 },5000);
 
-// 마우스 포인터 변경하기!
-// 대상: .evt-box -> eBox변수
-dFn.addEvt(eBox,'mouseenter',function()=>{
 
-});
+////////////////////////////////////////////
+// 마우스 포인터 변경하기! ///////////////////
+// 대상: .evt-box -> eBox변수
+dFn.addEvt(eBox,'mouseenter',function(){
+    console.log('마우스 포인터바뀜');
+    // 1. 이 박스범위안에서 커서 없애기
+    // this = eBox
+    this.style.cursor = 'none';  
+
+    // 2. 커서박스 읽어와서 셋팅하기
+    let cursorImg = dFn.qs('.cursor-box');
+    cursorImg.style.position = 'fixed';
+    cursorImg.style.width = '150px';
+    cursorImg.style.height = '250px';
+    cursorImg.style.background = 
+    'url(./images/capma.png) no-repeat 0/100% 100%';
+
+
+    // 3.이 박스 범위에서 mousemove이벤트 발생시 커서 위치이동셋팅
+    dFn.addEvt(this,'mousemove',(e)=>{
+        cursorImg.style.top = e.pageY + 'px';
+        cursorImg.style.left = e.pageX + 'px';
+    });
+    
+}); /////////////// mouseenter 함수 ////////////
+
 
 /* 
     [ 마우스 오버/아웃 관련 이벤트 차이점 ]
