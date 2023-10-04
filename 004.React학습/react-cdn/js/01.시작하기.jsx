@@ -17,6 +17,7 @@
 // 대문자로 시작하는 이름을 사용한다!
 function MyFirstReact(){
     return(
+        // 시작소괄호는 return바로 뒤에 써야한다! 엔터하면 안됨 안그럼 에러남
         <div>
             <h1>잘해보자! 리액트!</h1>
             <h2>
