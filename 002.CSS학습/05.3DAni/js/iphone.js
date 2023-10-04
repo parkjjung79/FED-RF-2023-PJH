@@ -99,7 +99,7 @@ dFn.addEvt(eBox,'mouseenter',function(){
     cursorImg.style.width = '150px';
     cursorImg.style.height = '250px';
     cursorImg.style.background = 
-    'url(./images/capma.png) no-repeat 0/100% 100%';
+    'url(./images/moon.png) no-repeat 0/100%';
 
 
     // 3.이 박스 범위에서 mousemove이벤트 발생시 커서 위치이동셋팅

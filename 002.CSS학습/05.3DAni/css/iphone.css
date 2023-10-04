@@ -31,6 +31,24 @@ body{
     height: 100vh;
     /* 넘치는 자식요소 숨기기 */
     overflow: hidden;
+
+    /* [ 커서 이미지로 보이기 ]
+    cursor: url(이미지경로),auto
+    사이즈 등의 이유로 안나올 수 있는 때를 대비하여
+    auto/pointer 등 대체항목을 url() 뒤에 콤마하고 써야함!
+    - 커서 이미지의 기본위치는 맨위/왼쪽끝 이다
+    - 이 위치를 변경하는 옵션이 있다
+    cursor: url(이미지경로) x위치 y위치, auto
+    예) cursor: url(이미지경로) 10 20, auto 
+    숫자만 써도 px로 처리, 이미지 한계값을 넣어가면 처리안됨!
+    */
+
+    /* 나오는 케이스 */
+    cursor: url(../images/door.png),auto;
+    
+    /* 안나오는 케이스 */
+    /* cursor: url(../images/car.png),auto; */
+    /* cursor: url(../images/car.png),pointer; */
 }
 
 /* 폰박스 */
@@ -196,7 +214,7 @@ body{
     color: #a0a0a0;
     text-shadow: 2px 2px rgb(0 0 0 / .1);
 
-    outline: 2px dotted red;
+    /* outline: 2px dotted red; */
 }
 
 /* 흘러가는 텍스트 애니 클래스 */
@@ -289,5 +307,5 @@ body{
 .evt-box div{
     width: 20%;;
     height: 33.33%;
-    outline: 1px dashed green;
+    /* outline: 1px dashed green; */
 }
