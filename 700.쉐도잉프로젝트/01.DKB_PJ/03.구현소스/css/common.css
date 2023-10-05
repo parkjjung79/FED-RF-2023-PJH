@@ -118,9 +118,56 @@ aside.smbx {
 }
 /********************** 4. 하단영역 **********************/
 #footer {
-    background-color: lightslategray;
+    border-top: 1px solid #ccc;
+    /* background-color: lightslategray; */
+    padding-bottom: 80px;
 }
 .footer .partbox {
-    height: 100px;
+    /* height: 100px; -> 컨텐츠 만큼만 들어나게 높이 주석! */
 }
 
+/* 하단링크박스 */
+.info-link ul{
+    display: flex;
+    gap: 0 15px;
+}
+.info-link ul li{
+    font-size: 1.4rem;
+    line-height: 2;
+    /* 줄바뀜 절대 안됨! */
+    white-space: nowrap;
+}
+/* 바로가기 콤보박스 영역 */
+.combo-area select{
+    width: 150px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f1f1f1;
+    font-size: 1.4rem;
+}
+/* 하단로고박스 */
+.footer__logo{
+    padding: 20px 0;
+}
+/* 회사주소박스 */
+.corp-info{
+    font-style: normal;
+    font-size: 1.5rem;
+    line-height: 1.8;
+
+}
+/* SNS박스 */
+.sns-box ul{
+    display: flex;
+    gap: 0 5px;
+}
+.sns-box li{
+    width: 35px;
+    height: 35px;
+    line-height: 38px;
+    font-size: 1.8rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
