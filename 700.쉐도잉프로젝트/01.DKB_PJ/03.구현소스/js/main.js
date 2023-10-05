@@ -385,23 +385,15 @@ const corpData = Object.keys(linkData.corp);
 // 내부초기화
 corpBox.innerHTML = '';
 
-// console.log('계열사데이터:',corpData);
+// console.log('계열사 데이터:',corpData);
 
 corpData.forEach(val=>{
   corpBox.innerHTML += `
   <optgroup label="${val}">
-   ${linkData.corp[val]}.map(v=>
+   ${linkData.corp[val].map(v=>
     `<option value="${v}">${v}</option>`).join('')}
   </optgroup>
   `;
-
-  corpData.forEach(val=>{
-    corpBox.innerHTML += `
-    <optgroup label="${val}">
-      ${linkData.corp[val].map(v=>
-        `<option value="${v}">${v}</option>`).join('')}
-    </optgroup>
-    `;
 }); /////////////// forEach /////////////
 
 // 내부의 option 요소는 배열데이터.map().join('')을 사용!
