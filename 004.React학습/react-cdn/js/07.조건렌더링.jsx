@@ -43,13 +43,26 @@ function Developer(props){
                 {/* MakeDev 컴포넌트 선택출력 */}
                 <MakeDev />
                 <MakeImg
-                    src={props.isrc}
-                    alt={props.ialt}
+                    isrc={props.isrc}
+                    ialt={props.ialt}
                     itit={props.itit} />
             </React.Fragment>
         );
-
-    }
+    } //////////// if ///////////////////////////////////
+    
+    // if문에 걸리면 그 안에서 return됨
+    // 안걸리면 else문 없이도 여기 return됨!
+    
+    return(
+        <React.Fragment>
+            {/* MakeDev 컴포넌트 선택출력 */}
+            <LostDev />
+            <MakeImg
+                isrc={props.isrc}
+                ialt={props.ialt}
+                itit={props.itit} />
+        </React.Fragment>
+    );
 
 } /////////////////// Developer 컴포넌트 ////////////////
 
@@ -59,9 +72,9 @@ const devImg = [
     "https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202208/24/BoiledMovie/20220824133926904mopw.png"
 ];
 
-// 컴포넌트 호출하기
+// 컴포넌트 호출하기1 : 개발자찍기
 ReactDOM.render(
-< Developer
+<Developer
 isDev={true}
 isrc={devImg[0]}
 ialt="개발자 공유"
@@ -70,7 +83,7 @@ itit="프론트엔드 개발자 공유입니다!"
 
 // 컴포넌트 호출하기2 : 비개발자찍기
 ReactDOM.render(
-< Developer
+<Developer
 isDev={true}
 isrc={devImg[1]}
 ialt="주먹왕 마동석"
