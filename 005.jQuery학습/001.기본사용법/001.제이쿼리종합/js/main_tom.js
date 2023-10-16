@@ -106,9 +106,9 @@ $(".mz").hide();
 
 // 2. 버튼 셋팅하기 //////////////////
 // 대상: .btns button -> btns변수
-// btns.hide().first().show();
+btns.hide().first().show();
 // 버튼들.숨겨().첫번째().보여()
-btns.hide().eq(5).show();
+// btns.hide().eq(5).show();
 
 // 3. 미니언즈 공통 기능함수 /////////
 // (1) ele - 클릭된 버튼요소
@@ -512,6 +512,46 @@ btns
             //parent()-> 부모요소인.building
             // -> JS의 parentElement와 유사함
           },6000); 
+
+          // 추가구현 : 시간(6초+건물기다리고 무너진시간 8초)+
+          // 건물 무너진 후 좀비 하나 올라와 오른쪽으로 사라지기
+
+          setTimeout(()=>{
+            // 1.건물 기울기 원상복귀(이유 : 좀비가 똑바로 보이게)
+            room.parent()
+            .attr('style','transform:rotate(0deg) !important')
+            // 2.9번방 좀비
+            room.eq(9).find('.mz')
+            //(1) 지표로 올라오기(3초)
+            .animate({bottom:"594%"},3000)
+            //(2) 기다리기(3초)
+            .delay(3000)
+            //(3) 오른쪽으로 나가기(5초)
+            .animate({
+              right: '-300%'
+            },5000,()=>{
+              // 마지막 좀비 퇴장후 'THE END' 화면 중앙보이기
+              // body에 appent하여 태그 출력하기
+              $('body').append('<h1 class="ending">THE END<h1>');
+
+              $('.ending').css({
+                position: 'fixed',
+                top:'50%',
+                left:'50%',
+                transform:'translate(-50%,-50%)',
+                margin:'0',
+                padding:'0',
+                color:'white',
+                fontSize:'20vh',
+                textShadow:'0 0 5px #000',
+                fontFamily:'Vladmir script' 
+              }).hide() // 숨기기
+              .fadeIn(1000) // 페이드애니로 보이기
+              .animate({color:'red'},1000); // 글자색 바꾸기 애니
+              
+            }); //// animate///
+
+          },20000);
           
         }); ///////// animate ////////////
       }; ////////// 콜백함수 /////////////
