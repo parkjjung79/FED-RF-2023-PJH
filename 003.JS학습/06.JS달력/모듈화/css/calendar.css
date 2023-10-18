@@ -18,6 +18,7 @@
     --bwidth: 40px;/* 버튼크기 */
 }
 
+
 /* 버튼디자인 */
 .mbtn {
     font-family: var(--font);
@@ -31,7 +32,7 @@
 }
 
 /* 캘린더 전체박스 */
-.calender{
+.calendar{
     position: absolute;
     /* top: 50%;
     left: 50%;
@@ -63,6 +64,8 @@
     align-items: center;
     justify-content: center;
 }
+
+
 
 .main {
       /*요일과 날짜는 가로가아니라 세로로 정렬되야 하므로 flex-diretion: column;을 해줍시다.*/
