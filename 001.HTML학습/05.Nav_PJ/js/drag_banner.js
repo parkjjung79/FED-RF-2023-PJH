@@ -1,7 +1,7 @@
 // JS실험실 : 10.드래그배너 JS - drag_banner.js
 
 // DOM 메서드
-import dFn from "./dom.js";
+import dFn from './dom.js';
 
 // console.log(dFn);
 
@@ -10,10 +10,30 @@ const banBox = dFn.qsa('.banbx');
 console.log('슬라이드 대상:',banBox);
 
 // 슬라이드 만큼 모두 호출하기!
-banBox.forEach(ele=>{
+banBox.forEach((ele,idx)=>{
+  // 배너 슬라이드 셋업 먼저!!!
+  if(idx==0){ // 첫번째 메인배너 셋업
+
+    let hcode = '';
+    for(let i=1;i<=13;i++){
+      hcode += `
+        <li>
+          <img src="./images/img_nav06/ban${i}.png" alt="slide">
+        </li>
+      `;
+    } ////// for ////////
+
+    // 슬라이드 li를 넣을 부모ul 슬라이드요소
+    dFn.qsEl(ele,'.slide').innerHTML = hcode;
+
+  } /////// if //////
+
+
     // 슬라이드 함수 호출하기
     slideFn(ele);
     // 실제 DOM요소를 보낸다!
+
+
 
 }); /////// forEach ///////////
 
@@ -89,8 +109,8 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
     for(let i=0; i< sldCnt; i++){
         indic.innerHTML += `
             <li ${i==0?'class="on"':''}>
-                <img src="images/dot1.png" alt="흰색">
-                <img src="images/dot2.png" alt="회색">
+                <img src="./images/dot1.png" alt="흰색">
+                <img src="./images/dot2.png" alt="회색">
             </li>
         `;
     } /////// for문 ////////////
@@ -199,7 +219,6 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
         // ->>> 먼저잘라내고 이동하는 것으로 통일했으므로
         // 순번은 항상 ->>>>>>> 0번!
         let nowSeq = 
-        
         slide.querySelectorAll('li')[0]
         .getAttribute('data-seq');
 
@@ -504,4 +523,5 @@ function goWhere(target){
 
 // 화면 리사이즈 시 페이지 리로드하기! ///////
 dFn.addEvt(window,'resize',()=>location.reload());
+
 
