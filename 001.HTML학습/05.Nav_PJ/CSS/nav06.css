@@ -104,13 +104,13 @@ html,body{
 
 /*왼쪽버튼*/
 .ab1 {
-    left: -9.5vw;
+    left: -4.9vw;
     background-position: -26px -124px;
 }
 
 /*오른쪽버튼*/
 .ab2 {
-    right: -9.5vw;   
+    right: -4.9vw;   
     background-position: -166px -53px;
 }
 
