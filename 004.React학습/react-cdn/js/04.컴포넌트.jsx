@@ -1,10 +1,8 @@
 // 04.리액트 컴포넌트 JSX
 
-import Avengers from"./avengers.png";
+import Avengers from "./avengers.png";
 // import Avengers from"./avengers";
 // import시에 CDN에서도 js/jsx 확장자는 생략가능함!
-
-
 
 /************************************************* 
     [ 리액트 컴포넌트 ]
@@ -74,10 +72,8 @@ function IronMan() {
 } //////////// IronMan 컴포넌트 /////////////////
 
 // 이미지 생성 컴포넌트 //////////////////////////
-function MakeImg(props){
-    return(
-        <img src={"./images/"+props.iname} alt="아이언맨" />
-    );
+function MakeImg(props) {
+  return <img src={"./images/" + props.iname} alt="아이언맨" />;
 } //////////// MakeImg 컴포넌트 ////////////////
 
 // 두번째 #root2 출력하기
@@ -124,33 +120,29 @@ ReactDOM.render(
   document.querySelector("#root4")
 );
 
-
 /*************************************************************** 
     컴포넌트 내부에서 다른 컴포넌트를 호출 할 수 있따!
 ***************************************************************/
-function Who(){
-    return(
-        <div>
-            <h1>김똑팔이가 누구야?</h1>
-            {/* 다른컴포넌트 넣기 */}
-            <Ans />
-        </div>
-    )
+function Who() {
+  return (
+    <div>
+      <h1>김똑팔이가 누구야?</h1>
+      {/* 다른컴포넌트 넣기 */}
+      <Ans />
+    </div>
+  );
 } ///////////// Who 컴포넌트 //////////////
 
 // 컴포넌트 내부에서 호출할 컴포넌트
-function Ans(){
-    return(
-        <h2>김씨가 똑하고 팔이 부러졌대!</h2>
-    );
+function Ans() {
+  return <h2>김씨가 똑하고 팔이 부러졌대!</h2>;
 } ////////////// Ans 컴포넌트 ////////////
 
 // 출력: #root5
-ReactDOM.render(<Who />,document.querySelector('#root5'));
-
+ReactDOM.render(<Who />, document.querySelector("#root5"));
 
 // 출력: #root6에 외부 jsx 파일 컴포넌트 출력하기!
-ReactDOM.render(<Avengers />,document.querySelector('#root6'));
+ReactDOM.render(<Avengers />, document.querySelector("#root6"));
 
 /*************************************************** 
     [ 컴포넌트의 파일분리 ]
