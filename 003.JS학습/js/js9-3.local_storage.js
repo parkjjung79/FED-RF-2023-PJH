@@ -105,9 +105,13 @@ function localSFn(){
 
 
     else if(btxt == '전체삭제'){
-        // 해당 url로 관리되는 로컬쓰를 모두 지움 : clear()
+        // 1.해당 url로 관리되는 로컬쓰를 모두 지움 : clear()
         localStorage.clear();
         // 개별 로컬쓰로 지우는 방법 : removeItem(키명)
+        // 2. 리스트 바인딩 업데이트
+        bindData();
+        // 3. 수정선택박스 업데이트
+        bindMod();
     } ////////// else if : 전체삭제 //////////
 
     else if(btxt == '보여줘'){
@@ -122,12 +126,12 @@ function localSFn(){
 
     // -> 객체를 생성하여 로컬 스토리지에 넣기
     else if(btxt = '처리'){
-        // 로컬쓰에 'minfo'가 없으면 makeObj()호출!
+        // 1. 로컬쓰에 'minfo'가 없으면 makeObj()호출!
         if(!localStorage.getItem('minfo')) makeObj();
-
-
-        // 바인딩 함수 호출!
+        // 2. 바인딩 함수 호출!
         bindData();
+        // 3. 수정선택박스 업데이트
+        bindMod();
         
     } //////// else if : 처리 ////////////////
     
@@ -138,7 +142,6 @@ function localSFn(){
 function makeObj(){
     console.log('배열/객체만들기!!!');  
     
- 
         // 게시판 형식의 객체를 생성함! 배열안에 객체형식
         let obj = [
             {
@@ -252,6 +255,8 @@ function insData(){
     if(!orgData){
         // 빈 배열로 생성하기
         localStorage.setItem('minfo','[]');
+        // 초기 로컬쓰 재할당!
+        orgData = localStorage.getItem('minfo');
     } /////////// if ///////////
 
     
@@ -301,6 +306,8 @@ function insData(){
     // 4. 리스트 업데이트하기
     bindData();
 
+    // 5. 수정 선택박스 업데이트
+    bindMod();
 
 } ////////////////////// linsData 함수 //////////////////////
 
@@ -335,13 +342,55 @@ function delRec(idx){
 
     // 5. 리스트 업데이트하기
     bindData();
-    } /////////// if ///////////
-
     
+    // 6. 수정 선택박스 업데이트
+    bindMod();
+
+    } /////////// if ///////////
 
 } ////////////////////// delRec 함수 //////////////////////
 
+///////////////////////////////////////////////////////////
+////////////////// 데이터 수정하여 반영하기 /////////////////
+///////////////////////////////////////////////////////////
 
+// 1. 선택박스 대상선정 : .sel
+const modSel = dFn.qs('#sel');
+// 2. 데이터 바인딩하기
+// 바인딩 함수 만들어서 사용!
+function bindMod(){
+
+    // 1. 로컬쓰 가져오기
+    // 1-1. 로컬쓰 데이터 가져오기 : minfo
+    let orgData = localStorage.getItem('minfo');
+    
+    // 만약 minfo로컬쓰가 null이면 빈배열로 생성하기
+    // if(!orgData)  -> null 일때 들어가고 싶어!
+    if(!orgData){
+        // 빈 배열로 생성하기
+        localStorage.setItem('minfo','[]');
+        // 초기 로컬쓰 재할당!
+        orgData = localStorage.getItem('minfo');
+    } ////// if //////
+
+    // 1-2. 제이슨 파싱!
+    orgData = JSON.parse(orgData);
+
+    // 2. 선택박스 초기화 : 새로 업데이트 될때를 대비
+    modSel.innerHTML = `
+        <option value="show">항목선택</option>
+        `;
+
+    // 3. idx로 value값을 만들고 제목으로 항목명을 만들기
+    orgData.forEach(v=>{
+        modSel.innerHTML += `
+            <option value="${v.idx}">${v.tit}</option>
+        `
+    })
+
+} //////////////// bindMod 함수 ////////////////
+
+bindMod();
 
 
 /************************************************************* */
@@ -399,6 +448,7 @@ function sessionSFn(){
         // 해당 url로 관리되는 세션쓰를 모두 지움 : clear()
         sessionStorage.clear();
         // 개별 세션쓰로 지우는 방법 : removeItem(키명)
+        bindData();
     } ////////// else if : 전체삭제 //////////
 
     else if(btxt == '보여줘'){
