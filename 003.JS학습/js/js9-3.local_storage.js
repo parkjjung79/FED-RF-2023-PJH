@@ -246,12 +246,47 @@ function insData(){
     // 3. 입력처리하기
     // 3-1. 로컬쓰 데이터 가져오기 : minfo
     let orgData = localStorage.getItem('minfo');
+    
+    // 만약 minfo로컬쓰가 null이면 빈배열로 생성하기
+    // if(!orgData)  -> null 일때 들어가고 싶어!
+    if(!orgData){
+        // 빈 배열로 생성하기
+        localStorage.setItem('minfo','[]');
+    } /////////// if ///////////
+
+    
     // 3-2. 제이슨 파싱!
     orgData = JSON.parse(orgData);
-    // 3-3. 입력된 데이터 추가하기 : 배열 push() 메서드
+
+    // 3-3. 자동증가번호 처리하기
+    // 배열을 오름차순으로 정렬하여 맨끝 배열데이터의 idx값을
+    // 읽어온후 숫자화하여 +1처리함!
+    // 3-3-1. 배열 오름차순처리 :
+    // -> 배열.sort((a,b)=>{
+    //    return a == b ? 0 : a > b ? 1 : -1})
+    // -> 배열.sort((a,b)=>{
+    //    return a.idx == b.idx ? 0 : a > b.idx ? 1 : -1})
+
+    // 배열값이 있을때만 정렬적용!
+    if(orgData.length != 0){
+    orgData.sort((a,b)=>{
+        return a.idx == b.idx ?
+        0 : a.idx > b.idx ? 1: -1
+    }); /////////// sort ///////////
+    }
+
+    // 3-3-2. idx값으로 마지막배열값 읽기
+    let lastArr = orgData.length==0?
+    0 : orgData[orgData.length-1].idx;
+    // length 값이 0이냐? 아니면 orgData[orgData.length-1].idx; 값을 가져와라!
+    console.log('정렬결과:',orgData,'\n마지막idx값:',lastArr);
+    
+
+
+    // 3-4. 입력된 데이터 추가하기 : 배열 push() 메서드
     // 자동 증가번호는 배열개수+1
     orgData.push({
-        'idx':orgData.length+1,
+        'idx':lastArr+1,
         'tit':tit,
         'cont':cont
     }); ///////// push /////////
@@ -282,6 +317,7 @@ function delRec(idx){
     // 2-1 로컬쓰 데이터 가져오기 : minfo
     let orgData = localStorage.getItem('minfo');
     // 2-2. 제이슨 파싱! 
+    orgData = JSON.parse(orgData);
 
     // 3. 특정 데이터 배열항목 삭제
     // splice(순번,개수) -> 특정순번부터 몇개지움
