@@ -1,7 +1,7 @@
-// 상단, 하단 공통 모듈 html 코드
-
+// 상단, 하단 공통 모듈 html코드
 export default {
     topArea:`
+    <!-- 1-1.상단메뉴 -->
     <div class="tmenu">
         <!-- 1-1-1.sns박스 -->
         <div class="sns">
@@ -80,12 +80,13 @@ export default {
             </li>
             <li>
                 <!-- 돋보기 검색버튼 -->
-                <a href="#" class="fi fi-search">
+                <i href="#" class="fi fi-search">
                     <span class="ir">search</span>
-                </a>
+                </i>
             </li>
         </ul>
     </nav>
+
     `,
     footerArea:`
     <!-- 3-1.하단로고 -->
@@ -113,5 +114,6 @@ export default {
             <a href="#">개인정보 처리방침</a>
         </li>
     </ul>
+
     `,
 }
