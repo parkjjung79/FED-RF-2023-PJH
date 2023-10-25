@@ -56,8 +56,63 @@ $(()=>{
 
         // sns파트 a요소에 툴팁넣기 /////////////////
         // 새로추가된 a요소까지 다시 선택하여 each()메서드로 돌면서
-        // 글자를 읽어와서 title 속성으로 넣어준다! -> attr('title,값') -> 속성은 이거 하나만 알면됨!
+        // 글자를 읽어와서 title 속성으로 넣어준다! -> attr('title,값')
+        //-> //속성은 이거 하나만 알면됨!
+        $('.sns a').each((idx,ele)=>{
+            // ele - 각 a요소
+            // trim - 앞뒤공백제거
+            $(ele).attr('title',$(ele).text().trim())
+        }) /////////////// each //////////////////
+        // 위에서 이어서 a요소에 링크 설정하기
+        .click(function(){
+            // 1. 클릭시 해당요소 텍스트 읽기
+            let atxt = $(this).text().trim()
+            console.log('sns파트메뉴:',atxt);
 
+            // 2. 이동할 페이지 주소 할당
+            let url;
+            switch(atxt){
+                // 외부시스템
+                case '인스타그램':
+                    url="https://www.instagram.com/VOGUEKOREA/";
+                    break;
+                case '페이스북':
+                    url="https://www.facebook.com/VOGUEkr";
+                    break;
+                case '트위터':
+                    url="https://twitter.com/VogueKorea";
+                    break;
+                case '유튜브':
+                    url="https://www.youtube.com/user/VogueKorea";
+                    break;
+                case '카카오스토리':
+                    url="https://story.kakao.com/ch/voguekr";
+                    break;
+                
+                // 내부시스템 
+                case '로그인':
+                    url="login";
+                    break;
+                case '회원가입':
+                    url="member";
+                    break;
+                case '갤러리':
+                    url="gallery";
+                    break;
+
+            } /////////////// switch case //////////////////
+
+            // 3. 페이지 이동하기
+            // 내부페이지는 현재페이지에서 이동하기
+            if(atxt=='로그인'||atxt=='회원가입'||atxt=='갤러리'){
+                location.href = url+'.html';
+            } //////// if ////////
+            else{ //SNS 타 시스템은 새창열기}
+                // window.open(주소) - 새창열기(브라우저 탭메뉴)
+            window.open(url);
+            } //////// else ////////
+
+        }); /////////////// click //////////////////
 
 
 }); //////////// jQB ///////////////////
