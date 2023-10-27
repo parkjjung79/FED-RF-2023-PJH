@@ -34,6 +34,8 @@
     font-size: 1.3rem;
 }
 
+
+
 /* 1-2-2.gnb메뉴 */
 .gnb ul{
     /* 플렉스박스 */
@@ -61,7 +63,7 @@
 .gnb ul>li:nth-child(3)~li:nth-child(-n+6)>a::after{
     content: '∨';
     display: inline-block;
-    transform: scale(.7,.5);
+    transform: scale(.5,.3);
     margin-left: 3px;
 }
 
@@ -80,6 +82,10 @@
     transition: .4s ease-in-out;
 }
 
+/* 모바일 모드에서 트랜지션 없애기 : 제이쿼리작동이므로 충돌남! */
+.haeder.on .smenu{
+    transition: none;
+}
 
 
 /* 서브메뉴 속박스 */
@@ -145,9 +151,6 @@ aside.smbx {
     padding-bottom: 80px;
     background: url(../images/pc/footer_bg.png) no-repeat center/cover;
 }
-.footer .partbox {
-    /* height: 100px; -> 컨텐츠 만큼만 들어나게 높이 주석! */
-}
 
 /* 하단링크박스 */
 .info-link ul{
@@ -155,9 +158,9 @@ aside.smbx {
     flex-wrap: wrap;
     gap: 0 15px;
 }
-.info-link ul li{
+.info-link a{
     font-size: 1.4rem;
-    line-height: 2;
+    line-height: 2.5;
     /* 줄바뀜 절대 안됨! */
     white-space: nowrap;
 }
@@ -166,7 +169,7 @@ aside.smbx {
     text-align: right;
 }
 .combo-area select{
-    width: 150px;
+    width: 170px;
     height: 35px;
     border-radius: 8px;
     border: none;
@@ -193,6 +196,8 @@ aside.smbx {
 .sns-box li{
     width: 35px;
     height: 35px;
+    /* 플렉스 강제줄이기 해제 */
+    flex-shrink: 0;
     line-height: 38px;
     font-size: 1.8rem;
     text-align: center;

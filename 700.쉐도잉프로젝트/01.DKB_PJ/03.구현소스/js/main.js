@@ -11,6 +11,66 @@ import { gridData, gnbData, previewData, clipData, linkData } from "./data_drama
 // 부드러운 스크롤 적용
 startSS();
 
+/////////////////////////////////////
+// 모바일적용 여부 코드 ///////////////
+let mob = 0; // 0-DT, 1-모바일
+const chkMob = ()=> {
+  if($(window).width()<=1024)mob=1;
+else mob=0;
+console.log('모바일?',mob);
+
+// 부가기능 : 모바일일때 서브메뉴 기본 스타일 지우기
+if(mob) $('.smenu').attr('style','');
+
+} ///////// chkMob함수 /////////
+// 모바일 검사함수 최초호출
+chkMob();
+// 화면 리사이즈 시 모바일 검사함수 호출
+$(window).resize(chkMob);
+
+/////////////////////////////////////////////
+// 모바일시 기능구현 /////////////////////////
+/////////////////////////////////////////////
+// 1. 햄버거 버튼 클릭시 메뉴 보이기/ 숨기기
+// 대상: .ham / .header
+const hEle = $('.header');
+$('.ham').click(()=>{
+  hEle.toggleClass('on');
+
+  // is() 메서드 : 선택요소의 이름확인!
+  console.log('지금.header에 .on있니?', hEle.is('.on'));
+  // 만약 .header.on 이면 body에 스크롤바 숨기기
+  if(hEle.is('.on'))
+  $('html,body').css({overflow:'hidden'});
+  // 아니면 넣었던 스타일 지우기
+  else $('body').attr('styel','');
+
+}); /////////////// click ///////////////
+
+
+// 2. 메뉴 클릭시 하위메뉴 보이기 /////////////
+// 대상: .gnb>li
+$('.gnb li').click(function(){
+  if(!mob) return; // 모바일 아니면 나가!
+  console.log('나클릭?');
+  // 서브메뉴 슬라이드 애니 보이기/숨기기
+  // 대상 : .smenu
+  $(this).find('.smenu') // 클릭된 li 하위 .smenu
+  .slideToggle(300,'easeInOutQuad') // 열거나 닫거나함
+  .parent() // 부모로 올라감 li
+  .siblings().find('.smenu') // 다른 li들 하위 .smenu
+  .slideUp(300,'easeInOutQuad') // 스르륵 닫힘! 모두!
+}); //////////////// click /////////////////
+
+// 3. 스티키 메뉴 박스 드래그 하여 움직여보기
+// 대상: .dokebi-menu ul
+$('.dokebi-menu ul')
+.draggable({
+  axis:'x', // x축 고정
+}); //////////// draggable ////////////
+////////////////////////////////////////////
+
+
 // 0. 새로고치면 스크롤바 위치 캐싱후 맨 위로 이동!
 setTimeout(() => {
   // 윈도우 스크롤 맨위로!
@@ -19,10 +79,9 @@ setTimeout(() => {
   setPos(0);
   // 안하면 원래 위치로 스크롤 튐!
 }, 400);
-// 0. 스크롤바 트랙을 잡고 위치이동시 위치값 반영
-dFn.addEvt(window,'mouseup',()=>{
-  setPos(window.scrollY);   
-}); //////// mouseup ///////////
+// 0. 스크롤바 트랙을 잡고 위치 이동시 위치값 반영
+dFn.addEvt(window, "mouseup", () => setPos(window.scrollY
+)); //////// mouseup /////////////
 
 // 0. 키보드 방향키 이동시 위치값 반영
 dFn.addEvt(window,'keyup',()=>setPos(window.scrollY));
@@ -58,7 +117,8 @@ gridBox.forEach((ele,idx)=>makeGrid(ele,idx));
 
 
 // 3. 그리드 스타일 데이터 생성하기 함수
-function makeGrid(ele,idx) { // ele - 대상요소 / idx -순번(데이터순번)
+function makeGrid(ele,idx) {
+  // ele - 대상요소 / idx -순번(데이터순번)
   // 1. 현장포토 데이터를 기반으로 html코드 만들기
   let hcode = "<ul>";
 
@@ -138,8 +198,7 @@ gnbList.forEach((ele) => {
 
 // 1. 대상선정
 const gnb = dFn.qsa(".gnb>ul>li");
-const smenu = dFn.qsa(".smenu");
-//console.log("대상:", gnb, smenu);
+
 
 // 2. 이벤트 설정하기
 // 이벤트 종류 : mouseover / mouseout
@@ -154,7 +213,8 @@ gnb.forEach((ele) => {
 
 // 3. 함수만들기
 function overFn() {
-  // //console.log('오버',this)
+  if(mob)return; // 모바일이면 나감!
+  console.log('오버',this);
   // 1) 하위 .smenu 높이값 알아오기
   let hv = dFn.qsEl(this, ".smbx").clientHeight;
   //console.log("높이:", hv);
@@ -163,13 +223,11 @@ function overFn() {
 } //////////////// overFn 함수 //////////////////
 
 function outFn() {
+  if(mob)return; // 모바일이면 나감!
   // //console.log('아웃',this);
   // 서브메뉴 박스 높이값 0만들기!
   dFn.qsEl(this, ".smenu").style.height = "0px";
-}
-
-
-
+} //////////////// outFn 함수 //////////////////
 
 
 
@@ -203,8 +261,6 @@ function showMv(){
 
  // 가상요소 플레이버튼 없애기위해 .off지우기
  this.classList.remove('off');
-
-
 } ///////////// showMv함수 ////////////////
 
 
@@ -226,12 +282,11 @@ previewData.sort((x,y)=>{
  // 사용하여 순서를 변경한 새로운 배열을 만들어준다!
  return a == b ? 0 :( a > b? -1:1);
  // 비?집:(눈?집:놀이동산)
-
 });
 //console.log(preNewData);
 
 // 2. 화면 대상에 태그 만들어 넣기
-// 2. 대상선정 : .preview-box>div
+// 2-1. 대상선정 : .preview-box>div
 const preBox = dFn.qsa('.preview-box>div');
 //console.log(preBox);
 
@@ -259,7 +314,7 @@ let clipCode = '';
 
 // 데이터 매칭하여 태그만들기
 // 배열데이터 이므로 forEach사용!
-clipData.forEach(val=>{
+clipData.forEach((val)=>{
   clipCode += `
     <li>
       <div class="clip-mv-box">
@@ -285,7 +340,7 @@ clipBox.innerHTML = `<ul>${clipCode}</ul>`;
 
 // 2. 대상선정 /////////////
 // 2-1. 이벤트 대상 : .btn-box button
-const btnClip = dFn.qsa('.btn-box button')
+const btnClip = dFn.qsa('.btn-box button');
 
 
 // 2-2. 변경대상 : .clip-box ul
@@ -334,7 +389,8 @@ function moveClip(){
     }
   } ////////////// if ///////////
 
-  else{ // 왼쪽 버튼
+    else{
+    // 왼쪽 버튼
     // 이동한계수를 체크하여 이동수를 감소시킴
     mvNum--;
     // 첫번째 한계수를 넘어가면 0에 고정!
@@ -342,12 +398,16 @@ function moveClip(){
       // 0에고정 
       mvNum = 0;
       // 첫번째 버튼 숨기기
+      btnClip[0].style.display = 'none';
+    }
+    else{
+      // 마지막버튼 보이기
       btnClip[1].style.display = 'block';
     }
   } ////////////// if ///////////
 
   // 3. 이동반영하기 : - (단위수*이동수) %
-  clipList.style.left = -(BLOCK_NUM*mvNum)+'%';
+  clipList.style.left = -(BLOCK_NUM * mvNum) + '%';
 
 } ///////// moveClip 함수 /////
 
@@ -371,11 +431,13 @@ const corpBox = dFn.qs('#corp');
 // 데이터 대상 : linkData.brand
 
 // 기존 '저쩌구' 지우고 아래 html 나오기 -> 안지우면 맨위에 '저쩌구' 등장
+//내부초기화
 brand.innerHTML = '';
 
 linkData.brand.forEach(val=>{
-  brand.innerHTML +=`<option value="${val}">${val}</option>`
-})
+  brandBox.innerHTML +=
+  `<option value="${val}">${val}</option>`;
+}); ////////////// forEach //////////////
 
 // 4-2. 계열사 바로가기 콤보박스 : 복합바인딩(optgroup>option)
 
@@ -420,7 +482,8 @@ corpData.forEach(val=>{
 //제이쿼리로 기능구현하기 ///////////////////////////////
 
 // 1. 서브컨텐츠 보이기 기능구현 ////////////////////////
-// (1) 이벤트 대상선정 : .sub-view-box 하위 .partbox 또는 li
+// (1) 대상선정
+// 이벤트 대상: .sub-view-box 하위 .partbox 또는 li
 const subViewBox = 
 $('.sub-view-box .partbox, .sub-view-box li');
 // 변경대상: .sub-cont

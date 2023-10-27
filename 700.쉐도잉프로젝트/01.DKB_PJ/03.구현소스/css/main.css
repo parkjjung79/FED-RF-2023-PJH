@@ -40,7 +40,6 @@ body > div > * {
     flex-wrap: wrap;
     /* 진행방향정렬 */
     justify-content: center;
-
     /* 사이간격 */
     gap: 0 min(1.1vw, 17px);
 
@@ -148,6 +147,7 @@ body > div > * {
     /* 플렉스박스 */
     display: flex;
     padding: 12px 0;
+    transition: .4s ease-out;
 }
 
 /* 도깨비메뉴 상위메뉴a */
@@ -170,7 +170,7 @@ body > div > * {
 .dokebi-menu ul>li.be-sub>a::after{
     content: '∨';
     display: inline-block;
-    transform: scale(.7,.5);
+    transform: scale(.5,.3);
     margin-left: 3px;
 }
 /* 현재 선택된 메뉴 li.on 클래스 */
@@ -219,6 +219,7 @@ body > div > * {
 /* 하위제목+아이콘 박스 */
 .intro-desc{
     display: flex;
+    flex-wrap: wrap;
     font-size: 2.5rem;
 }
 .intro-desc h3{
@@ -281,7 +282,7 @@ body > div > * {
 }
 
 /*********************** 미리보기파트 : .preview-part ***********************/
-.main .group-part-02 .partbox {
+.main .preview-part .partbox {
     height: 298px;
 }
 .preview-box .partbox{
