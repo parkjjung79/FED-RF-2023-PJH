@@ -210,6 +210,7 @@ body > div > * {
 /*********************** 방송편성파트 : .intro-part ***********************/
 .main .intro-part .partbox {
     height: 455px;
+    padding: 10px;
 }
 /* 서브타이틀 */
 .intro-part .stit{
