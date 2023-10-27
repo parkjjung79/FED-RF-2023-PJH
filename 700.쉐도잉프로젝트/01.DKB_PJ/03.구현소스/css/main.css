@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* 메가박스 PJ : 메인페이지 CSS - main.css */
+/* 도깨비 PJ : 메인페이지 CSS - main.css */
 
 /* 리셋,공통 외부 css합치기(merging) */
 @import url(./reset.css);
@@ -53,7 +53,7 @@ body > div > * {
     width: calc(95%/4);
     /* 개별박스 비율설정 : heigth설정안함! */
     aspect-ratio: 2/1.2;
-    outline: 2px dashed blue;
+    /* outline: 2px dashed blue; */
 }
 /* 캐릭터 컨텐츠박스 */
 .cat-content{

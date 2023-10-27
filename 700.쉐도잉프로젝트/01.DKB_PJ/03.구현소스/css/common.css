@@ -119,8 +119,10 @@ aside.smbx {
 /********************** 4. 하단영역 **********************/
 #footer {
     border-top: 1px solid #ccc;
+    padding-top: 20px;
     /* background-color: lightslategray; */
     padding-bottom: 80px;
+    background: url(../images/pc/footer_bg.png) no-repeat center/cover;
 }
 .footer .partbox {
     /* height: 100px; -> 컨텐츠 만큼만 들어나게 높이 주석! */
