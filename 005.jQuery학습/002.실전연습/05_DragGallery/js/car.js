@@ -134,6 +134,12 @@ const rotateCar = dir => { // dir방향
 
     console.log('순번:',fnum);
 
+    // (다른방법:) 위에서 증감전 숨기기 안하고 아래서 하기
+    // 1번 주석후 테스트할것!
+    // cbx.find('img:visible').hide();
+    
+    // 선택요소:visible은 display:none이 아닌요소 선택함!
+    // -> 반대로 display:none인 요소 선택은 :hidden
     
     // [ 3.fnum 증감후 숨기기 -> 다음이미지 보이기 ]
     carImg.eq(fnum).show();
