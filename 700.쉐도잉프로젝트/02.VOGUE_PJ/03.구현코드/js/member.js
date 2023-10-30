@@ -110,8 +110,9 @@ let eyeNum = 1; //상태값 = 1
 $('.eye')
 .css({ // 처음상태는 중간줄있고 흐림
     textDecoration:'line-through',
-    opacity: 0.5
-})
+    opacity: 0.5,
+    cusor:'pointer',
+}) ////// css //////
 .click((e)=>{
     // 1. 글자보이기 타입전환 : type='text|password'
     $('#mpw').attr('type',eyeNum?'text':'password');
