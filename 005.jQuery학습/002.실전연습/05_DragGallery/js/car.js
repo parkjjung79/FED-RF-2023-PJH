@@ -70,7 +70,13 @@ cbx.on('mousemove touchmove',e=>{
         rotateCar(dir);
 
     } ///////// if ///////////
-
+    
+    // 2. x축 처음 위치값 업데이트
+    point = e.pageX || e.changedTouches[0].pageX;
+    // -> 마우스다운이 아닌 마우스무브에서
+    // 처음위치값을 업데이트하면 드래그 상태일때 
+    // 그대로 방향을 다시 설정하여 원하는 방향으로
+    // 이미지를 변경할 수 있다!
 }); /////////////// mousemove ///////////
 
 // (2) 드래그 상태 시작 이벤트함수 //////
@@ -137,7 +143,7 @@ const rotateCar = dir => { // dir방향
     // (다른방법:) 위에서 증감전 숨기기 안하고 아래서 하기
     // 1번 주석후 테스트할것!
     // cbx.find('img:visible').hide();
-    
+
     // 선택요소:visible은 display:none이 아닌요소 선택함!
     // -> 반대로 display:none인 요소 선택은 :hidden
     
