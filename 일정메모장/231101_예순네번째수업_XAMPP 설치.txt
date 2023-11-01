@@ -6,6 +6,19 @@
 
 0. XAMPP 설치 점검
    (아파치/MySQL 로컬서버팩키지 설치)
+다운로드 주소
+https://www.apachefriends.org/
+아파치 -> 웹서버이름
+관련설명
+012.PHP학습 > 서버셋팅법 > 웹서버DB서버설치하는 방법
+htdocs -> httpsdocuments 줄임말
+
+중요한 폴더(root폴더)
+C:\xampp\htdocs
+
+집에서 비쥬얼코드 자동저장기능 설정해놓기
+
+
 1. 보그 PJ : 회원가입
    - Ajax 비동기통신으로 코딩 / 서버연결 작업
    - 실제 회원가입 DB연결 입력
