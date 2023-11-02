@@ -57,13 +57,13 @@ function 이야기(){
                 backgroundColor:'rgb(0 0 0 / .4)'
             }}>
                 <ul>
-                    <li>{"이름"}:{} </li>
-                    <li>{"설명"}:{} </li>
-                    <li>{"높이"}:{} </li>
-                    <li>{"융기"}:{} </li>
-                    <li>{"최초등반"}:{}</li>
-                    <li>{"최초등반가"}:{}</li>
-                    <li>{"산맥"}:{}</li>
+                    <li>이름 : {selData.이름}</li>
+                    <li>설명 : {selData.설명}</li>
+                    <li>높이 : {selData.높이}</li>
+                    <li>융기 : {selData.융기}</li>
+                    <li>최초등반 : {selData.최초등반}</li>
+                    <li>최초등반가 : {selData.최초등반가}</li>
+                    <li>산맥 : {selData.산맥}</li>
                 </ul>
             </div>
 
