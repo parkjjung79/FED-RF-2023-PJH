@@ -154,8 +154,12 @@ function MainCategory() {
     
     return(
         <React.Fragment>
-            <SubTitle />
-            <ItemList />
+            <SubTitle
+            tit={selData['제목']}
+            menu={selData['메뉴']} />
+            <ItemList
+            cname={selData['경로']}
+            tit={selData['타이틀']}/>
         </React.Fragment>
     );
 
@@ -171,15 +175,38 @@ document.querySelector(".main-area"));
  컴포넌트명 : SubTitle
  기능: 서브 타이틀 요소구성
 ******************************************/
-function SubTitle(){
+function SubTitle(props){ 
+    // tit - 서브타이틀 / menu - 서브메뉴
+
+    // 서브메뉴 있을경우 li데이터 생성하기
+    // 전달변수 data에 들어오는 값은 메뉴 배열임!
+    // 배열.map(v=>코드) -> html코드 생성후 리턴됨!
+    const makeList = (data) => data.map(v=>
+        <li>
+            <a href="#">{v}</a>
+        </li>
+        ); //////////// makeList함수 ////////////
+
+        // -> 오리지널 JS map()문법은 배열을 다시 리턴함
+        // JS에서는 배열.map().join('') 로 사용했음
+        // -> 리액트에서는 리액트용 map()을 다시 구성하여
+        // 바로 html 코드를 리턴함! join() 불필요!
 
     return(
         // 2-1. 카테고리 페이지 상단영역
         <header className="cat-top-area">
           {/* 2-1-1. 서브타이틀 */}
-          <h2 className="cat-tit">Fashion</h2>
-          {/* 2-1-2. 서브메뉴(LNB:Local Navigation Bar) */}
-          <nav className="lnb"></nav>
+          <h2 className="cat-tit">{props.tit}</h2>
+          {/* 2-1-2. 서브메뉴(LNB:Local Navigation Bar)
+          -> 메뉴 데이터 값이 '없음'이 아닐때만 생성됨 */}
+          {
+            props.menu!='없음' &&
+            <nav className="lnb">
+                <ul>
+                    {makeList(props.menu)}    
+                </ul>
+            </nav>
+          }
         </header>
         
     );
@@ -191,34 +218,39 @@ function SubTitle(){
  컴포넌트명 : ItemList
  기능: 카데고리 아이템별 리스트요소구성
 ******************************************/
-function ItemList(){
+function ItemList(props){
+    // cname - 카테고리명(클래스명넣기)
+    // tit - 리스트 타이틀
 
     return(
         //  2-2. 카테고리 페이지 컨텐츠영역
-        <div className="cat-cont-area">
-          <section className="pt2">
+        // html 출력일 경우 dangerouslySetInnerHTML을 사용한다
+        <div className={"cat-cont-area "+props.cname}>
+        <section className="pt2">
             <div className="cbx bgi bg1-1">
-              <h2></h2>
+                <h2>
+                {props.tit[0]}
+                </h2>
             </div>
             <div className="cbx bgi bg1-2">
-              <h2></h2>
+                <h2>{props.tit[1]}</h2>
             </div>
             <div className="cbx bgi bg1-3">
-              <h2></h2>
+                <h2>{props.tit[2]}</h2>
             </div>
-          </section>
-          <section className="pt2">
+        </section>
+        <section className="pt2">
             <div className="cbx bgi bg2-1">
-              <h2></h2>
+                <h2>{props.tit[4]}</h2>
             </div>
             <div className="cbx bgi bg2-2">
-              <h2></h2>
+                <h2>{props.tit[5]}</h2>
             </div>
             <div className="cbx bgi bg2-3">
-              <h2></h2>
+                <h2>{props.tit[6]}</h2>
             </div>
-          </section>
-        </div>
+        </section>
+    </div>
         
     );
 
