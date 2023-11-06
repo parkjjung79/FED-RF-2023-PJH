@@ -5,13 +5,12 @@
 // DOM 메서드
 import dFn from './dom.js';
 
-// 상단,하단 공통 데이터 불러오기
-import tData from './data/com_module.js';
-
 // 부드러운 스크롤 모듈
 import { startSS, setPos } from "./smoothScroll23.js";
 
 
+////////////////////////////////////////
+export default function setJSTop(){
 // [1] 상단/하단 공통 모듈 넣기 /////////
 
 // 대상선정: .common-area
@@ -28,6 +27,9 @@ const comArea = dFn.qsa('.common-area');
 // comArea[0].innerHTML += tData.mobtn;
 // 모바일 메뉴 박스 추가로 넣기 : #top-area 맨끝추가
 // comArea[0].parentElement.innerHTML += tData.mobx;
+
+
+} /////////////// setJSTop ///////////////
 
 
 
