@@ -88,7 +88,7 @@ function ItemList(props) {
 
   // 태그처리 구분 코드생성 함수
   const makeCode = (data) => {
-    console.log("배열인가?", Array.isArray(data));
+    // console.log("배열인가?", Array.isArray(data));
     // 배열데이터인 경우
     if (Array.isArray(data)) {
       return (
@@ -125,6 +125,7 @@ function ItemList(props) {
     // <요소 dangerouslySetInnerHTML={{__html:값}}>
     // <h2 dangerouslySetInnerHTML={{__html:props.tit[0]}}>
     // 왜 dangerously가 붙는지?
+    // -> script 실행을 막기 위해
     // -> script태그와 같은 위험요소가 실행될 수 있으므로
     // 데이터에서 직접적으로 태그를 넣는 방법을 비추천함!
     // -> 개선 : 태그 데이터를 제거하고 데이터화 함
