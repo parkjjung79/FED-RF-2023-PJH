@@ -84,7 +84,7 @@ function 이야기(){
                     btnData.map(v=>
                         <button
                         onClick={()=>
-                            맘대로.changeMyVal(v.이름)}
+                        맘대로.changeMyVal(v.이름)} 
                         style={{
                             padding:'15px',
                             fontSize:'20px',
@@ -107,7 +107,7 @@ function MyImg(){
     //랜더링 후 후크관리구역
     React.useEffect(()=>{
         console.log('산이미지가 랜더링 되었소?');
-        
+
         // 현재 해당컴포넌트가 제거될 경우 관리구역
         return(()=>{
             console.log('나는 소멸한다!ㅠ.ㅠ');
