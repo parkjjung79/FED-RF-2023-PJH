@@ -20,7 +20,9 @@ export default function MainCategory(props) {
 
   console.log("셀데이타:", selData);
 
-  const chgMenu = () => setNowCat("living");
+  const chgMenu = () => {};
+
+  console.log('메인영역실행!');
 
   return (
         /* <!-- 2.메인영역 --> */
