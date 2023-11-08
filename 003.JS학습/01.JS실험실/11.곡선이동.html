@@ -111,12 +111,12 @@
         let num = 0;
         setInterval(() => {
             // 1. 사이즈 변경
-            pBox.style.width = sz[num] + 'vw';
+            pBox.style.width = bxSize[num] + 'vw';
             // 2. 배열순번번호 증가
-            num++
+            num++;
             // 3. 배열 마지막번호 초과시 처음으로!
             if(num>bxSize.length-1)num = 0;
-        }, 500); ///////// 인터벌 함수 /////////
+        }, 1000); ///////// 인터벌 함수 /////////
 
 
       }); ////////////////// load //////////////////
