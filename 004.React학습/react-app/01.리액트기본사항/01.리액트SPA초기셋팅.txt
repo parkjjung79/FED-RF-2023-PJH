@@ -74,12 +74,12 @@ npm install react-bootstrap bootstrap
 
 8. 제이쿼리 추가설치
 npm install jquery
+또 npm i jquery(--save)
 사용:
 import $ from 'jquery';
 
 9. 제이쿼리 UI 추가설치
 npm i jquery-ui-dist
-또 npm i jquery
 사용:
 import 'jquery-ui-dist/jquery-ui';
 
