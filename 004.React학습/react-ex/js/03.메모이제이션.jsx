@@ -14,7 +14,7 @@ function App() {
   //     country: isKor ? "한국" : "일본",
   //   };
 
-// 해결방안: useMemo()!!! ////////////////////////////
+  // 해결방안: useMemo()!!! ////////////////////////////
   const nara = React.useMemo(()=>{
     // useMemo함수 내부에서 원래 객체를 리턴한다
     return{
