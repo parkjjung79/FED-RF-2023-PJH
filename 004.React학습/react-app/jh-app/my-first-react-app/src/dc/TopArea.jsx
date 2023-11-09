@@ -14,6 +14,13 @@ export function TopArea(){
                     <li>
                         <Logo />
                     </li>
+                    {
+                        menu.map(v=>
+                         <li>
+                            <a href="#">{v.txt}</a>
+                         </li>   
+                            )
+                    }
                 </ul>
             </nav>
         </header>
