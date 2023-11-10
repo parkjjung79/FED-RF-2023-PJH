@@ -16,15 +16,18 @@ export function TopArea(props){
                         <Logo />
                     </li>
                     {
-                        menu.map((v,i)=>
+                        menu.map(
+                        (v,i) => (
                          <li key={i}>
                             <a href="#"
                             onClick={
-                                ()=>props.chgFn(
+                                () =>
+                                props.chgFn(
                                     v.txt == "Home" ? "main" :v.txt
                                     )}>
                                 {v.txt}</a>
                          </li>
+                         )
                          /* 
                          map()을 사용하여 태그를 생성할때
                          데이터의 유일키를 key속성으로 만들지 않으면

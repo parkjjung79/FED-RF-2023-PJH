@@ -7,7 +7,7 @@ import { Comics } from "../contents/COMICS";
 import { Movies } from "../contents/MOVIES";
 import { Games } from "../contents/GAMES";
 import { News } from "../contents/NEWS";
-
+import { SwiperApp } from "../contents/plugin/SwiperApp";
 
 export function MainArea(props){
     // cat(category) 속성으로 메뉴분류 전달
@@ -42,6 +42,10 @@ export function MainArea(props){
             {
                 props.cat=='NEWS'&&
             <News cat={props.cat}/>
+            }
+            {
+                props.cat=='SWIPER'&&
+            <SwiperApp />
             }
         </main>
     );
