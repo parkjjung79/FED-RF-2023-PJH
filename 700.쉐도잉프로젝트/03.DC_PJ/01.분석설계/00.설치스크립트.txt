@@ -26,5 +26,13 @@
 설치방법
 
 1) 컨트롤 + 백틱
-2) cd 입력후 설치하고자 하는 파일 드래그 앤 드롭
+2) cd 입력후 스페이스 후 설치하고자 하는 파일 드래그 앤 드롭
 3) npx create-react-app dc-app 복붙 후 엔터
+4) cd 입력후 스페이스 후 설치하고자 하는 파일 드래그 앤 드롭
+5) 파일위치 확인 후
+    (1) npm i react-router-dom@latest
+    (2) npm i jquery
+    (3) npm i jquery-ui-dist
+    (4) npm i jquery-ui-touch-punch
+    (5) npm i swipe
+    순서대로 설치!
