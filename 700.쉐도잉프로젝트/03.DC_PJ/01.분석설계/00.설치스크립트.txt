@@ -22,3 +22,9 @@
 - 스크립트:
     (1) 시작: npm start
     (2) 멈춤: ctrl+c 후 질문에 답: y
+
+설치방법
+
+1) 컨트롤 + 백틱
+2) cd 입력후 설치하고자 하는 파일 드래그 앤 드롭
+3) npx create-react-app dc-app 복붙 후 엔터
