@@ -12,6 +12,8 @@ import 'swiper/css/navigation';
 import "./css/swiper.css";
 
 // import required modules
+// 사용할 스와이퍼 모듈을 불러온다
+// (여기서는 페이지네이션, 네비게이션,자동넘김)
 import { Pagination,Navigation,Autoplay } from "swiper/modules";
 
 export function SwiperApp() {
@@ -29,7 +31,7 @@ export function SwiperApp() {
   ];
 
   return (
-    <>
+    <> 
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -42,6 +44,7 @@ export function SwiperApp() {
         }}
         loop={true}
         navigation={true}
+        /* 사용할 모듈을 여기에 적용시킨다 */
         modules={[Pagination,Navigation,Autoplay]}
         className="mySwiper"
       >
