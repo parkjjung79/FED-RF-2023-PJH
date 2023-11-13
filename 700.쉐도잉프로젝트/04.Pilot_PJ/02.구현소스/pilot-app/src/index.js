@@ -15,28 +15,28 @@ function App(){
   const [pgName,setPgName] = useState('main')
 
   // 페이지 변경 상태변수 업데이트 함수
-  const chgPgName = () => {
+  const chgPgName = (txt) => {
     setPgName(txt);
   }; ///////////////// chgPgName 함수 /////////////////
 
   
   return(
     <>
-      <TopArea />
-  
-      <buttton onClick={()=>chgPgName('main')}>
-        메인페이지
-      <buttton onClick={()=>chgPgName('men')}>
-        남성페이지 
-      </buttton>
-      <buttton onClick={()=>chgPgName('women')}>
-        여성페이지 
-      </buttton>
-      <buttton onClick={()=>chgPgName('style')}>
-        스타일페이지 
-      </buttton>
-      <MainArea page={pgName} />
-      <FooterArea />
+     <TopArea />
+        <button onClick={()=>chgPgName('main')}>
+          메인페이지
+        </button>
+        <button onClick={()=>chgPgName('men')}>
+          남성페이지
+        </button>
+        <button onClick={()=>chgPgName('women')}>
+          여성페이지
+        </button>
+        <button onClick={()=>chgPgName('style')}>
+          스타일페이지
+        </button>
+        <MainArea page={pgName} />
+        <FooterArea />
     </>
   )
 
