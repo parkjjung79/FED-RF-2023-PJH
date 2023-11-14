@@ -1,6 +1,6 @@
 // 캐릭터페이지 메인컨텐츠
 
-import { Banner } from "./Banner"
+import { Banner } from "./Banner";
 
 export function Character(){
     return(
@@ -10,4 +10,4 @@ export function Character(){
         </>
     )
 
-} ///////////////////// Character 컴포넌트 /////////////////////
+} ////////////  Character 컴포넌트 ///////////
