@@ -5,11 +5,16 @@
 [2] 메뉴버튼모듈
     - 모듈명: MenuBtn (JS/CSS)
     (1) 구조정의 :
-    div.banner > ul.slider
-    > li
-    > img
-    + section.bantit
-    > h2 + p + button
+    div.banner
+    >
+    (ul.slider
+        > li
+        > img
+        + section.bantit
+        > h2 + p + button)
+    
+    + button.abtn
+    + ol.indic 
 
     (2) 객체화 :
         {

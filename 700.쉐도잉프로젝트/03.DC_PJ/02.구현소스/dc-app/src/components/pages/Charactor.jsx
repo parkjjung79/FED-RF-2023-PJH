@@ -6,7 +6,12 @@ export function Character(){
     return(
         <>
             <h1 style={{textAlign:'center'}}>캐릭터 페이지</h1>
-            <Banner category="CHARACTERS" />
+            <Banner category="WONDER WOMAN" />
+            <Banner category="GREEN LENTURN" />
+            <Banner category="BATMAN" />
+            <Banner category="AQUAMAN" />
+            <Banner category="CYBORG" />
+            <Banner category="THE FLASH" />
         </>
     )
 
