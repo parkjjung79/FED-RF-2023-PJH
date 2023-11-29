@@ -1,17 +1,17 @@
 // DC.com 레이아웃 컴포넌트
 
+import { FooterArea } from "./FooterArea";
 import { MainArea } from "./MainArea";
 import { TopArea } from "./TopArea";
-import { FooterArea } from "./FooterArea";
-
 
 export function Layout(){
     return(
     <>
-        <TopArea />
-        <MainArea />
-        <FooterArea />
+      <TopArea />
+      <MainArea />
+      <FooterArea />
     </>
+
     );
 
-} ////////// Layout 컴포넌트 //////////
+} /////////// Layout 컴포넌트 ///////////
