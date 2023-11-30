@@ -1,6 +1,16 @@
 // 상품상세보기 컴포넌트
 
-export function ItemDetail() {
+// 신상품 데이터 가져오기
+import { sinsangData } from "../data/sinsang";
+
+export function ItemDetail({cat,goods}) {
+  // goods - 상품 아이템정보(속성코드)
+
+  // 선택데이터
+  const selData = sinsangData[cat][goods];
+  console.log('선택데이터:',selData);
+
+  // 리턴코드 ////////////////////////
   return (
     <>
       <a href="#" className="cbtn">
@@ -65,7 +75,7 @@ export function ItemDetail() {
                 <li>
                   <span>구매수량</span>
                   <span>
-                    <input type="text" id="sum" value="1" />
+                    <input type="text" id="sum" defaultValue="1" />
                     <b className="chg_num">
                       <img src="./images/cnt_up.png" alt="증가" />
                       <img src="./images/cnt_down.png" alt="감소" />
