@@ -1,13 +1,14 @@
-// 캐릭터페이지 메인컨텐츠
+// 코믹스페이지 메인컨텐츠
 
-import { Banner } from "../modules/Banner"
+import { Banner } from "../modules/Banner";
+import { VidIntro } from "../modules/VidIntro";
 
 export function Comics(){
     return(
         <>
-            <h1 style={{textAlign:'center'}}>코믹스 페이지</h1>
             <Banner category="COMICS" />
+            <VidIntro cat="COMICS" cls="on" />
         </>
     )
 
-} ///////////////////// Character 컴포넌트 /////////////////////
+} ////////////  Comics 컴포넌트 ///////////

@@ -69,20 +69,6 @@ main.cont{
 .smenu::after{
     content: '';
     position: absolute;
-    top: -16px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-bottom: 16px solid #fff;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-
-
-}
-.smenu::after{
-    content: '';
-    position: absolute;
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
@@ -91,8 +77,6 @@ main.cont{
     border-bottom: 15px solid #fff;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-
-
 }
 
 h1{
@@ -146,7 +130,8 @@ input:focus{
 .info>ul>li:last-child{
     font-weight: bold;
 }
-.bmenu{
+/* 하단 ol>li>a 링크박스 */
+ol.bmenu{
     font-family: 'Ubuntu Condensed', sans-serif;
     display: flex;
     justify-content: center;
