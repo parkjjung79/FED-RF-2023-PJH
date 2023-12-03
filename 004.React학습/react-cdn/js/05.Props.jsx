@@ -75,6 +75,11 @@ function AskMore(props){ // props.num 배열데이터 순번값
             opt:{filter:'hue-rotate(109deg)',transform:'rotateY(180deg)'}
         },
         {
+            color:"가을남자브라운",
+            model:"2026년형",
+            opt:{filter:'hue-rotate(175deg)',transform:'rotateY(360deg)'}
+        },
+        {
             color:"녹차그린",
             model:"2024년형",
             opt:{filter:'hue-rotate(215deg)'}
@@ -95,8 +100,9 @@ ReactDOM.render(
     <div>
         <Brand />
         <AskMore num="0" />
-        <AskMore num="2" />
         <AskMore num="1" />
+        <AskMore num="2" />
+        <AskMore num="3" />
     </div>
     ,document.querySelector('#root1'));
 // ReactDOM.render(어쩌구,저쩌구);
