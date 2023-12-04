@@ -18,6 +18,7 @@ import { SwiperApp } from "./components/plugin/SwiperApp";
 import { CatDetail } from "./components/pages/CatDetail";
 import { Series } from "./components/pages/Series";
 import { SchPage } from "./components/pages/SchPage";
+import { Member } from "./components/pages/Member";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -54,7 +55,10 @@ import { SchPage } from "./components/pages/SchPage";
 // 출력해야하기 때문에 스스로 내보내기를 셋팅해야하는 것!
 export default function App() {
   return (
-    <BrowserRouter>
+    /* basename속성은 package.json의 "homepage"속성값 읽어옴 */
+    /* 배포용 */
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    {/* <BrowserRouter>  */}
       <Routes>
         {/* 중요!!! 레이아웃 컴포넌트를 루트로 설정! */}
         <Route path="/" element={<Layout />}>
@@ -72,6 +76,7 @@ export default function App() {
           <Route path="board" element={<SwiperApp />} />
           <Route path="detail" element={<CatDetail />} />
           <Route path="schpage" element={<SchPage />} />
+          <Route path="member" element={<Member />} />
         </Route>
       </Routes>
     </BrowserRouter>
