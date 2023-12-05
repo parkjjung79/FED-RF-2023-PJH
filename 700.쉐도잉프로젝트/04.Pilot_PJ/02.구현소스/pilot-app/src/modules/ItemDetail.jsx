@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { sinsangData } from "../data/sinsang";
 
 import $ from 'jquery';
+import { CartList } from "./CarList";
 
 export function ItemDetail({cat,goods}) {
   // cat - 카테고리명(men/women/style)
@@ -157,6 +158,9 @@ export function ItemDetail({cat,goods}) {
           </section>
         </div>
       </div>
+
+      {/* 카트리스트 */}
+      <CartList />
     </>
   );
 } /////////// ItemDetail 컴포넌트 ///////////
