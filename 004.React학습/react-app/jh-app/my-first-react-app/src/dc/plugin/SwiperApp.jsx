@@ -30,6 +30,13 @@ export function SwiperApp() {
     "dcm35",
   ];
 
+  // 플레이/멈춤기능 함수
+  const stopPlay = () => {
+    console.log('멈추거나 플레이!');
+
+  }; ///////////////// stopPlay함수 /////////////////
+
+  // 리턴코드 //////////////////////////////////////////////////////
   return (
     <> 
       <Swiper
@@ -55,8 +62,22 @@ export function SwiperApp() {
             </SwiperSlide>)
         }
         
-        
       </Swiper>
+      {/* 플레이/멈춤버튼 */}
+      <button
+      className="stopPlay"
+      style={{
+        backgroundColor: 'transparent',
+        border: 'none',
+        fontSize: '40px',
+        display:'block',
+        with: '40px',
+        margin: '0 auto',
+        cursor: 'pointer'
+      }}
+      title="멈추기"
+      onClick={stopPlay}
+      >▣</button>
     </>
   );
 } ////////////// SwiperApp 컴포넌트 //////////////

@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import './css/index.css';
 import { Layout } from './dc/layout/Layout';
 import { Character } from './dc/contents/CHARACTERS';
-import { SwiperApp } from './dc/contents/plugin/SwiperApp';
+import { SwiperApp } from './dc/plugin/SwiperApp';
 import { Main } from './dc/contents/Main';
 import { Comics } from './dc/contents/COMICS';
 import { Movies } from './dc/contents/MOVIES';
