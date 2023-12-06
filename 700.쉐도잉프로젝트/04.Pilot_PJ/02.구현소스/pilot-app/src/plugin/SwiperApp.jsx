@@ -57,6 +57,7 @@ export function SwiperApp(props) {
       >
         {makeList(props.cat == "style" ? 5 : 3)}
       </Swiper>
+      
     </>
   );
 } /////////// SwiperApp 컴포넌트 ///////////
