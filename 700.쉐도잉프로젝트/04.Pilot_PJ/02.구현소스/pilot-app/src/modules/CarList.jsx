@@ -43,7 +43,7 @@ export function CartList() {
               <tr key={i}>
                 {/* 상품이미지 */}
                 <td>
-                  <img src="images/goods/women/m2.png" alt="item" />
+                  <img src={"images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"} alt="item" />
                 </td>
                 {/* 리스트순번 */}
                 <td>{i + 1}</td>
