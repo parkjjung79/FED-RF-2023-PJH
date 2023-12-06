@@ -1,5 +1,5 @@
 // Pilot PJ : 신상품 정보 데이터
-
+// 스트링 데이터
 export const sinsangData = {   
   "men":{
     "m1": "[남성]카모전판프린트 PQ 티셔츠^DMTS7K731-MG^99000",
