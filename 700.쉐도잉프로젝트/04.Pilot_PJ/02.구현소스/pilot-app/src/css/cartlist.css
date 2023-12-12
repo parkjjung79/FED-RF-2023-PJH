@@ -91,10 +91,16 @@
     width: 50px;
     transition: .4s ease-in 2s;
 }
-
+/* 개수표시박스 */
 #mycart .cntBx{
     text-align: center;
     font-size: 20px;
     font-weight: bold;
     color: #ff4e08;
+    opacity: 0;
+    
+}
+#mycart.on .cntBx{
+    opacity: 1;
+    transition: .4s 3s;
 }
