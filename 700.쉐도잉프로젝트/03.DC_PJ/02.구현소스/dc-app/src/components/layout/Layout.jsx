@@ -7,9 +7,14 @@ import { TopArea } from "./TopArea";
 // Context API 불러오기
 import { dcCon } from "../modules/dcContext";
 import { useNavigate } from "react-router-dom";
-import { useCallback, useLayoutEffect } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
 export function Layout() {
+
+  // ************* Hook 상태관리 변수 ************* //
+  // 1. 로그인 상태 체크 변수 : 로컬스 'minfo'초기할당!
+  const [logSts,setLogSts] = 
+  useState(localStorage.getItem('minfo'));
 
   // 랜더링 후(화면보이기전) 실행구역 //////////
   useLayoutEffect(()=>{
@@ -37,7 +42,7 @@ export function Layout() {
     <dcCon.Provider value={{ chgPage }}>
       {/* 메모이제이션 관리를 위해 함수를
       컨텍스트방식이 아닌 속성으로 직접보냄! */}
-      <TopArea chgPageFn={chgPage} />
+      <TopArea chgPageFn={chgPage} logSts={logSts} />
       <MainArea />
       <FooterArea />
     </dcCon.Provider>
