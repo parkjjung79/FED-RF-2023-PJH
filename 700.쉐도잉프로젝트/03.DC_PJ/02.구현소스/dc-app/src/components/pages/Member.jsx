@@ -239,6 +239,8 @@ export function Member() {
 
       // 6. 로그인 페이지로 이동(라우터이동) - 보류!
       document.querySelector(".sbtn").innerText = "넌 이제 회원인거야~!";
+
+      // 7. 페이지 이동: 로그인페이지로 이동
     } ///////// if ////////
     // 3. 불통과시
     else {
