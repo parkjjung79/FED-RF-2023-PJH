@@ -160,8 +160,6 @@ export function Login() {
           setTimeout(()=>
           myCon.chgPage('/',{}),1000);
 
-
-
         } ///// if ////
         else {
           /// 비번 불일치!
@@ -217,9 +215,9 @@ export function Login() {
       // } //////// if ///////////
       
     } ///// if ///////
-    // 4-3. 유효성검사 불통과시 /////
+    // 4-3. 유효성검사 불통과시 - 특별히 필요없음 /////
     // else {
-    //   //console.log("실패!");
+    //   console.log("실패!");
     // } ////// else ///////
   }; //////////// onSubmit 함수 ///////////
 
