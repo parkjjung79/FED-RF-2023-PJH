@@ -29,6 +29,9 @@ export function Layout() {
     setLogSts(null);
     // 3. 로그인 메세지 업데이트
     setLogMsg(null);
+    // 4. 첫 페이지로 이동
+    chgPage('/',{});
+    
   },[]); //////////////// logOut함수 ////////////////
 
 
