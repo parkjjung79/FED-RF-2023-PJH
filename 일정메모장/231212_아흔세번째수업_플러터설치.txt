@@ -19,3 +19,16 @@ ______________________________
 3. 리뷰뿌릴 데이터 정리
 4. 장바구니 복붙
 
+
+플러터 설치방법
+1. 사이트 접속 후 zip 다운로드
+https://docs.flutter.dev/get-started/install
+
+2. c드라이브나 d드라이브에 zip 파일 풀어서 투척
+
+3. 재부팅
+
+4. cmd 열어서 flutter --version 입력 
+
+
+
