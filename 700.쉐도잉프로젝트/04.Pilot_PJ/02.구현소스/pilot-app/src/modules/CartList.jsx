@@ -8,12 +8,30 @@ import "../css/cartlist.css";
 import $ from "jquery";
 
 // 전달값이 변경되면 리랜더링하기 위해 메모이제이션을 적용!
-export const CartList = memo(({ selData }) => {
-  // 로컬 스토리지 데이터를 props로 전달 받는다!
+export const CartList = memo(({ selData, flag }) => {
+  // selData - 현재 반영된 데이터
+  // flag - 상태값 체크변수(true/false) -> 업데이트 여부결정!
+  console.log('업뎃상태값:',flag.current);
 
+  
   // 상태관리변수 설정 ////////////////////////////
   // 1. 변경데이터 변수 : 전달된 데이터로 초기셋팅
   const [cartData,setCartData] = useState(selData);
+  
+  console.log(
+  '받은데이터',selData,
+  '\n기존 데이터',cartData);
+
+
+  // 카트 컴포넌트의 데이터가 상태관리 되고 있으므로
+  // 외부에서 전달되는 데이터와 다를때 업데이트해야
+  // 외부에서 들어오는 데이터가 반영되어 리랜더링 된다!
+  // 삭제버튼도 작동하게 하려면?!?? -> 상태변수로 제어한다!
+  // 외부데이터업데이트는 flag.current값이 true까지 돼야한다!
+  if(cartData!==selData&&flag.current) {
+    setCartData(selData);
+    console.log(3333)
+  }
 
   // 선택 데이터 : 로컬스토리지 데이터를 객체변환! -> 주석처리
   // const selData = JSON.parse(localStorage.getItem("cart"));
@@ -63,6 +81,12 @@ export const CartList = memo(({ selData }) => {
 
   // 리스트 삭제 함수 ////////////////
   const deleteItem = (e) => {
+    // 삭제기능만 작동하기 하기위해 부모의 useRef값인 flag값을
+    // false로 변경하면 상단의 조건업데이트값이 작동하지 않는다!
+    // 삭제 기능만 작동한다!
+    flag.current = false;
+
+
     const selIdx = $(e.target).attr("data-idx");
     console.log("지울아이:", selIdx);
 
@@ -74,6 +98,8 @@ export const CartList = memo(({ selData }) => {
     console.log('제거후리스트:',newData);
     
     // 로컬스 데이터 업데이트!
+
+    localStorage.setItem('cart',JSON.stringify(newData));
 
 
     // 전체 데이터 업데이트하면 모두 리랜더링되게 하자!
