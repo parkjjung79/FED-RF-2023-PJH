@@ -1,8 +1,7 @@
-// 로그인 페이지 컴포넌트 - Login.
+// 로그인 페이지 컴포넌트 - Login.jsx
 
 // 컨텍스트 API를 사용하는 컴포넌트 파일에서 불러옴!
 import { dcCon } from "../modules/dcContext";
-
 
 // 디자인은 회원가입과 동일!
 import { useState, useContext } from "react";
@@ -17,8 +16,7 @@ import $ from "jquery";
 export function Login() {
 
   // 컨텍스트 API 사용하기
-    const myCon = useContext(dcCon);
- 
+  const myCon = useContext(dcCon);  
 
   // [ 상태관리변수 ] /////////
   // [1] 입력요소 상태변수 /////////
@@ -98,7 +96,7 @@ export function Login() {
 
     // 4-2. 유효성검사 전체 통과시 ////
     if (totalValid()) {
-      //console.log("통과!");
+      // console.log("통과!");
       // DB역할의 로컬스에 데이터를 비교한다!
 
       // 만약 로컬스에 'mem-data'가 없으면
@@ -110,7 +108,7 @@ export function Login() {
 
       // 로컬스 데이터 객체화하기
       memData = JSON.parse(memData);
-      //console.log(memData);
+      // console.log(memData);
 
       // 같은 아이디 검사 상태변수
       // -> true면 아이디불일치할 경우
@@ -125,53 +123,58 @@ export function Login() {
         if(v['uid']===userId) return true;
       }); ///////// find ////////
 
-      //console.log('find결과:',findD);
+      // console.log('find결과:',findD);
 
       // 만약 검색결과가 있으면 true처리됨!
       // 결과가 리턴이 없는 경우 undefined이므로 false!
       if(findD){ // 같은 아이디가 있는 경우 ///
-        //console.log("아이디같아요~!");
+        // console.log("아이디같아요~!");
         // 아이디에러 상태 업데이트
         setUserIdError(false);
 
-        // 비밀번호가 일치하는가? -> 로그인 최종성공!
+        // 비밀번호가 일치하는가? -> 로그인 최종성공!!!
         if (findD["pwd"] === pwd) {
-          //console.log("비번이 같아요~!");
+          // console.log("비번이 같아요~!");
           // 비번에러 상태값 업데이트
           setPwdError(false);
 
-          // ***** [로그인후 셋팅작업] *****
+          // **** [ 로그인후 셋팅작업 ] **** //
           // 1. 로그인한 회원정보를 로컬스에 셋팅!
-          // -> 서버의 세션을 대신하여 사용함
+          // -> 서버의 세션을 대신하여 사용함!
           localStorage
           .setItem('minfo',JSON.stringify(findD));
 
-          // 2. 컨텍스트 API에 공개된 로그인상태 업데이트하기
+          // 2. 컨텍스트 API에 공개된 로그인상태 업데이트하기!
           myCon.setLogSts(localStorage.getItem('minfo'));
 
-          // 3. 컨텍스트 API에 공개된 로그인 메세지 업데이트하기!
-          myCon.setLogMsg("welcome "+findD.unm);
+          // 유저아이콘
+          const usrIcon = ["🙍‍♂️","🧏‍♀️","🦸‍♂","👨‍🎤","🦸‍♀"];
 
-          // 버튼에 메세지(재미로!)
-          $('.sbtn').text('넌 로그인된고야');
-          
+          // 3. 컨텍스트 API에 공개된 로그인 메시지 업데이트하기!
+          myCon.setLogMsg("Welcome "+
+          findD.unm+usrIcon[Math.floor(Math.random()*5)]);
+
+          // 버튼에 메시지(재미로...)
+          $('.sbtn').text('넌 로그인된거야~!');
+
           // 3. 라우팅 페이지 이동하기(useNavigate)
           // 컨텍스트 API 함수호출!
           setTimeout(()=>
           myCon.chgPage('/',{}),1000);
+          
 
-        } ///// if ////
+        } /////////// if //////////
         else {
           /// 비번 불일치!
-          //console.log("비번달라요~!");
+          // console.log("비번달라요~!");
           // 비번 다를때 메시지
           setPwdMsg(msgPwd[1]);
           // 비번에러 상태 업데이트
           setPwdError(true);
-        } ///// else //////
-      } ///////// if /////////
+        } ////////// else /////////
+      } //////////// if /////////////////
       else { // 같은 아이디가 없는 경우 /////
-        //console.log("아이디 달라요~!");
+        // console.log("아이디 달라요~!");
         // 아이디가 다를때 메시지 보이기
         setIdMsg(msgId[1]);
         // 아이디 에러 상태 업데이트
@@ -182,7 +185,7 @@ export function Login() {
       // memData.forEach((v) => {
       //   // 같은 아이디가 있는가?
       //   if (v["uid"] === userId) {
-      //     //console.log("아이디같아요~!");
+      //     // console.log("아이디같아요~!");
       //     // 아이디에러 상태 업데이트
       //     setUserIdError(false);
       //     // 같은 아이디 상태 업데이트
@@ -190,13 +193,13 @@ export function Login() {
 
       //     // 비밀번호가 일치하는가?
       //     if (v["pwd"] === pwd) {
-      //       //console.log("비번이 같아요~!");
+      //       // console.log("비번이 같아요~!");
       //       // 비번에러 상태값 업데이트
       //       setPwdError(false);
       //     } ///// if ////
       //     else {
       //       /// 비번 불일치!
-      //       //console.log("비번달라요~!");
+      //       // console.log("비번달라요~!");
       //       // 비번 다를때 메시지
       //       setPwdMsg(msgPwd[1]);
       //       // 비번에러 상태 업데이트
@@ -207,14 +210,15 @@ export function Login() {
 
       // 아이디가 불일치할 경우
       // if (isNot) {
-      //   //console.log("아이디 달라요~!");
+      //   // console.log("아이디 달라요~!");
       //   // 아이디가 다를때 메시지 보이기
       //   setIdMsg(msgId[1]);
       //   // 아이디 에러 상태 업데이트
       //   setUserIdError(true);
       // } //////// if ///////////
-      
+
     } ///// if ///////
+    
     // 4-3. 유효성검사 불통과시 - 특별히 필요없음 /////
     // else {
     //   console.log("실패!");
