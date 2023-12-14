@@ -47,7 +47,7 @@ export function Board() {
     const tempData = [];
 
     // 데이터 선별을 위한 for문
-    for (let i = 0; i < 10; i++) tempData.push(baseData[i]);
+    for (let i = 0; i < 10; i++) tempData.push(jsn[i]);
 
     return tempData.map((v, i) => (
       <tr>
