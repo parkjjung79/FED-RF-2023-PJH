@@ -1,7 +1,7 @@
 // OPINION 의견 게시판 컴포넌트
 
 // 게시판용 CSS
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import "../../css/board.css";
 
 // 기본 데이터 제이슨 불러오기
@@ -9,7 +9,7 @@ import baseData from "../data/board.json";
 
 // 기본 데이터 역순정렬
 baseData.sort((a, b) => {
-//문자형으로 하면 정렬이 이상하게 됨 => 숫자형(Number)으로 해줘야 정상적으로 나옴
+  //문자형으로 하면 정렬이 이상하게 됨 => 숫자형(Number)으로 해줘야 정상적으로 나옴
   return Number(a.idx) === Number(b.idx)
     ? 0
     : Number(a.idx) > Number(b.idx)
@@ -17,20 +17,35 @@ baseData.sort((a, b) => {
     : 1;
 });
 
-// 초기데이터 셋업하기
-let org;
+// 초기데이터 셋업하기(원본데이터 담기)
+let orgData;
 // 로컬스가 있으면 그것 넣기
 if (localStorage.getItem("bdata"))
-  org = JSON.parse(localStorage.getItem("bdata"));
+  orgData = JSON.parse(localStorage.getItem("bdata"));
 // 로컬스 없으면 제이슨 데이터 넣기
-else org = baseData;
+else orgData = baseData;
 
 // console.log(org);
 
+
+//**************** Board 컴포넌트 ****************//
 export function Board() {
+  // [ 컴포넌트 전체 공통변수 ] ////////
+  // 1. 페이지 단위수 : 한 페이지당 레코드 수
+  const pgBlock = 7;
+  // 2. 전체 레코드 수 : 배열데이터 총개수
+  const totNum = baseData.length;
+  console.log(
+    '페이지단위수:',pgBlock,
+    '\n전체 레코드수:',totNum);
+  
+  // 3. 현재 페이지 번호
+  let pgNum = 1;
+
+
   // [ 상태관리 변수 셋팅 ] ////////
-  // 1. 데이터 변경변수 : 초기데이터로 셋팅함
-  const [jsn, setJsn] = useState(org);
+  // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
+  const [currData, setCurrData] = useState(null);
   // 2. 게시판 모드관리변수
   const [bdMode, setBdMode] = useState("L");
   // 모드구분값 : CRUD (Create/Read/Update/Delete)
@@ -43,18 +58,36 @@ export function Board() {
     기능 : 페이지별 리스트를 생성하여 바인딩함
   ************************************************/
   const bindList = () => {
+    console.log('다시바인딩!',pgNum);
     // 데이터 선별하기
     const tempData = [];
+    
+    // 시작값 : (페이지번호-1)*블록단위수
+    // 한계값 : 블록단위수*페이지번호
+    // 블록단위가 7일 경우 첫페이지는 0~7, 7~14, .....
+    console.log(
+    '시작값:',(pgNum - 1) * pgBlock,
+    '\n한계값:',pgBlock * pgNum
+    );
 
-    // 데이터 선별을 위한 for문
-    for (let i = 0; i < 10; i++) tempData.push(jsn[i]);
+    // 데이터 선별용 for문 : 원본데이터(orgData)로부터 생성
+    for (let i = (pgNum - 1)*pgBlock;
+    i < pgBlock * pgNum; i++){
+        tempData.push(orgData[i]);
+    } ////////// for //////////
+
+    console.log('결과셋:',tempData);
 
     return tempData.map((v, i) => (
-      <tr>
+      <tr key={i}>
         {/* 1.일련번호 */}
         <td>{i + 1}</td>
         {/* 2.글제목 */}
-        <td>{v.tit}</td>
+        <td>
+          <a href="#" datatype={v.idx}>
+            {v.tit}
+          </a>
+        </td>
         {/* 3.글쓴이 */}
         <td>{v.writer}</td>
         {/* 4.작성날짜 */}
@@ -68,6 +101,63 @@ export function Board() {
     //   <td colSpan="5">There is no data.</td>
     // </tr>
   }; ///////////////// bindList 함수 ///////////////
+
+  
+  /************************************************ 
+    함수명 : pagingLink
+    기능 : 리스트 페이징 링크를 생성한다!
+  ************************************************/
+ const pagingLink = () => {
+
+  // 페이징 블록만들기 /////
+  // 1. 블록개수 계산하기
+  const blockCnt = Math.floor(totNum / pgBlock);
+  
+  // 전체레코드수 / 페이지단위 (나머지가 있으면 +1)
+  // 전체레코드수 : pgBlock변수에 할당됨!
+  // 2. 블록 나머지수 
+  const blockPad = totNum % pgBlock;
+  
+  // 최종한계수 -> 여분레코드 존재에 따라 1더하기 
+  const limit = blockCnt + (blockPad===0?0:1)
+
+  console.log(
+    '블록개수:',blockCnt,
+    '\n블록나머지:',blockPad,
+    '최종한계수:',limit
+    );
+
+  
+  // 리액트에선 jsx문법 코드를 배열에 넣고
+  // 출력하면 바로 코드로 변환된다!
+  let pgCode = [];
+  // 리턴 코드 /////////////
+  for(let i=0; i<limit; i++){
+    
+    // 만약 빈태그 묶음에 key를 심어야할 경우
+    // 불가하므로 Fragment 조각 가상태그를 사용한다!
+    pgCode[i] = 
+    <Fragment key={i}>
+      <a href="#" onClick={chgList}>{i+1}</a> {i<limit-1?' | ':''}
+    </Fragment>;
+  } ////////// for //////////
+
+  return(pgCode);
+  }; ///////////// pagingLink 함수 /////////////
+
+  /************************************************ 
+    함수명 : chgList
+    기능 : 페이지 링크 클릭시 리스트 변경
+  ************************************************/
+  const chgList = (e) => {
+    let currNum = e.target.innerText;
+    console.log('번호:',currNum);
+    // 현재 페이지번호 업데이트
+    pgNum = currNum;
+    // 바인드 리스트 호출!
+    bindList();
+
+  }; ///////////// chgList 함수 /////////////
 
   // 리턴코드 ////////////////////
   return (
@@ -96,6 +186,7 @@ export function Board() {
               <tr>
                 <td colSpan="5" className="paging">
                   {/* 페이징번호 위치  */}
+                  {pagingLink()}
                 </td>
               </tr>
             </tfoot>
