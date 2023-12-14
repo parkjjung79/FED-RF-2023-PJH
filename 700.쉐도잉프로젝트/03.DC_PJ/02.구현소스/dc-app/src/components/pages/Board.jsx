@@ -7,6 +7,16 @@ import "../../css/board.css";
 // 기본 데이터 제이슨 불러오기
 import baseData from "../data/board.json";
 
+// 기본 데이터 역순정렬
+baseData.sort((a, b) => {
+//문자형으로 하면 정렬이 이상하게 됨 => 숫자형(Number)으로 해줘야 정상적으로 나옴
+  return Number(a.idx) === Number(b.idx)
+    ? 0
+    : Number(a.idx) > Number(b.idx)
+    ? -1
+    : 1;
+});
+
 // 초기데이터 셋업하기
 let org;
 // 로컬스가 있으면 그것 넣기
@@ -33,31 +43,31 @@ export function Board() {
     기능 : 페이지별 리스트를 생성하여 바인딩함
   ************************************************/
   const bindList = () => {
+    // 데이터 선별하기
+    const tempData = [];
 
-    return(
-      baseData.map((v,i)=>
-        <tr>
-          {/* 1.일련번호 */}
-          <td>{i+1}</td>
-          {/* 2.글제목 */}
-          <td>{v.tit}</td>
-          {/* 3.글쓴이 */}
-          <td>{v.writer}</td>
-          {/* 4.작성날짜 */}
-          <td>{v.date}</td>
-          {/* 5.조회수 */}
-          <td>{v.cnt}</td>
-        </tr>
-      )
-    );
+    // 데이터 선별을 위한 for문
+    for (let i = 0; i < 10; i++) tempData.push(baseData[i]);
+
+    return tempData.map((v, i) => (
+      <tr>
+        {/* 1.일련번호 */}
+        <td>{i + 1}</td>
+        {/* 2.글제목 */}
+        <td>{v.tit}</td>
+        {/* 3.글쓴이 */}
+        <td>{v.writer}</td>
+        {/* 4.작성날짜 */}
+        <td>{v.date}</td>
+        {/* 5.조회수 */}
+        <td>{v.cnt}</td>
+      </tr>
+    ));
 
     // <tr>
     //   <td colSpan="5">There is no data.</td>
     // </tr>
-
   }; ///////////////// bindList 함수 ///////////////
-
-
 
   // 리턴코드 ////////////////////
   return (
@@ -79,9 +89,7 @@ export function Board() {
             </thead>
 
             {/* 중앙 레코드 표시부분 */}
-            <tbody>
-              {bindList()}
-            </tbody>
+            <tbody>{bindList()}</tbody>
 
             {/* 하단 페이징 표시부분 */}
             <tfoot>
