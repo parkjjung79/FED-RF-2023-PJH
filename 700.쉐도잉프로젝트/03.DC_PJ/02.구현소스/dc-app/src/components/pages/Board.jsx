@@ -25,6 +25,9 @@ if (localStorage.getItem("bdata"))
 // 로컬스 없으면 제이슨 데이터 넣기
 else orgData = baseData;
 
+// 빈데이터 테스트용
+// else orgData = [];
+
 // console.log(org);
 
 
@@ -34,19 +37,20 @@ export function Board() {
   // 1. 페이지 단위수 : 한 페이지당 레코드 수
   const pgBlock = 7;
   // 2. 전체 레코드 수 : 배열데이터 총개수
-  const totNum = baseData.length;
+  const totNum = orgData.length;
   console.log(
     '페이지단위수:',pgBlock,
     '\n전체 레코드수:',totNum);
   
-  // 3. 현재 페이지 번호
-  let pgNum = 1;
-
-
+    
+    
   // [ 상태관리 변수 셋팅 ] ////////
-  // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
+  
+  // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
+  const [pgNum,setPgNum] = useState(1);
+  // 2. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
   const [currData, setCurrData] = useState(null);
-  // 2. 게시판 모드관리변수
+  // 3. 게시판 모드관리변수
   const [bdMode, setBdMode] = useState("L");
   // 모드구분값 : CRUD (Create/Read/Update/Delete)
   // C - 글쓰기 / R - 글읽기 / U - 글수정 / D - 글삭제(U에포함!)
@@ -62,44 +66,56 @@ export function Board() {
     // 데이터 선별하기
     const tempData = [];
     
+    
     // 시작값 : (페이지번호-1)*블록단위수
-    // 한계값 : 블록단위수*페이지번호
+    let initNum = (pgNum - 1) * pgBlock;
+    // 한계값 :  블록단위수*페이지번호
+    let limitNum = pgBlock * pgNum;
+    
     // 블록단위가 7일 경우 첫페이지는 0~7, 7~14, .....
     console.log(
-    '시작값:',(pgNum - 1) * pgBlock,
-    '\n한계값:',pgBlock * pgNum
-    );
+      '시작값:',initNum,
+      '\n한계값:',limitNum);
 
     // 데이터 선별용 for문 : 원본데이터(orgData)로부터 생성
-    for (let i = (pgNum - 1)*pgBlock;
-    i < pgBlock * pgNum; i++){
+    for (let i = initNum; i < limitNum; i++) {
+        // 마지막 페이지 한계수체크
+        if(i>=totNum) break;
+        // 코드 푸시
         tempData.push(orgData[i]);
     } ////////// for //////////
 
     console.log('결과셋:',tempData);
-
-    return tempData.map((v, i) => (
-      <tr key={i}>
-        {/* 1.일련번호 */}
-        <td>{i + 1}</td>
-        {/* 2.글제목 */}
-        <td>
-          <a href="#" datatype={v.idx}>
-            {v.tit}
-          </a>
-        </td>
-        {/* 3.글쓴이 */}
-        <td>{v.writer}</td>
-        {/* 4.작성날짜 */}
-        <td>{v.date}</td>
-        {/* 5.조회수 */}
-        <td>{v.cnt}</td>
-      </tr>
-    ));
-
-    // <tr>
-    //   <td colSpan="5">There is no data.</td>
-    // </tr>
+    
+    // 데이터가 없는 경우 출력 //
+    if(tempData.length===0) {
+      return(
+        <tr>
+          <td colSpan="5">There is no data.</td>
+        </tr>
+        );
+    } /////// if ///////
+    
+    // if문에 들어가지 않으면 여기를 리턴함!
+      return tempData.map((v, i) => (
+        <tr key={i}>
+          {/* 1.일련번호 */}
+          <td>{i + 1 + initNum}</td>
+          {/* 2.글제목 */}
+          <td>
+            <a href="#" datatype={v.idx}>
+              {v.tit}
+            </a>
+          </td>
+          {/* 3.글쓴이 */}
+          <td>{v.writer}</td>
+          {/* 4.작성날짜 */}
+          <td>{v.date}</td>
+          {/* 5.조회수 */}
+          <td>{v.cnt}</td>
+        </tr>
+        ));
+        
   }; ///////////////// bindList 함수 ///////////////
 
   
@@ -132,13 +148,21 @@ export function Board() {
   // 출력하면 바로 코드로 변환된다!
   let pgCode = [];
   // 리턴 코드 /////////////
-  for(let i=0; i<limit; i++){
+  for(let i = 0; i<limit; i++){
     
     // 만약 빈태그 묶음에 key를 심어야할 경우
     // 불가하므로 Fragment 조각 가상태그를 사용한다!
     pgCode[i] = 
     <Fragment key={i}>
-      <a href="#" onClick={chgList}>{i+1}</a> {i<limit-1?' | ':''}
+      {pgNum - 1 === i ? (
+        <b>{i + 1}</b>
+      ) : (
+        <a href="#" onClick={chgList}>
+          {i + 1}
+        </a>
+      )}
+
+      {i<limit-1?' | ':''}
     </Fragment>;
   } ////////// for //////////
 
@@ -152,10 +176,10 @@ export function Board() {
   const chgList = (e) => {
     let currNum = e.target.innerText;
     console.log('번호:',currNum);
-    // 현재 페이지번호 업데이트
-    pgNum = currNum;
-    // 바인드 리스트 호출!
-    bindList();
+    // 현재 페이지번호 업데이트 -> 리스트 업데이트됨!(리랜더링)
+    setPgNum(currNum);
+    // 바인드 리스트 호출 -> 불필요! 왜? pgNum을 bindList()에서 사용하기 때문에 리 랜더링이 자동으로 일어남! **꼭 체크**
+    // bindList();
 
   }; ///////////// chgList 함수 /////////////
 
