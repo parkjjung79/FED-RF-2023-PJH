@@ -8,6 +8,7 @@ import { TopArea } from "./TopArea";
 import { dcCon } from "../modules/dcContext";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useLayoutEffect, useState } from "react";
+import { useEffect } from "react";
 
 export function Layout() {
 
@@ -40,6 +41,20 @@ export function Layout() {
     // 페이지 이동시 스크롤위치 상단이동
     window.scrollTo(0,0);
   }); /////////// useEffect ///////////
+  
+  // 랜더링 후 실행구역 한번만 ///////////////////////
+  useEffect(()=>{
+    // 로그인 로컬스가 있으면 환영메세지 넣기
+    if(localStorage.getItem('minfo')){
+      const minfo = JSON.parse(localStorage.getItem('minfo'));
+      // 유저아이콘
+      const usrIcon = ["🙍‍♂️","🧏‍♀️","🦸‍♂","👨‍🎤","🦸‍♀"];
+      
+      // 3. 컨텍스트 API에 공개된 로그인 메시지 업데이트하기!
+      setLogMsg("Welcome "+
+      minfo.unm+usrIcon[Math.floor(Math.random()*5)]);
+    } ///////// if /////////
+  },[]);
 
   // 라우터 이동객체설정
   const goNav = useNavigate();
