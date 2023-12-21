@@ -5,6 +5,11 @@
     font-family: 'Ubuntu','Nanum Gothic';
 }
 
+/* 상세보기 내부 박스 디자인 변경 */
+.inx{
+    background-color: rgba(255 255 255 / 53% );
+}
+
 /* 타이틀 */
 .tit {
     position: relative;
@@ -12,7 +17,7 @@
     text-align: center;
     /* 글자 최소크기 지정 */
     font-size: max(4vw, 25px);
-    font-family: 'UB','Nanum Gothic';
+    font-family: 'Ubuntu','Nanum Gothic';
 
 }
 .wrap{
