@@ -646,32 +646,54 @@ export function Board() {
       {
         /* 1. 게시판 리스트 : 게시판 모드 'L'일때 출력 */
         bdMode === "L" && (
-          <table className="dtbl" id="board">
-            <caption>OPINION</caption>
-            {/* 상단 컬럼명 표시영역 */}
-            <thead>
-              <tr>
-                <th>Number</th>
-                <th>Title</th>
-                <th>Writer</th>
-                <th>Date</th>
-                <th>Hits</th>
-              </tr>
-            </thead>
+          <>
+          {/* 전체 타이틀 */}
+            <h1 className="tit">OPINION</h1>
+            
+            {/* 검색옵션박스 */}
+            <div class="selbx">
+              <select name="cta" id="cta" className="cta">
+                <option value="tit">Title</option>
+                <option value="cont">Contents</option>
+                <option value="unm">Writer</option>
+              </select>
+              <select name="sel" id="sel" className="sel">
+                <option value="0">JungYeol</option>
+                <option value="1">Ascending</option>
+                <option value="2">Descending</option>
+              </select>
+              <input id="stxt" type="text" maxlength="50" />
+              <button class="sbtn">Search</button>
+            </div>
 
-            {/* 중앙 레코드 표시부분 */}
-            <tbody>{bindList()}</tbody>
+            {/* 리스트 테이블 */}
+            <table className="dtbl" id="board">
+              {/* <caption></caption> */}
+              {/* 상단 컬럼명 표시영역 */}
+              <thead>
+                <tr>
+                  <th>Number</th>
+                  <th>Title</th>
+                  <th>Writer</th>
+                  <th>Date</th>
+                  <th>Hits</th>
+                </tr>
+              </thead>
 
-            {/* 하단 페이징 표시부분 */}
-            <tfoot>
-              <tr>
-                <td colSpan="5" className="paging">
-                  {/* 페이징번호 위치  */}
-                  {pagingLink()}
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+              {/* 중앙 레코드 표시부분 */}
+              <tbody>{bindList()}</tbody>
+
+              {/* 하단 페이징 표시부분 */}
+              <tfoot>
+                <tr>
+                  <td colSpan="5" className="paging">
+                    {/* 페이징번호 위치  */}
+                    {pagingLink()}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </>
         )
       }
       {

@@ -22,3 +22,4 @@ export const gnbData = {
     // 전체리스트 카테고리 데이터 추가
     "glist":["Filter List","Paging List","More List"],
 }; /////////// gnbData ////////////////
+
