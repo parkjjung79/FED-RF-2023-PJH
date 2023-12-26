@@ -56,10 +56,9 @@ const arrData = [
   },
 ];
 
-// 변수에 데이터를 카피한다!
+// 변수에 데이터 카피한다!
 // 얕은복사
 // const copyData = arrData;
-
 // 깊은복사
 const copyData = JSON.parse(JSON.stringify(arrData));
 
@@ -67,17 +66,12 @@ const copyData = JSON.parse(JSON.stringify(arrData));
 copyData.some((v) => {
   // idx가 "3"인 항목의 타이틀 변경하기
   if (Number(v.idx) === 3) {
-    v.tit = "나야나";
+    v.tit = "나야나야나!^^";
     return true;
   }
-}); ///////// some /////////
-
-// 원본과 카피본 확인하기
-console.log("원본:", arrData);
-console.log("카피본:", copyData);
+}); //////// some /////////
 
 // 카피본 정렬변경
-
 // 내림차순변경
 copyData.sort((x, y) => {
   return Number(x.idx) == Number(y.idx)
@@ -86,3 +80,7 @@ copyData.sort((x, y) => {
     ? -1
     : 1;
 });
+
+// 원본과 카피본 확인하기
+console.log("원본:", arrData);
+console.log("카피본:", copyData);
