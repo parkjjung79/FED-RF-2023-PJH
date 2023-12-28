@@ -59,7 +59,17 @@
 	*/
 }
 
-/* a요소 말줄임 표시하기 */
+/* 보드 메인리스트 a요소 말줄임 표시하기 */
+#board tbody td a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 유동적인 가로크기지정(최대215px) */
+    width: min(215px,40vw);
+}
+
+
 .dtbl tbody td a{
     display: block;
     white-space: nowrap;
