@@ -1,14 +1,7 @@
 // OPINION 의견 게시판 컴포넌트
 
 // 게시판용 CSS
-import {
-  Fragment,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import "../../css/board.css";
 
 // 컨텍스트 API 불러오기
@@ -38,9 +31,9 @@ let orgData;
 if (localStorage.getItem("bdata"))
   orgData = JSON.parse(localStorage.getItem("bdata"));
 // 로컬스 없으면 제이슨 데이터 넣기 + 로컬스 생성하기!
-else{ 
+else {
   // 기본 데이터 제이슨에서 가져온 것 넣기
-  orgData = baseData; 
+  orgData = baseData;
 } ////// else //////
 // else orgData = [];
 
@@ -48,13 +41,12 @@ else{
 
 // ******* Borad 컴포넌트 ******* //
 export function Board() {
-  
-  
   // 보드 데이터가 로컬스에 없으면 생성하기!
-  if (!localStorage.getItem("bdata")){ //!연산자로 false일때 실행
+  if (!localStorage.getItem("bdata")) {
+    //!연산자로 false일때 실행
     // 로컬스 'bdata'가 없으므로 여기서 최초 생성하기
     // -> 조회수 증가시 로컬스 데이터로 확인하기 때문!
-    localStorage.setItem('bdata',JSON.stringify(orgData));
+    localStorage.setItem("bdata", JSON.stringify(orgData));
   } ///////////// if /////////////
 
   // 기본사용자 정보 셋업 함수 호출
@@ -89,8 +81,10 @@ export function Board() {
   const [btnSts, setBtnSts] = useState(false);
 
   // 4. 강제 리랜더링 관리변수 : 값을 랜덤값으로 업데이트 변경하여 사용
-  const [False,setForce] = useState(null);
+  const [False, setForce] = useState(null);
 
+  // 5. 검색상태 관리변수 : 값유지만 하도록 참조변수로 생성
+  const searchSts = useRef(false);
 
   // 리랜더링 루프에 빠지지 않도록 랜더링후 실행구역에
   // 변경코드를 써준다! 단, logSts에 의존성을 설정해준다!
@@ -107,23 +101,47 @@ export function Board() {
   // 의존성에 등록하여 그 변경발생시 한번만 실행되도록 설정하는
   // 것이다!!!
 
-  /************************************* 
+  /**************************************** 
+    함수명 : sortData
+    기능 : 내림차순정렬
+  ****************************************/
+  function sortData (data,arr) {
+    // arr은 배열값으로
+    // 내림차순은 [-1,1]
+    // 오름차순은 [1,-1]을 보내준다!
+    return data.sort((a, b) => {
+      return Number(a.idx) === Number(b.idx)
+        ? 0
+        : Number(a.idx) > Number(b.idx)
+        ? arr[0]
+        : arr[1];
+    });
+  } ////////////// sortData 함수 ////////////
+
+  /**************************************** 
+    함수명 : rawData -> '날것의' 원본 
+    기능 : 데이터 초기화 하기(전체데이터로 업데이트)
+  ****************************************/
+  const rawData = () => {
+    // orgData를 로컬스 데이터로 덮어쓰기
+    // 단, 내림차순으로 정렬하여 넣어준다!
+    orgData = sortData(JSON.parse(localStorage.getItem('bdata'),[-1,1]));
+    
+
+  }; /////////////// rawData ///////////////
+
+
+  /********************************************** 
     함수명 : bindList
     기능 : 페이지별 리스트를 생성하여 바인딩함
-  *************************************/
+  **********************************************/
   const bindList = () => {
     // console.log("다시바인딩!", pgNum);
     // 데이터 선별하기
     const tempData = [];
 
-    // 내림차순 정렬
-    orgData.sort((a, b) => {
-      return Number(a.idx) === Number(b.idx)
-        ? 0
-        : Number(a.idx) > Number(b.idx)
-        ? -1
-        : 1;
-    });
+    // 내림차순 정렬 함수호출
+    sortData(orgData,[-1,1]);
 
     // 시작값 : (페이지번호-1)*블록단위수
     let initNum = (pgNum - 1) * pgBlock;
@@ -150,7 +168,7 @@ export function Board() {
           <td colSpan="5">There is no data.</td>
         </tr>
       );
-    } ////// if /////////    
+    } ////// if /////////
 
     // if문에 들어가지 않으면 여기를 리턴함!
     return tempData.map((v, i) => (
@@ -171,8 +189,6 @@ export function Board() {
         <td>{v.cnt}</td>
       </tr>
     ));
-
-    
   }; /////////// bindList 함수 ////////////
 
   /************************************* 
@@ -252,6 +268,15 @@ export function Board() {
   const chgMode = (e) => {
     // 기본막기
     e.preventDefault();
+
+    // 만약 검색상태였다면 searchSts값이 true이므로
+    // 이때 false로 업데이트와 함께 orgData도 초기화해준다!
+    if(searchSts.current){
+      // searchSts값 true 업데이트
+    searchSts.current = false;
+      // orgData초기화
+      rawData();
+    } ////////// if //////////
 
     // 1. 해당 버튼의 텍스트 읽어오기
     let btxt = $(e.target).text();
@@ -593,24 +618,20 @@ export function Board() {
 
     // 3-2. 로그인한 사용자일 경우 로그인 사용자계정과 같은
     // 글이면 증가하지 않는다!
-    if(localStorage.getItem('minfo')){
+    if (localStorage.getItem("minfo")) {
       // 1.사용자 로그인정보 로컬스
-      let minfo = 
-      JSON.parse(localStorage.getItem('minfo'));
+      let minfo = JSON.parse(localStorage.getItem("minfo"));
 
       // 2.로그인 아이디
       let cUid = minfo.uid;
 
-      // 3.로그인 아이디 === 현재글 아이디 검사통과시 
+      // 3.로그인 아이디 === 현재글 아이디 검사통과시
       // isOK 값 false처리로 조회수 증가막기!
-      if(cUid === cData.current.uid) isOK = false;
+      if (cUid === cData.current.uid) isOK = false;
 
       // console.log('로그인사용자검사',cUid,isOK);
-
     } ////////////// if //////////////
 
-     
-    
     // 4. [ 카운트 증가하기 ] ////////
     if (isOK) {
       // 로컬스 'bdata'에서 조회하여 업데이트함!
@@ -618,7 +639,7 @@ export function Board() {
       data.some((v) => {
         if (Number(v.idx) === Number(cidx)) {
           // 기존 cnt항목의 숫자를 1증가하여 업데이트!
-          v.cnt = Number(v.cnt)+1;
+          v.cnt = Number(v.cnt) + 1;
           // 여기서 나감!(break역할!)
           return true;
         } ////////// if //////////
@@ -626,19 +647,19 @@ export function Board() {
 
       // 원본 데이터에 반영하기 : 꼭해야만 리스트가 업데이트됨!
       orgData = data;
-      
-      // 반영된 배열 데이터를 다시 'bdata' 로컬스에 넣기
-      localStorage.setItem('bdata',JSON.stringify(data));
 
+      // 반영된 배열 데이터를 다시 'bdata' 로컬스에 넣기
+      localStorage.setItem("bdata", JSON.stringify(data));
     } //////////// if /////////////
 
     // 5. [ 현재글 세션스에 처리하기 ] ////////
-    if(isOK){ // 조회수 증가일 경우에만 글번호 세션스 등록!
+    if (isOK) {
+      // 조회수 증가일 경우에만 글번호 세션스 등록!
       // 세션스 배열에 idx값 넣기
       cntIdx.push(Number(cidx));
-  
+
       // console.log("넣은후:", cntIdx);
-  
+
       // 세션스에 저장하기
       sessionStorage.setItem("cnt-idx", JSON.stringify(cntIdx));
     } /////////////// if //////////////
@@ -646,54 +667,64 @@ export function Board() {
 
   // 검색 기능 수행 함수 ////////////////////
   const searchList = () => {
-    
     // 1. 검색기준값 읽어오기 : 소문자 변환, 앞뒤공백 제거
-    const cta = $('#cta').val().toLowerCase().trim();
-    
-    
+    const cta = $("#cta").val().toLowerCase().trim();
+
     // 2. 검색어 읽어오기
-    const inpVal = $('#stxt').val().trim();
+    const inpVal = $("#stxt").val().trim();
 
     // 3. 검색어 입력 안한 경우 경고창과 return
-    if(inpVal===""){
-      alert('Write down keyword!!!!');
+    if (inpVal === "") {
+      alert("Write down keyword!!!!");
       return;
     } ///////// if /////////
-    
-    console.log('검색시작!',cta,inpVal);
+
+    // 3번 이후 검색실행시 검색상태값 업데이트 true
+    searchSts.current = true; // List 버튼 보이기
+
+    console.log("검색시작!", cta, inpVal);
 
     // 원본데이터로 검색하지 않고 로컬스토리지 데이터 사용!
-    console.log('원본데이터',orgData);
-
+    console.log("원본데이터", orgData);
 
     // 로컬스 데이터 가져오기
-    const storageData =
-    JSON.parse(localStorage.getItem('bdata'));
+    const storageData = JSON.parse(localStorage.getItem("bdata"));
 
-    console.log('로컬스:', storageData);
-
+    console.log("로컬스:", storageData);
 
     // 4. 전체 로컬스 데이터에서 검색기준값으로 검색하기
-    const resData = storageData.filter(v=>{
+    const resData = storageData.filter((v) => {
       // 원본 문자데이터 소문자 변환!
       let compTxt = v[cta].toLowerCase();
       // 검색기준이 동적으로 변수에 담기므로
       // 대괄호로 객체값을 읽어온다!
       // indexof()로 like 검색함!
-      if(compTxt.indexOf(inpVal)!==-1) return true;
+      if (compTxt.indexOf(inpVal) !== -1) return true;
     });
 
-    console.log('검색데이터:',resData);
+    console.log("검색데이터:", resData);
 
     // 5. 리스트 업데이트 하기
     orgData = resData;
 
     // 6. 강제 리랜더링하기
-    setForce(Math.random());
-
-
-
+    // 조건 : 기존 1페이지 일때만 실행!
+    // 다른페이지에서 검색하면 1페이지로 변경(이때 리랜더링됨!)
+    if(pgNum===1) setForce(Math.random());
+    else setPgNum(1);
   }; /////////////// searchList함수 ///////////////
+
+  // 컴포넌트 소멸자로 검색을 실행하고 다른페이지로 이동할 경우
+  // 데이터가 검색된 것으로 남아있으므로
+  // 이때 소멸자로 원본 데이터 초기화 셋팅 함수를
+  // 호출해준다!!
+
+  useEffect(()=>{
+    // 소멸자
+    return(()=>{
+      rawData();
+    }); ///////////// return 소멸자 /////////////
+  },[])
 
   // 리턴코드 ////////////////////
   return (
@@ -702,9 +733,9 @@ export function Board() {
         /* 1. 게시판 리스트 : 게시판 모드 'L'일때 출력 */
         bdMode === "L" && (
           <>
-          {/* 전체 타이틀 */}
+            {/* 전체 타이틀 */}
             <h1 className="tit">OPINION</h1>
-            
+
             {/* 검색옵션박스 */}
             <div className="selbx">
               <select name="cta" id="cta" className="cta">
@@ -712,13 +743,30 @@ export function Board() {
                 <option value="cont">Contents</option>
                 <option value="unm">Writer</option>
               </select>
-              <select name="sel" id="sel" className="sel">
-                <option value="0">JungYeol</option>
-                <option value="1">Ascending</option>
-                <option value="2">Descending</option>
+              <select name="sel" id="sel" className="sel" 
+                // 선택값읽기
+                onChange={(e)=>{
+                let opt = $(e.currentTarget).val();
+                console.log('선택값:',opt);
+                // 선택에 따른 정렬호출
+                if(Number(opt)===0) 
+                  sortData(orgData,[-1,1]);
+                else
+                  sortData(orgData,[1,-1]);
+                // 강제 리랜더링
+                setForce(Math.random());
+              }}>
+                <option value="0">Ascending</option>
+                <option value="1">Descending</option>
               </select>
-              <input id="stxt" type="text" maxLength="50" />
-              <button className="sbtn" onClick={searchList}>Search</button>
+              <input id="stxt" type="text" maxLength="50" onKeyUp={(e)=>{
+                // 엔터칠때 검색실행!
+                if(e.code==='Enter')searchList();
+                // console.log(e.code);
+              }} />
+              <button className="sbtn" onClick={searchList}>
+                Search
+              </button>
             </div>
 
             {/* 리스트 테이블 */}
@@ -899,13 +947,30 @@ export function Board() {
             <td>
               {
                 // 리스트 모드(L)
+                bdMode === "L" &&
+                  // 검색상태관리 참조변수 searchSts값이 true일때만 출력!
+                  bdMode === "L" &&
+                  searchSts.current && (
+                    <>
+                      {/* List버튼은 검색실행시에만 나타남
+                  클릭시 전체리스트로 돌아감. 이때 버튼사라짐 */}
+                      <button onClick={()=>{
+                        // 데이터 초기화(전체리스트)
+                        rawData();
+                        // 강제업데이트
+                        setForce(Math.random());
+                        $('#stxt').val('');
+                        $('#cta').val('tit')
+                      }}>
+                        <a href="#">List</a>
+                      </button>
+                    </>
+                  )
+              }
+              {
+                // 리스트 모드(L)
                 bdMode === "L" && myCon.logSts !== null && (
                   <>
-                  {/* List버튼은 검색실행시에만 나타남
-                  클릭시 전체리스트로 돌아감. 이때 버튼사라짐*/}
-                    <button onClick={chgMode}>
-                      <a href="#">List</a>
-                    </button>
                     <button onClick={chgMode}>
                       <a href="#">Write</a>
                     </button>
