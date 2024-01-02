@@ -21,6 +21,7 @@ body {
     /* 가로중앙이동 */
     background-color: #fff;
     border-radius: 40px;
+    z-index: 999;
 }
 /* 가상요소로 움직이는 배경박스 만들기 */
 .mbg {
