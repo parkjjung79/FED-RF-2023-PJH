@@ -170,7 +170,7 @@ export function Board() {
     // 내림차순 정렬 함수호출
     // sortData(orgData,[-1,1]);
 
-    // 시작값 : (페이지번호-1)*블록단위수
+ // 시작값 : (페이지번호-1)*블록단위수
     let initNum = (pgNum - 1) * pgBlock;
     // 한계값 : 블록단위수*페이지번호
     let limitNum = pgBlock * pgNum;
@@ -235,7 +235,7 @@ export function Board() {
     const limit = blockCnt + (blockPad === 0 ? 0 : 1);
 
     // 페이징의 페이징 한계수 구하기
-    const pgBlockCnt = Math.floor(totNum / pgPgBlock);
+    const pgBlockCnt = Math.floor(limit / pgPgBlock);
     const pgBlockPad = limit % pgPgBlock;
     const pgLimit = pgBlockCnt + (pgBlockPad === 0 ? 0 : 1);
     
@@ -264,18 +264,17 @@ export function Board() {
     // 불가하므로 Fragment 조각 가상태그를 사용한다!
 
     // 시작값 : (페페넘-1)*페페블럭
-    let initNum = (pgPgNum.current-1)*pgPgBlock;
+    let initNum = (pgPgNum.current - 1) * pgPgBlock;
     // 한계값 : 페페넘*페페블럭
-    let limitNum = pgPgNum.current*pgPgBlock;
+    let limitNum = pgPgNum.current * pgPgBlock;
 
     for (let i = initNum; i < limitNum; i++) {
-      // 맨끝 페이지 번호를 만나면 나가라
-      if(limitNum >= limit) break;
-
+      // 맨끝 페이지 번호보다 크면 나라가
+      if(i >= limit) break;
+      
+      {/* 1.페이징 링크 만들기 */}
       pgCode[i] = (
         <Fragment key={i}>
-
-        {/* 1. 페이징 링크 만들기 */}
           {pgNum - 1 === i ? (
             <b>{i + 1}</b>
             ) : (
@@ -284,14 +283,17 @@ export function Board() {
             </a>
           )}
 
-          {i < limit - 1 ? " | " : ""}
-
+          {// 바출력조건:
+          // 페이징의 페이징에서 끝번호 전번호일때와
+          // 동시에 전체 한계값이 전체페이지끝 이전번호 보다 작을때
+          (i < limitNum - 1 && i < limit-1) ? 
+          " | " : ""}
         </Fragment>
       );
     } ////// for /////
 
     // pgPgNum.current = 2;
-       
+
     { 
       // 2. 페이징 이전블록이동 버튼 - 배열 맨앞에 추가!
       // 기준: 1페이지가 아니면 보임!
@@ -324,7 +326,8 @@ export function Board() {
   const goPaging = (dir) => {
     // dir이동방향(오른쪽:+1, 왼쪽:-1)
     const newPgPgNum = pgPgNum.current + dir;
-    const newPgNum = newPgNum * pgPgBlock;
+    // 새 페이지번호 : 전페이지 끝번호 + 1
+    const newPgNum = (newPgPgNum-1) * pgPgBlock + 1;
 
     // 페이징의 페이징번호 업데이트
     pgPgNum.current = newPgPgNum;
