@@ -22,9 +22,8 @@ export function TopArea(props) {
     console.log('카테고리:',props.cat);
     // glist일 경우 적용하기
     if(props.cat==="glist"){
-      // 초기화 상태값 true로 업데이트하기
+      // 초기화 상태값 true로 업데이트 하기
       myCon.gInit.current = true;
-      
       
       // 클릭된요소
       const tgEle = $(e.currentTarget);
@@ -57,7 +56,7 @@ export function TopArea(props) {
             props.cat==="glist"&&i===0?'on':''
           }
           onClick={clickGnb}>
-          <a href="#">{v}</a>
+          <a href={"#c"+(i+1)}>{v}</a>
         </li>
       )
     )
