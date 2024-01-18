@@ -14,6 +14,13 @@ const logoAni = $("#mlogo");
 // [2] 시차로 애니메이션 대상에 클래스 넣기
 // 공통 적용 클래스명: anion
 
+// 타임아웃 설정 공통 함수 //////
+const setTime = (ele, time) => {
+  setTimeout(() => {
+    ele.addClass("anion");
+  }, time);
+}; /////// setTime함수 ////////
+
 // 1. 2초후 라인애니
 setTimeout(() => {
   lineAni.addClass("anion");
