@@ -545,14 +545,16 @@ export function Board() {
         // // console.log('1~5사이최대값:',test);
 
         // 입력된 업로드 파일정보
-        console.log('업로드파일정보:',updateFile.current);
+        console.log('업로드파일정보:',uploadFile.current);
 
         // 4. 임시변수에 입력할 객체 데이터 생성하기
         let temp = {
           idx: maxNum + 1,
           tit: subEle.val().trim(),
           cont: contEle.val().trim(),
-          att: uploadFile.current.name, //파일이름 업데이트
+          att:
+          uploadFile.current?
+          uploadFile.current.name:'',//파일이름 업데이트
           date: `${yy}-${addZero(mm)}-${addZero(dd)}`,
           uid: logData.current.uid,
           unm: logData.current.unm,
@@ -561,19 +563,14 @@ export function Board() {
 
         // // console.log("입력전 준비데이터:", temp);
 
-        // 5. 원본임시변수에 배열데이터 값 push하기
-        orgTemp.push(temp);
-
-        // // console.log("최종반영 전체데이터:",  orgTemp);
-
         // [선택파일 서버전송]
-        if(updateFile.current){ //null아닌 할당상태일때만
+        if(uploadFile.current){ //null아닌 할당상태일때만
           // 원래는 form 태그로 싸여있어서 서버전송을 하지만
           // 없어도 form 전송을 서버에 할 수 있는 객체가 있다!
           // FormData() 클래스 객체임!!
           const formData = new FormData();
           // 전송할 데이터 추가하기
-          formData.append("file", fileInfo);
+          formData.append("file", uploadFile.current);
   
           // 폼데이터에는 키 값이 있음 확인하자!
           for (const key of formData) console.log(key);
@@ -595,7 +592,17 @@ export function Board() {
               // err은 에러발생시 에러정보 변수
               console.log("에러발생:", err);
             });
+
+          // 파일 참조변수 초기화 필수!
+          uploadFile.current = null;
+
+
         } ////////////////// if //////////////////
+
+        // 5. 원본임시변수에 배열데이터 값 push하기
+        orgTemp.push(temp);
+
+        // // console.log("최종반영 전체데이터:",  orgTemp);
 
         // 6. 로컬스에 반영하기
         localStorage.setItem("bdata", JSON.stringify(orgTemp));
@@ -631,6 +638,8 @@ export function Board() {
       // 리랜더링 없는 DOM상태 기능구현!!
       if (subEle.val().trim() === "" || contEle.val().trim() === "") {
         window.alert("제목과 내용은 필수입력입니다!");
+
+        
       } /////// if /////////
 
       // 2. 통과시 실제 데이터 입력하기
@@ -1003,7 +1012,7 @@ export function Board() {
                 </td>
               </tr>
               <tr>
-                <td>Title</td>
+                <saveFiletd>Title</saveFiletd>
                 <td>
                   <input type="text" className="subject" size="60" />
                 </td>
@@ -1068,6 +1077,14 @@ export function Board() {
                   ></textarea>
                 </td>
               </tr>
+            <tr>
+              <td>Attachment</td>
+              <td>
+                <a href={'/uploads/'+cData.current.att} download={true}>
+                  {cData.current.att}
+                </a>
+              </td>
+            </tr>
             </tbody>
           </table>
         )
@@ -1115,6 +1132,12 @@ export function Board() {
                   {/* defaultValue로 써야 수정가능! */}
                 </td>
               </tr>
+              <tr>
+                <td>Attachment</td>
+                <td>
+                  <b>{cData.current.att}</b>
+                </td>
+            </tr>
             </tbody>
           </table>
         )
@@ -1221,7 +1244,7 @@ export function Board() {
 ////////////////////////////////////////////////
 
 // 업로드 모듈을 리턴하는 서브컴포넌트 ////////////
-const AttachBox = () => {
+const AttachBox = ({saveFile}) => { //saveFile 프롭스펑션다운!
   // [상태관리변수] ////////////
   // 1. 드래그 또는 파일을 첨부할때 활성화여부 관리 변수
   // 값: true이면 화성화, false이면 비활성화
@@ -1257,7 +1280,7 @@ const AttachBox = () => {
     // 상위 컴포넌트 변수인 uploadFile에 저장하는
     // 함수인 updateFileInfo()를 호출하는 속성인
     // saveFile() 속성함수를 사용하여 업데이트한다!
-    saveFile(FileInfo);
+    saveFile(fileInfo);
 
     // 서버전송은 서브밋 버튼 클릭후 실행!!!
 
@@ -1286,7 +1309,7 @@ const AttachBox = () => {
   const changeUpload = ({target}) =>{// target은 이벤트 타겟!
     // 파일정보 읽어오기
     const fileInfo = target.files[0];
-    console.log('클릭파일:',file);
+    console.log('클릭파일:',fileInfo);
 
     // 파일정보셋팅 메서드 호출!
     setFileInfo(fileInfo);
