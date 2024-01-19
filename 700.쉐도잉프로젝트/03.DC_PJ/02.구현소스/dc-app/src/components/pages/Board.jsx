@@ -18,6 +18,9 @@ import $ from "jquery";
 // 기본 데이터 제이슨 불러오기
 import baseData from "../data/board.json";
 
+// 파일전송 요청을 위해 엑시오스 불러오기
+import axios from "axios";
+
 // 기본 데이터 역순정렬
 baseData.sort((a, b) => {
   return Number(a.idx) === Number(b.idx)
@@ -1166,12 +1169,12 @@ export function Board() {
 
 // 업로드 모듈을 리턴하는 서브컴포넌트 ////////////
 const AttachBox = () => {
-  // [상태관리변수]
+  // [상태관리변수] ////////////
   // 1. 드래그 또는 파일을 첨부할때 활성화여부 관리 변수
   // 값: true이면 화성화, false이면 비활성화
   const [isOn,setIsOn] = useState(false);
   // 2. 업로드 파일 정보 관리변수
-  const [uploadedInfo,setUploadedInfo] = useState(null);
+  const [uploadedInfo, setUploadedInfo] = useState(null);
 
   // [ 이벤트 처리 메서드 ]
   // 드래그 대상영역을 들어가고 나갈때 isOn 상태값 업데이트하기
@@ -1192,10 +1195,36 @@ const AttachBox = () => {
     // -> 이 부분이 중요함
     // 드롭된 파일로부터 전송된 파일정보는 아래와 같이 읽어온다
     const fileInfo = e.dataTransfer.files[0];
-    // console.log(fileInfo);
+    console.log(fileInfo);
 
     // 파일정보셋팅 메서드 호출!
     setFileInfo(fileInfo);
+
+    // 원래는 form 태그로 싸여있어서 서버전송을 하지만
+    // 없어도 form 전송을 서버에 할 수 있는 객체가 있다!
+    // FormData() 클래스 객체임!!
+    const formData = new FormData();
+    // 전송할 데이터 추가하기
+    formData.append("file", fileInfo);
+
+    // 폼데이터에는 키 값이 있음 확인하자!
+    for(const key of formData) console.log(key);
+
+    // 서버전송은 엑시오스로 하자!
+    // server.js에 서버에서 post방식으로 전송받는
+    // 셋팅이 익스프레스에서 되어 있어야함!
+    // 첫번째 셋팅값 전송url에는 서버에 셋팅된
+    // path값과 같은 upload라는 하위 경로를 써준다!
+    // 두번째 셋팅값은 서버로 전송될 파일정보를 써준다!
+    axios
+    .post('http://localhost:8080/upload',formData)
+    .then(res=>{ // res는 성공결과 리턴값 변수
+      const {fileName} = res.data;
+      console.log('전송성공!',fileName); 
+    })
+    .catch(err=>{ // err은 에러발생시 에러정보 변수
+      console.log('에러발생:',err);
+    });
 
   }; /////////////// controlDrop 메서드 ///////////////
 
